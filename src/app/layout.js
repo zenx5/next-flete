@@ -105,7 +105,6 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-
       <body className={inter.className}>{
         <>
           <Transition.Root show={mobileMenuOpen} as={Fragment}>
@@ -241,10 +240,10 @@ export default function RootLayout({ children }) {
           </Transition.Root>
           <header className="relative z-10">
             <nav aria-label="Top">
-              <div className="bg-gray-900">
+              {/* <div className="bg-gray-900">
                 <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                   {/* Currency selector */}
-                  <form>
+                  {/* <form>
                     <div>
                       <label htmlFor="desktop-currency" className="sr-only">
                         Currency
@@ -275,7 +274,7 @@ export default function RootLayout({ children }) {
                     </a>
                   </div>
                 </div>
-              </div>
+              </div> */} 
 
               {/* Secondary navigation */}
               <div className="bg-white bg-opacity-10 backdrop-blur-md backdrop-filter">
