@@ -330,7 +330,7 @@ export default function FrontPage() {
 					<div className="relative overflow-hidden rounded-lg">
 						<div className="absolute inset-0">
 							<img
-								src="/images/STEAM.webp"
+								src="https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg"
 								alt=""
 								className="h-full w-full object-cover object-center"
 							/>
