@@ -13,6 +13,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -27,81 +28,22 @@ const inter = Inter({ subsets: ['latin'] })
 
 const currencies = ['BS', 'USD']
 const navigation = {
-  categories: [
-    {
-      name: 'Recargas',
-      featured: [
-        {
-          name: 'Call Of Duty Mobile',
-          href: '#',
-          imageSrc: '/images/CODM.webp',
-          imageAlt: 'Call Of Duty Mobile.',
-          description: '¡Recarga tus COD Points!'
-        },
-        {
-          name: 'Wild Rift',
-          href: '#',
-          imageSrc: '/images/WR.webp',
-          imageAlt: 'Riot Games Wild Rift.',
-          description: '¡Recarga tus Wild Cores!'
-        },
-        {
-          name: 'Clash of Clans',
-          href: '#',
-          imageSrc: '/images/COC.webp',
-          imageAlt: 'Clash of Clans.',
-          description: '¡Recarga tus Gemas!'
-        },
-        {
-          name: 'Free Fire',
-          href: '#',
-          imageSrc: '/images/FF.webp',
-          imageAlt: 'Clash Royale.',
-          description: '¡Recarga tus Diamantes!'
-        },
-      ],
-    },
-    {
-      name: 'Juegos',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-01.jpg',
-          imageAlt: 'Hats and sweaters on wood shelves next to various colors of t-shirts on hangers.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-02.jpg',
-          imageAlt: 'Model wearing light heather gray t-shirt.',
-        },
-        {
-          name: 'Accessories',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-03.jpg',
-          imageAlt:
-            'Grey 6-panel baseball hat with black brim, black mountain graphic on front, and light heather gray body.',
-        },
-        {
-          name: 'Carry',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-04.jpg',
-          imageAlt: 'Model putting folded cash into slim card holder olive leather wallet with hand stitching.',
-        },
-      ],
-    },
-  ],
+  // categories: [
+  //   {
+  //     name: 'Productos',
+  //   },
+  // ],
   pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
+    { name: 'Productos', href: '#' },
+    { name: 'Perfil', href: '#' },
   ],
 }
 
 
 
 export default function RootLayout({ children }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter()
 
   return (
     <html lang="en">
@@ -145,7 +87,7 @@ export default function RootLayout({ children }) {
 
                     {/* Links */}
                     <Tab.Group as="div" className="mt-2">
-                      <div className="border-b border-gray-200">
+                      {/* <div className="border-b border-gray-200">
                         <Tab.List className="-mb-px flex space-x-8 px-4">
                           {navigation.categories.map((category) => (
                             <Tab
@@ -161,9 +103,9 @@ export default function RootLayout({ children }) {
                             </Tab>
                           ))}
                         </Tab.List>
-                      </div>
+                      </div> */}
                       <Tab.Panels as={Fragment}>
-                        {navigation.categories.map((category) => (
+                        {/* {navigation.categories.map((category) => (
                           <Tab.Panel key={category.name} className="space-y-12 px-4 py-6">
                             <div className="grid grid-cols-2 gap-x-4 gap-y-10">
                               {category.featured.map((item) => (
@@ -182,7 +124,7 @@ export default function RootLayout({ children }) {
                               ))}
                             </div>
                           </Tab.Panel>
-                        ))}
+                        ))} */}
                       </Tab.Panels>
                     </Tab.Group>
 
@@ -243,7 +185,7 @@ export default function RootLayout({ children }) {
               {/* <div className="bg-gray-900">
                 <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                   {/* Currency selector */}
-                  {/* <form>
+              {/* <form>
                     <div>
                       <label htmlFor="desktop-currency" className="sr-only">
                         Currency
@@ -274,7 +216,7 @@ export default function RootLayout({ children }) {
                     </a>
                   </div>
                 </div>
-              </div> */} 
+              </div> */}
 
               {/* Secondary navigation */}
               <div className="bg-white bg-opacity-10 backdrop-blur-md backdrop-filter">
@@ -283,21 +225,21 @@ export default function RootLayout({ children }) {
                     <div className="flex h-16 items-center justify-between">
                       {/* Logo (lg+) */}
                       <div className="hidden lg:flex lg:flex-1 lg:items-center">
-                        <a href="#">
+                        <button onClick={() => router.push('/')}>
                           <span className="sr-only">Krosty Shop</span>
                           <img
                             className="h-8 w-auto"
                             src="/images/krosty_shop_blanco.webp"
                             alt=""
                           />
-                        </a>
+                        </button>
                       </div>
 
                       <div className="hidden h-full lg:flex">
                         {/* Flyout menus */}
                         <Popover.Group className="inset-x-0 bottom-0 px-4">
                           <div className="flex h-full justify-center space-x-8">
-                            {navigation.categories.map((category) => (
+                            {/* {navigation.categories.map((category) => (
                               <Popover key={category.name} className="flex">
                                 {({ open }) => (
                                   <>
@@ -325,11 +267,11 @@ export default function RootLayout({ children }) {
                                     >
                                       <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500">
                                         {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-                                        <div className="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
+                            {/* <div className="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
 
                                         <div className="relative bg-white">
-                                          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                                            <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-16">
+                                          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> */}
+                            {/* <div className="grid grid-cols-4 gap-x-8 gap-y-10 py-16">
                                               {category.featured.map((item) => (
                                                 <div key={item.name} className="group relative">
                                                   <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-md bg-gray-100 group-hover:opacity-75">
@@ -339,7 +281,7 @@ export default function RootLayout({ children }) {
 																										alt={item.imageAlt}
 																										className="object-cover object-center"
 																									/> */}
-                                                  </div>
+                            {/* </div>
                                                   <a href={item.href} className="mt-4 block font-medium text-gray-900">
                                                     <span className="absolute inset-0 z-10" aria-hidden="true" />
                                                     {item.name}
@@ -349,15 +291,15 @@ export default function RootLayout({ children }) {
                                                   </p>
                                                 </div>
                                               ))}
-                                            </div>
-                                          </div>
+                                            </div> */}
+                            {/* </div>
                                         </div>
                                       </Popover.Panel>
                                     </Transition>
                                   </>
                                 )}
                               </Popover>
-                            ))}
+                            ))} */}
 
                             {navigation.pages.map((page) => (
                               <a
@@ -380,40 +322,39 @@ export default function RootLayout({ children }) {
                         </button>
 
                         {/* Search */}
-                        <a href="#" className="ml-2 p-2 text-white">
+                        {/* <a href="#" className="ml-2 p-2 text-white">
                           <span className="sr-only">Search</span>
                           <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
-                        </a>
+                        </a> */}
                       </div>
 
                       {/* Logo (lg-) */}
-                      <a href="#" className="lg:hidden">
-                        <span className="sr-only">Your Company</span>
-                        <img src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="" className="h-8 w-auto" />
-                      </a>
+                      <button onClick={()=>router.push('/')} className="lg:hidden">
+                        <img src="/images/krosty_shop_blanco.webp" alt="" className="h-8 w-auto" />
+                      </button>
 
                       <div className="flex flex-1 items-center justify-end">
                         <a href="#" className="hidden text-sm font-medium text-white lg:block">
-                          Search
+                          Buscar Pedido
                         </a>
 
                         <div className="flex items-center lg:ml-8">
                           {/* Help */}
-                          <a href="#" className="p-2 text-white lg:hidden">
-                            <span className="sr-only">Help</span>
+                          {/* <a href="#" className="p-2 text-white lg:hidden">
+                            <span className="sr-only"></span>
                             <QuestionMarkCircleIcon className="h-6 w-6" aria-hidden="true" />
-                          </a>
+                          </a> */}
                           <a href="#" className="hidden text-sm font-medium text-white lg:block">
-                            Help
+                            Sobre Nosotros
                           </a>
 
                           {/* Cart */}
                           <div className="ml-4 flow-root lg:ml-8">
-                            <a href="Cart" className="group -m-2 flex items-center p-2">
+                            <button onClick={() => { router.push('/Carrito') }} className="group -m-2 flex items-center p-2">
                               <ShoppingBagIcon className="h-6 w-6 flex-shrink-0 text-white" aria-hidden="true" />
                               <span className="ml-2 text-sm font-medium text-white">0</span>
                               <span className="sr-only">items in cart, view bag</span>
-                            </a>
+                            </button>
                           </div>
                         </div>
                       </div>

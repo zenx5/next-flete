@@ -186,7 +186,7 @@ function classNames(...classes) {
 export default function FrontPage() {
 
 	return (
-		<div className="bg-white">
+		<div className="bg-slate-100">
 			{/* Mobile menu */}
 
 
