@@ -48,7 +48,7 @@ export default function ImageSelector({ images }) {
             <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
                 {images?.map((image, index) => (
                     <Tab.Panel key={image.id} className="flex flex-row items-center">
-                        {images.length && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={"w-6 h-6 md:invisible " + (index==0 ? "text-gray-500" : "cursor-pointer text-blue-500")} onClick={handlerClickChangeImage(index,-1)}>
+                        {images.length && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={"w-6 h-6 md:hidden " + (index==0 ? "text-gray-500" : "cursor-pointer text-blue-500")} onClick={handlerClickChangeImage(index,-1)}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                         </svg>}
                         <img
@@ -56,7 +56,7 @@ export default function ImageSelector({ images }) {
                             alt={image.alt}
                             className="h-full w-full object-cover object-center sm:rounded-lg shadow-xl"
                         />
-                        {images.length && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={"w-6 h-6 md:invisible " + ((index==images.length-1) ? "text-gray-500" : "cursor-pointer text-blue-500")} onClick={handlerClickChangeImage(index,1)}>
+                        {images.length && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={"w-6 h-6 md:hidden " + ((index==images.length-1) ? "text-gray-500" : "cursor-pointer text-blue-500")} onClick={handlerClickChangeImage(index,1)}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                         </svg>}
 
