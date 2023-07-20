@@ -1,4 +1,4 @@
-import ProductDetail from '@/components/product/ProductDetail'
+import ProductDetail from '@/components/product/details/ProductDetail'
 
 
 export default async function Products({ params }) {
@@ -9,7 +9,7 @@ export default async function Products({ params }) {
     
     return (
         <main className="flex min-h-screen flex-col">
-            { code==0 && <ProductDetail product={product} />}
+            { code==0 && <ProductDetail product={product} relatedProducts={[]} />}
         </main>
     )
 }
