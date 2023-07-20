@@ -16,11 +16,11 @@ export default function ProductList({products}) {
 	return (
 		<div className="bg-[#ededed]-900">
 			<div className="mx-auto max-w-2xl px-4 py-4 sm:px-6 sm:py-4 lg:max-w-7xl lg:px-8">
-				<form className="flex flex-row justify-between mb-4 bg-white p-3 gap-3">
-					<ul className="flex flex-row justify-between w-1/3">
-						<li><a className={`text-blue-500 hover:bg-blue-100 p-2 ${isActive}`} href="#">Promocion 1</a></li>
-						<li><a className="text-blue-500 hover:bg-blue-100 p-2" href="#">Promocion 2</a></li>
-						<li><a className="text-blue-500 hover:bg-blue-100 p-2" href="#">Promocion 3</a></li>
+				<form className="flex flex-row justify-between items-center mb-4 bg-white p-3 gap-3">
+					<ul className="flex flex-row justify-between w-1/3 p-0 m-0">
+						<li><a className={`text-blue-500 hover:bg-blue-100 p-2 pb-0 ${isActive}`} href="#">Ascenso 1</a></li>
+						<li><a className="text-blue-500 hover:bg-blue-100 p-2 pb-0" href="#">Ascenso 2</a></li>
+						<li><a className="text-blue-500 hover:bg-blue-100 p-2 pb-0" href="#">Ascenso 3</a></li>
 					</ul>
 					<span className="w-1/3 p-1 border-2 border-blue-300 flex flex-row justify-between group hover:border-blue-500 rounded-md">
 						<input className="outline-none w-11/12" placeholder="Buscar..."/>
@@ -31,9 +31,9 @@ export default function ProductList({products}) {
 						</button>
 					</span>
 					<select className="w-1/3 p-2 border-2 border-blue-300 hover:border-blue-500 bg-white text-blue-500 rounded-md">
-						<option>Opcion 1</option>
-						<option>Opcion 2</option>
-						<option>Opcion 3</option>
+						<option>Promoción 1</option>
+						<option>Promoción 2</option>
+						<option>Promoción 3</option>
 					</select>
 				</form>
 
