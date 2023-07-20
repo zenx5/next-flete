@@ -238,7 +238,7 @@ export default function RootLayout({ children }) {
               </div>
             </Dialog>
           </Transition.Root>
-          <header className="relative z-10">
+          <header className="relative z-10 bg-black">
             <nav aria-label="Top">
               {/* <div className="bg-gray-900">
                 <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
