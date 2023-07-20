@@ -1,6 +1,7 @@
 // "use client";
 // import { useRouter } from 'next/navigation';
 
+import Price from './Price'
 import AddToCart from './AddToCart'
 import BuyNow from './BuyNow'
 
@@ -55,13 +56,8 @@ export default function ProductList({products}) {
 							</span>
 							<span className="flex flex-col justify-end px-3 pb-4 ">
 								<h3 className="mt-4 text-lg text-gray-800">{product.name}</h3>
-								<span className="block text-gray-500 text-sm">{product.imageAlt}</span>
-								{(true || product.price !== '')
-									&& <span className="mt-2">
-										<small className="leading-none text-xs line-through text-gray-500">$USD 25</small>
-										<p className="leading-none text-lg text-center md:text-left font-medium text-gray-900">{'$USD 10' || product.price}</p>
-									</span>
-								}
+								<span className="block text-gray-500 text-sm">{product.description.slice(0,100)}</span>
+								<Price price={product.price} regularPrice={product.regularPrice} />
 								<BuyNow id={product.id} className="flex justify-center w-full text-blue-400 hover:text-blue-500 hover:bg-blue-100 p-2" />
 							</span>
 						</a>
