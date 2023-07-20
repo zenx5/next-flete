@@ -49,8 +49,8 @@ export default function ProductList({products}) {
 									classNameContainer="flex w-full h-0 justify-end px-3"
 									classNameIcon="text-right relative top-2.5 h-8 w-8 flex-shrink-0 text-blue-400 bg-white opacity-50 rounded-full p-1 hover:opacity-100 hover:text-blue-500" />
 								<img
-									src={product.imageSrc}
-									alt={product.imageAlt}
+									src={product.images?.at(0)?.src}
+									alt={product.images?.at(0)?.alt}
 									className={`h-full w-full object-cover object-center ${classRounded}`}
 								/>
 							</span>
