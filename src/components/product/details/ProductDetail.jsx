@@ -3,7 +3,7 @@ import AddToCart from '../AddToCart'
 import BuyNow from '../BuyNow'
 import Price from '../Price';
 import Details from './Details';
-import CardRelatedProduct from '../CardRelatedProduct';
+import CardRelatedProduct from '../../CardRelatedProduct';
 
 
 export default function ProductDetail({ product }) {

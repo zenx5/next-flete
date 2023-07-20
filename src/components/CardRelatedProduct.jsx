@@ -1,5 +1,5 @@
-import Price from "./Price"
-import AddToCart from "./AddToCart"
+import Price from "./product/Price"
+import AddToCart from "./product/AddToCart"
 
 export default function CardRelatedProduct({product}) {
 
