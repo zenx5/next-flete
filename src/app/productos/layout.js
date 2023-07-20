@@ -1,4 +1,5 @@
 import CustomFooter from '@/components/CustomFooter'
+import BreadCrumbs from '@/components/BreadCrumbs'
 import '../globals.css'
 import { Inter } from 'next/font/google'
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>{
         <>
+          <BreadCrumbs />
           {children}
           <CustomFooter />
         </>
