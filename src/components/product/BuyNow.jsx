@@ -1,5 +1,5 @@
 "use client";
-export default function BuyNow({ id }) {
+export default function BuyNow({ id, className }) {
 
     const handlerClick_BuyNow = (event) => {
         event.preventDefault()
@@ -7,7 +7,7 @@ export default function BuyNow({ id }) {
     }
 
     return <button 
-        className="flex justify-center w-full text-blue-400 hover:text-blue-500 hover:bg-blue-100 p-2"
+        className={className}
         onClick={handlerClick_BuyNow}
         >Comprar ahora</button>
 }
