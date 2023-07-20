@@ -25,12 +25,17 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
+import escudoArmada from '../../../public/ImagesCadeteSiempre/escudoArmada.png'
+import escudoGuardia from '../../../public/ImagesCadeteSiempre/guardiaNacionalEscudo.png'
+import escudoEjercito from '../../../public/ImagesCadeteSiempre/escudoEjercito.png'
+import escudoMilicia from '../../../public/ImagesCadeteSiempre/escudoMilicia.png'
+import escudoAviacion from '../../../public/ImagesCadeteSiempre/escudoAviacion.png'
 
 const currencies = ['BS', 'USD']
 const navigation = {
 	categories: [
 		{
-			name: 'Recargas',
+			name: 'Fuerza Armada Bolivariana',
 			featured: [
 				{
 					name: 'Call Of Duty Mobile',
@@ -100,48 +105,49 @@ const navigation = {
 }
 const categories = [
 	{
-		name: 'Recargas',
+		name: 'Fuerza Armada Bolivariana',
 		href: '#',
-		imageSrc: '/images/Recharges.webp',
+		imageSrc: escudoArmada
+		,
 	},
 	{
-		name: 'Gift Cards',
+		name: 'Guardia Nacional Bolivariana',
 		href: '#',
-		imageSrc: '/images/GiftCards.webp',
+		imageSrc: escudoGuardia,
 	},
 	{
-		name: 'Streaming',
+		name: 'Ejercito Bolivariano',
 		href: '#',
-		imageSrc: '/images/STREAM.webp',
+		imageSrc: escudoEjercito,
 	},
 	{
-		name: 'Compras internacionales',
+		name: 'Aviacion Militar Bolivariana',
 		href: '#',
-		imageSrc: '/images/SHOPPING1.webp',
+		imageSrc: escudoAviacion,
 	},
-	{ name: 'Ofertas', href: '#', imageSrc: '/images/SALES.webp' },
+	{ name: 'Milicia Bolivariana', href: '#', imageSrc: escudoMilicia },
 ]
 const collections = [
 	{
-		name: 'PayPal',
+		name: 'Tarjetas',
 		href: '#',
-		imageSrc: '/images/PAYPAL.webp',
+		imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg",
 		imageAlt: 'PayPal Logo.',
-		description: 'Tu recarga de PayPal en pocos pasos.',
+		description: 'Tarjeta de Credito/Debito.',
 	},
 	{
-		name: 'Binance',
+		name: 'Transferencia',
 		href: '#',
-		imageSrc: '/images/BINANCE.webp',
+		imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg",
 		imageAlt: 'Binance.',
-		description: 'Recarga tus crypto facilmente.',
+		description: 'Transferencia Bancaria.',
 	},
 	{
-		name: 'Skrill',
+		name: 'Efectivo',
 		href: '#',
-		imageSrc: '/images/SKRILL.webp',
+		imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg",
 		imageAlt: 'Skrill.',
-		description: 'Incrementa tu saldo Skrill.',
+		description: 'Paga en nuestras oficinas al buscar tus productos',
 	},
 ]
 const footerNavigation = {
@@ -180,25 +186,25 @@ function classNames(...classes) {
 export default function FrontPage() {
 
 	return (
-		<div className="bg-white">
+		<div className="bg-slate-100">
 			{/* Mobile menu */}
 
 
 			{/* Hero section */}
-			<div className="relative bg-gray-900">
+			<div className="relative h-96 bg-gray-900">
 				{/* Decorative image and overlay */}
 				<div aria-hidden="true" className="absolute inset-0 overflow-hidden">
 					<img
-						src="/images/CODM.webp"
+						src="/ImagesCadeteSiempre/bannerVenezuelaJose.png"
 						alt=""
 						className="h-full w-full object-cover object-center"
 					/>
 				</div>
 				<div aria-hidden="true" className="absolute inset-0 bg-gray-900 opacity-50" />
-				<div className="relative mx-auto flex max-w-3xl flex-col items-center px-6 py-32 text-center sm:py-64 lg:px-0">
-					<h1 className="text-4xl font-bold tracking-tight text-white lg:text-6xl">¡Compra tus servicios y haz tus recargas en un solo lugar!</h1>
+				<div className="relative mx-auto flex max-w-3xl flex-col items-center px-6  text-center sm:py-16 lg:px-0">
+					<h1 className="text-4xl font-bold tracking-tight text-white lg:text-6xl">¡Compra tus botones o trajes en un solo lugar!</h1>
 					<p className="mt-4 text-xl text-white">
-						¡Disponemos de servicios de streaming, compras internacionales, gift cards y recargas!.
+						¡Disponemos de toda la indumentaria para tus promociones!.
 					</p>
 					<a
 						href="#"
@@ -263,7 +269,7 @@ export default function FrontPage() {
 					<div className="relative overflow-hidden rounded-lg">
 						<div className="absolute inset-0">
 							<img
-								src="/images/BANNER_SHOPPING.webp"
+								src="https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg"
 								alt=""
 								className="h-full w-full object-cover object-center"
 							/>
@@ -271,7 +277,7 @@ export default function FrontPage() {
 						<div className="relative bg-gray-900 bg-opacity-75 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
 							<div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
 								<h2 id="social-impact-heading" className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-									<span className="block sm:inline">Haz tus compras en usa con mucha comodidad.</span>
+									<span className="block sm:inline">Arma tu pedido y envialo a quien tu quieras para cancelarlo</span>
 								</h2>
 								<p className="mt-3 text-xl text-white">
 									Aqui podras hacer las compras que necesites en pocos clicks.
@@ -293,10 +299,10 @@ export default function FrontPage() {
 					className="mx-auto max-w-xl px-4 pt-24 sm:px-6 sm:pt-32 lg:max-w-7xl lg:px-8"
 				>
 					<h2 id="collection-heading" className="text-2xl font-bold tracking-tight text-gray-900">
-						¡Tambien recargas tus cuentas!
+						¡Paga con tus medios de pagos favoritos!
 					</h2>
 					<p className="mt-4 text-base text-gray-500">
-						Ofrecemos las recargas que quieres al mejor precio.
+						Efectivo, Tarjeta de Debito/Credito, Transferencia Bancaria
 					</p>
 
 					<div className="mt-10 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
@@ -324,7 +330,7 @@ export default function FrontPage() {
 					<div className="relative overflow-hidden rounded-lg">
 						<div className="absolute inset-0">
 							<img
-								src="/images/STEAM.webp"
+								src="https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg"
 								alt=""
 								className="h-full w-full object-cover object-center"
 							/>
