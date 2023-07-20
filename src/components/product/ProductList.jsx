@@ -1,20 +1,23 @@
-// "use client";
-// import { useRouter } from 'next/navigation';
+"use client";
+import { useRouter } from 'next/navigation';
 
 import Price from './Price'
 import AddToCart from './AddToCart'
 import BuyNow from './BuyNow'
+import Link from 'next/link'
+
 
 
 
 export default function ProductList({products}) {
+	const router = useRouter();
 
 
 	const classRounded = "rounded-tl-xl rounded-bl-xl md:rounded-tr-xl md:rounded-bl-none"
 	const isActive = "border-b-2 border-b-blue-500"
 
 	return (
-		<div className="bg-[#ededed]-900">
+		<div className="bg-slate-200">
 			<div className="mx-auto max-w-2xl px-4 py-4 sm:px-6 sm:py-4 lg:max-w-7xl lg:px-8">
 				<form className="flex flex-row justify-between items-center mb-4 bg-white p-3 gap-3">
 					<ul className="flex flex-row justify-between w-1/3 p-0 m-0">
@@ -39,8 +42,8 @@ export default function ProductList({products}) {
 
 				<div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
 					{products.map((product) => (
-						<a key={product.id} 
-							href={`/productos/${product.id}`} 
+						<button key={product.id} 
+							onClick={()=>router.push(`/productos/${product.id}`)} 
 							className="group bg-white rounded-xl shadow hover:shadow-2xl flex md:block">
 							<span 
 								className={"block p-2 aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white xl:aspect-h-8 xl:aspect-w-7 border-b-2 border-b-lightgray "+classRounded}>
@@ -60,7 +63,7 @@ export default function ProductList({products}) {
 								<Price price={product.price} regularPrice={product.regularPrice} />
 								<BuyNow id={product.id} className="flex justify-center w-full text-blue-400 hover:text-blue-500 hover:bg-blue-100 p-2" />
 							</span>
-						</a>
+						</button>
 					))}
 				</div>
 			</div>

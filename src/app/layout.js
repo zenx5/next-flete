@@ -14,6 +14,7 @@ import {
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import CustomFooter from '@/components/CustomFooter'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -34,7 +35,7 @@ const navigation = {
   //   },
   // ],
   pages: [
-    { name: 'Productos', href: '#' },
+    { name: 'Productos', href: '/productos' },
     { name: 'Perfil', href: '#' },
   ],
 }
@@ -131,9 +132,9 @@ export default function RootLayout({ children }) {
                     <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                       {navigation.pages.map((page) => (
                         <div key={page.name} className="flow-root">
-                          <a href={page.href} className="-m-2 block p-2 font-medium text-gray-900">
+                          <button onClick={()=>router.push(page.href)} className="-m-2 block p-2 font-medium text-gray-900">
                             {page.name}
-                          </a>
+                          </button>
                         </div>
                       ))}
                     </div>
@@ -226,12 +227,7 @@ export default function RootLayout({ children }) {
                       {/* Logo (lg+) */}
                       <div className="hidden lg:flex lg:flex-1 lg:items-center">
                         <button onClick={() => router.push('/')}>
-                          <span className="sr-only">Krosty Shop</span>
-                          <img
-                            className="h-8 w-auto"
-                            src="/images/krosty_shop_blanco.webp"
-                            alt=""
-                          />
+                          <span className="text-lg font-bold text-white">CadeteSiempre</span>
                         </button>
                       </div>
 
@@ -302,13 +298,13 @@ export default function RootLayout({ children }) {
                             ))} */}
 
                             {navigation.pages.map((page) => (
-                              <a
+                              <button
                                 key={page.name}
-                                href={page.href}
+                                onClick={()=>router.push(page.href)}
                                 className="flex items-center text-sm font-medium text-white"
                               >
                                 {page.name}
-                              </a>
+                              </button>
                             ))}
                           </div>
                         </Popover.Group>
@@ -365,6 +361,7 @@ export default function RootLayout({ children }) {
             </nav>
           </header>
           {children}
+          <CustomFooter />
         </>
       }</body>
     </html>
