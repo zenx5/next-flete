@@ -4,8 +4,6 @@ import { useRouter } from 'next/navigation';
 import Price from './Price'
 import AddToCart from './AddToCart'
 import BuyNow from './BuyNow'
-import Link from 'next/link'
-
 
 
 
@@ -42,7 +40,7 @@ export default function ProductList({products}) {
 
 				<div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
 					{products.map((product) => (
-						<button key={product.id} 
+						<a key={product.id} 
 							onClick={()=>router.push(`/productos/${product.id}`)} 
 							className="group bg-white rounded-xl shadow hover:shadow-2xl flex md:block">
 							<span 
@@ -63,7 +61,7 @@ export default function ProductList({products}) {
 								<Price price={product.price} regularPrice={product.regularPrice} />
 								<BuyNow id={product.id} className="flex justify-center w-full text-blue-400 hover:text-blue-500 hover:bg-blue-100 p-2" />
 							</span>
-						</button>
+						</a>
 					))}
 				</div>
 			</div>
