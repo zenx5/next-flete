@@ -1,17 +1,7 @@
-"use client";
-import { useRouter } from 'next/navigation';
-
-import Price from './Price'
-import AddToCart from './AddToCart'
-import BuyNow from './BuyNow'
-
-
+import ItemProduct from './ItemProduct';
 
 export default function ProductList({products}) {
-	const router = useRouter();
-
-
-	const classRounded = "rounded-tl-xl rounded-bl-xl md:rounded-tr-xl md:rounded-bl-none"
+	
 	const isActive = "border-b-2 border-b-blue-500"
 
 	return (
@@ -39,30 +29,7 @@ export default function ProductList({products}) {
 				</form>
 
 				<div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-					{products.map((product) => (
-						<a key={product.id} 
-							onClick={()=>router.push(`/productos/${product.id}`)} 
-							className="group bg-white rounded-xl shadow hover:shadow-2xl flex md:block">
-							<span 
-								className={"block p-2 aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white xl:aspect-h-8 xl:aspect-w-7 border-b-2 border-b-lightgray "+classRounded}>
-								<AddToCart
-									id={product.id}
-									classNameContainer="flex w-full h-0 justify-end px-3"
-									classNameIcon="text-right relative top-2.5 h-8 w-8 flex-shrink-0 text-blue-400 bg-white opacity-50 rounded-full p-1 hover:opacity-100 hover:text-blue-500" />
-								<img
-									src={product.images?.at(0)?.src}
-									alt={product.images?.at(0)?.alt}
-									className={`h-full w-full object-cover object-center ${classRounded}`}
-								/>
-							</span>
-							<span className="flex flex-col justify-end px-3 pb-4 ">
-								<h3 className="mt-4 text-lg text-gray-800">{product.name}</h3>
-								<span className="block text-gray-500 text-sm">{product.description.slice(0,100)}</span>
-								<Price price={product.price} regularPrice={product.regularPrice} />
-								<BuyNow id={product.id} className="flex justify-center w-full text-blue-400 hover:text-blue-500 hover:bg-blue-100 p-2" />
-							</span>
-						</a>
-					))}
+					{products.map((product) => <ItemProduct key={product.id} product={product} />)}
 				</div>
 			</div>
 		</div>
