@@ -16,39 +16,33 @@ export default function ProfilePage(){
             <div className="flex flex-row w-full gap-4 mb-5">
                 <div className="flex flex-col justify-start w-1/2 gap-2">
                     <LineInput label="Nombre" />
-                    <LineInput label="Nombre" />
-                    <LineInput label="Nombre" />
+                    <LineInput label="Fecha de Nacimiento" />
+                    <LineInput label="Academia" />
                 </div>
                 <div className="flex flex-col w-1/2 gap-2">
-                    <LineInput label="Nombre" />
-                    <LineInput label="Nombre" />
-                    <LineInput label="Nombre" />
+                    <LineInput label="Apellido" />
+                    <LineInput label="Email" />
                 </div>
             </div>
-            <h3 className="font-bold">Datos de Acceso</h3>
+            <h3 className="font-bold">Otros Datos</h3>
             <div className="flex flex-row w-full gap-4 mb-5">
                 <div className="flex flex-col justify-start w-1/2 gap-2">
-                    <LineInput label="Nombre" />
-                    <LineInput label="Nombre" />
-                    <LineInput label="Nombre" />
+                    <LineInput label="Telefono" />
+                    <LineInput label="Telefono Familiar" />
                 </div>
                 <div className="flex flex-col w-1/2 gap-2">
-                    <LineInput label="Nombre" />
-                    <LineInput label="Nombre" />
-                    <LineInput label="Nombre" />
+                    <LineInput label="Grado" />
+                    <LineInput label="Siguiente Grado" />
                 </div>
             </div>
-            <h3 className="font-bold">Dirección</h3>
+            <h3 className="font-bold">Cambio de Contraseña</h3>
             <div className="flex flex-row w-full gap-4 mb-5">
                 <div className="flex flex-col justify-start w-1/2 gap-2">
-                    <LineInput label="Nombre" />
-                    <LineInput label="Nombre" />
-                    <LineInput label="Nombre" />
+                    <LineInput label="Contraseña" />
+                    <LineInput label="Repetir Contraseña" />
                 </div>
-                <div className="flex flex-col w-1/2 gap-2">
-                    <LineInput label="Nombre" />
-                    <LineInput label="Nombre" />
-                    <LineInput label="Nombre" />
+                <div className="flex flex-col w-1/2 gap-2 items-center">
+                    <button className="p-2 border border-blue-500 rounded w-fit text-blue-500 hover:text-white hover:bg-blue-500">Actualizar</button>
                 </div>
             </div>
         </div>
