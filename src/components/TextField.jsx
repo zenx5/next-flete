@@ -3,13 +3,13 @@
 import { useState } from "react";
 
 export default function TextField( props ) {
-    const { label, type, helperText } = props
+    const { label, type='text', helperText } = props
     const [visible, toggleVisible] = useState(false)
 
     return <div className="flex flex-col">
         <span className="left-4 top-3 relative w-fit bg-white px-2 text-blue-500">{label}</span>
-        { type.toLowerCase()==='password' && <span className="flex flex-row border border-blue-500 rounded">
-            <input type={visible ? 'text' : 'password'} className="w-fit outline-none p-3 rounded" {...props}/>
+        { type?.toLowerCase()==='password' && <span className="flex flex-row border border-blue-500 rounded">
+            <input type={visible ? 'text' : 'password'} className="w-fit outline-none p-3 rounded" {...props?.input}/>
             <button type="button" onClick={()=>toggleVisible(prev =>!prev)} className="pr-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-blue-500">
                     { visible ? <>
