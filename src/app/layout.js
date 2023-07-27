@@ -36,7 +36,7 @@ const navigation = {
   // ],
   pages: [
     { name: 'Productos', href: '/productos' },
-    { name: 'Perfil', href: '#' },
+    { name: 'Perfil', href: '/usuario/perfil' },
   ],
 }
 
