@@ -1,9 +1,7 @@
-import Image from 'next/image'
-
 import ProductList from '@/components/product/ProductList'
 
 export default async function Products() {
-    const response = await fetch(`${process.env.API_URL}/products`)
+    const response = await fetch(`${process.env.API_URL}/products`, { cache:'force-cache' })
     const { code, data:products } = await response.json()
 
 
