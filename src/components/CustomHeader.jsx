@@ -16,7 +16,7 @@ const currencies = ['BS', 'USD']
 const navigation = {
   pages: [
     { name: 'Productos', href: '/productos' },
-    { name: 'Perfil', href: '#' },
+    { name: 'Perfil', href: '/usuario/login/acceder' },
   ],
 }
 
@@ -165,9 +165,9 @@ export default function CustomHeader() {
                     </button>
 
                     <div className="flex flex-1 items-center justify-end">
-                        <a href="#" className="hidden text-sm font-medium text-white lg:block">
-                        Buscar Pedido
-                        </a>
+                        <button onClick={() => { router.push('/consulta') }} className="hidden text-sm font-medium text-white lg:block">
+                            Consultar
+                        </button>
 
                         <div className="flex items-center lg:ml-8">
                         <a href="#" className="hidden text-sm font-medium text-white lg:block">
