@@ -1,4 +1,5 @@
 import ItemProduct from './ItemProduct';
+import InputSearch from '../InputSearch';
 
 export default function ProductList({products}) {
 	
