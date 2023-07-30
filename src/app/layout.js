@@ -12,9 +12,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head></head>
       <body className={inter.className}>
-          <CustomHeader />
-          {children}
-          <CustomFooter />
+        <CustomHeader/>
+        {children}
+        <CustomFooter/>
       </body>
     </html>
   )
