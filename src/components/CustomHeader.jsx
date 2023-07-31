@@ -16,7 +16,7 @@ const currencies = ['BS', 'USD']
 const navigation = {
   pages: [
     { name: 'Productos', href: '/productos' },
-    { name: 'Perfil', href: '/usuario/login/acceder' },
+    { name: 'Perfil', href: '/usuario/acceder' },
   ],
 }
 
