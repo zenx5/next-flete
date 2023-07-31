@@ -4,6 +4,8 @@ import BuyNow from '../BuyNow'
 import Price from '../Price';
 import Details from './Details';
 import CardRelatedProduct from '../../CardRelatedProduct';
+import HeartButton from '../HeartButton';
+import ShareButton from '../ShareButton';
 
 
 export default function ProductDetail({ product }) {
@@ -43,6 +45,12 @@ export default function ProductDetail({ product }) {
 										classNameContainer="p-3 text-blue-400 border-2 border-blue-400 rounded-md hover:text-blue-500 hover:bg-blue-100"
 									/>
 									<BuyNow
+										id={product.id}
+										className="p-3 text-blue-400 border-2 border-blue-400 rounded-md hover:text-blue-500 hover:bg-blue-100"/>
+									<HeartButton
+										id={product.id}
+										className="p-3 text-blue-400 border-2 border-blue-400 rounded-md hover:text-blue-500 hover:bg-blue-100"/>
+									<ShareButton
 										id={product.id}
 										className="p-3 text-blue-400 border-2 border-blue-400 rounded-md hover:text-blue-500 hover:bg-blue-100"/>
 								</div>
