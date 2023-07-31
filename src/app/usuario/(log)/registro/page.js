@@ -13,8 +13,6 @@ export default function RegisterPage() {
             <TextField label="Email" type="email" placeholder="example@mail.com"/>
             <TextField label="Contraseña" type="password" placeholder="Contraseña"/>
             <TextField label="Contraseña" type="password" placeholder="Confirme contraseña"/>
-            <button className="text-white bg-blue-500 font-bold border border-blue-500 p-3 my-4 rounded hover:bg-blue-600">Enviar</button>
-            <a href="#" className="text-blue-500 text-center border border-blue-500 p-3 rounded hover:bg-blue-500 hover:text-white">Acceder</a>
         </span>
     </div>
 }
