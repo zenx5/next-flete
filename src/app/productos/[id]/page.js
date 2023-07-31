@@ -9,7 +9,7 @@ export default async function Products({ params }) {
     
     return (
         <main className="flex min-h-screen flex-col">
-            { code==0 && <ProductDetail product={product} relatedProducts={[]} />}
+            { code==0 && <ProductDetail product={product} />}
         </main>
     )
 }
