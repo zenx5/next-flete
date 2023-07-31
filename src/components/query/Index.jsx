@@ -10,10 +10,10 @@ export default function Index({ data, error }) {
             <InputSearch placeholder="Consultar..." name="query"/>
             <small className="mt-1 text-red-700 italic text-center w-full block h-[20px]">{error}</small>
         </form>
-        <div className="mt-5 m-2 mx-auto w-8/12 flex flex-col gap-5">
+        { data?.nombre && <div className="mt-5 m-2 mx-auto w-full md:w-8/12 flex flex-col gap-5">
             <Card title="Datos Personales">
-                <span className="flex flex-row w-full">
-                    <span className="flex flex-col">
+                <span className="flex lg:flex-row w-full flex-col">
+                    <span className="flex flex-col items-center">
                         <span className="border-2 m-2 flex w-32 h-32 flex-col">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-32 h-32 text-gray-300">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
@@ -29,22 +29,6 @@ export default function Index({ data, error }) {
                     </span>
                 </span>
             </Card>
-            <Card title="Dirección" hideable height={250}>
-                <div className="flex flex-row w-full gap-2">
-                    <span className="flex flex-col w-1/2 gap-2">
-                        <LineInput label="Estado" value={data?.direccion?.estado}/>
-                        <LineInput label="Municipio" value={data?.direccion?.municipio}/>
-                        <LineInput label="Ciudad" value={data?.direccion?.ciudad}/>
-                    </span>
-                    <span className="flex flex-col w-1/2 gap-2">
-                        <LineInput label="Parroquia" value={data?.direccion?.parroquia}/>
-                        <LineInput label="Sector" value={data?.direccion?.sector}/>
-                        <LineInput label="Casa/Apto" value={data?.direccion?.casa}/>
-                    </span>
-                </div>
-                <LineInput className="mt-2 mb-1" label="Detalles" value={data?.direccion?.detalles1}/>
-                <LineInput className="mt-2" label="Detalles" value={data?.direccion?.detalles2}/>
-            </Card>
             { data?.items && <Card title="Pedidos">
                 <ul>
                     {data?.items?.map( (item, index) => <li key={index} className="flex flex-row justify-between mx-10 p-2 border-b">
@@ -56,7 +40,7 @@ export default function Index({ data, error }) {
                     </li>
                 </ul>
             </Card>}
-        </div>
+        </div>}
 
     </div>
 }

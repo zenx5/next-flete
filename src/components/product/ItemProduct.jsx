@@ -19,12 +19,12 @@ export default function ItemProduct({ product }) {
     return <a
         onClick={handlerOpenDetailProduct(product.id)}
         className="group bg-white rounded-xl shadow hover:shadow-2xl flex md:block">
-        <span 
+        <span
             className={"block p-2 aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white xl:aspect-h-8 xl:aspect-w-7 border-b-2 border-b-lightgray "+classRounded}>
             <AddToCart
                 id={product.id}
                 classNameContainer="flex w-full h-0 justify-end px-3"
-                classNameIcon="text-right relative top-2.5 h-8 w-8 flex-shrink-0 text-blue-400 bg-white opacity-50 rounded-full p-1 hover:opacity-100 hover:text-blue-500" />
+                classNameIcon="text-right relative top-2.5 h-8 w-8 flex-shrink-0 text-blue-400 bg-white active:bg-blue-100 opacity-50 rounded-full p-1 hover:opacity-100 hover:text-blue-500" />
             <img
                 src={product.images?.at(0)?.src}
                 alt={product.images?.at(0)?.alt}
