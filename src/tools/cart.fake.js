@@ -1,14 +1,14 @@
 export default class Cart {
-
+    static Storage = window.localStorage
     static get(){
-        return JSON.parse( sessionStorage.getItem('temp_cart') ) || {
+        return JSON.parse( this.Storage.getItem('temp_cart') ) || {
             index: [],
             quantity: []
         }
     }
 
     static set(cart){
-        sessionStorage.setItem('temp_cart', JSON.stringify(cart) )
+        this.Storage.setItem('temp_cart', JSON.stringify(cart) )
     }
 
     static is( item ) {
@@ -24,35 +24,35 @@ export default class Cart {
 
 
 
-    static add( item ) {
+    static add( item, quantity = 1 ) {
         const cart = this.get()
         const index = this.is(item)
         if ( index==-1 ) {
             cart.index.push(item)
-            cart.quantity.push(1)
+            cart.quantity.push(quantity)
         } else {
-            cart.quantity = cart.quantity.toSpliced(index,1, cart.quantity[index]+1)
+            cart.quantity = cart.quantity.toSpliced(index, 1, cart.quantity[index]+quantity)
         }
         this.set(cart)
     }
 
-    static remove( item ) {
+    static remove( item, quantityToRemove = 1 ) {
         const cart = this.get()
         const index = this.is(item)
         if ( index!=-1 ) {
-            const quantity = cart.quantity[index]
-            if( quantity === 1) {
+            const quantity = cart.quantity[index] - quantityToRemove
+            if( quantity <= 0 ) {
                 cart.index = cart.index.toSpliced(index,1)
                 cart.quantity = cart.quantity.toSpliced(index,1)
             } else {
                 cart.quantity = cart.quantity.toSpliced(index,1, cart.quantity[index]-1)
-            }   
+            }
         }
         this.set(cart)
     }
 
     static clear() {
-        sessionStorage.setItem('temp_cart', JSON.stringify({
+        this.Storage.setItem('temp_cart', JSON.stringify({
             index: [],
             quantity: []
         }))
