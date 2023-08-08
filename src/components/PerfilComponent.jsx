@@ -83,7 +83,6 @@ function classNames(...classes) {
 
 export default function PerfilComponent() {
   const [selected, setSelected] = useState(0)
-  const [annualBillingEnabled, setAnnualBillingEnabled] = useState(true)
 
   return (
     <>
@@ -123,67 +122,148 @@ export default function PerfilComponent() {
                     <label>
                       Nombre
                     </label>
-                    <input placeholder='Cesar'/>
+                    <input placeholder='Cesar' />
                   </div>
                   <div className='flex flex-col'>
                     <label>
                       Apellido
                     </label>
-                    <input placeholder='Vallenilla'/>
+                    <input placeholder='Vallenilla' />
                   </div>
                   <div className='flex flex-col'>
                     <label>
                       Fecha Nacimiento
                     </label>
-                    <input placeholder='02/11/1995'/>
+                    <input placeholder='02/11/1995' />
                   </div>
                   <div className='flex flex-col'>
                     <label>
                       Email
                     </label>
-                    <input placeholder='cesarev17@gmail.com'/>
+                    <input placeholder='cesarev17@gmail.com' />
                   </div>
                   <div className='flex flex-col'>
                     <label>
                       Telefono
                     </label>
-                    <input placeholder='1137966282'/>
+                    <input placeholder='1137966282' />
                   </div>
                   <div className='flex flex-col'>
                     <label>
                       Telefono Familiar
                     </label>
-                    <input placeholder='4241397963'/>
+                    <input placeholder='4241397963' />
                   </div>
                   <div className='flex flex-col'>
                     <label>
                       Academia
                     </label>
-                    <input placeholder='Aviacion Militar Balivariana'/>
+                    <input placeholder='Aviacion Militar Balivariana' />
                   </div>
                   <div className='flex flex-col'>
                     <label>
                       Grado
                     </label>
-                    <input placeholder='Grado 1'/>
+                    <input placeholder='Grado 1' />
                   </div>
                   <div className='flex flex-col'>
                     <label>
                       Grado Siguiente
                     </label>
-                    <input placeholder='Grado 2'/>
+                    <input placeholder='Grado 2' />
                   </div>
                 </div>
               </div>
             }
             {
-              selected === 1 && <div className='h-screen w-full col-start-5 col-span-7'>
-                <h1>Soy la contraseña</h1>
+              selected === 1 && <div className='h-96 w-full col-start-5 col-span-7'>
+                <h1 className='text-center text-xl font-bold'>Actualizar Contraseña</h1>
+                <div className='flex flex-col items-center gap-7'>
+                  <form className='flex flex-col gap-10 w-2/3 items-center mt-7'>
+                    <div className='flex flex-col w-full gap-4'>
+                      <label className='font-bold'>
+                        Contraseña Anterior
+                      </label>
+                      <input className='border rounded-md px-4 py-2' type='password'/>
+                    </div>
+                    <div className='flex flex-col w-full gap-4'>
+                      <label className='font-bold'>
+                        Contraseña Nueva
+                      </label>
+                      <input className='border rounded-md px-4 py-2' type='password' />
+                    </div>
+                    <div className='w-full flex justify-end'>
+                      <button className="flex w-full  items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+                        Actualizar
+                      </button>
+                    </div>
+                  </form>
+
+                </div>
               </div>
             }
             {
-              selected === 2 && <div className='h-screen w-full col-start-5 col-span-7'>
+              selected === 2 && <div className='h-96 w-full col-start-5 col-span-7'>
                 <h1>Soy la contraseña</h1>
+                <section aria-labelledby="billing-history-heading">
+                <div className="bg-white pt-6 shadow sm:overflow-hidden sm:rounded-md">
+                  <div className="px-4 sm:px-6">
+                    <h2 id="billing-history-heading" className="text-lg font-medium leading-6 text-gray-900">
+                      Billing history
+                    </h2>
+                  </div>
+                  <div className="mt-6 flex flex-col">
+                    <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                      <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                        <div className="overflow-hidden border-t border-gray-200">
+                          <table className="min-w-full divide-y divide-gray-200">
+                            <thead className="bg-gray-50">
+                              <tr>
+                                <th scope="col" className="px-6 py-3 text-left text-sm font-semibold text-gray-900">
+                                  Date
+                                </th>
+                                <th scope="col" className="px-6 py-3 text-left text-sm font-semibold text-gray-900">
+                                  Description
+                                </th>
+                                <th scope="col" className="px-6 py-3 text-left text-sm font-semibold text-gray-900">
+                                  Amount
+                                </th>
+                                
+                                <th
+                                  scope="col"
+                                  className="relative px-6 py-3 text-left text-sm font-medium text-gray-500"
+                                >
+                                  <span className="sr-only">View receipt</span>
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-gray-200 bg-white">
+                              {payments.map((payment) => (
+                                <tr key={payment.id}>
+                                  <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
+                                    <time dateTime={payment.datetime}>{payment.date}</time>
+                                  </td>
+                                  <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                    {payment.description}
+                                  </td>
+                                  <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                    {payment.amount}
+                                  </td>
+                                  <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                                    <a href={payment.href} className="text-orange-600 hover:text-orange-900">
+                                      View receipt
+                                    </a>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
               </div>
             }
 

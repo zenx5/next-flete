@@ -1,16 +1,18 @@
 import InputSearch from "../InputSearch"
 import LineInput from "../LineInput"
 import Card from "../Card"
+import sampleDiploma from "../../../public/ImagesCadeteSiempre/diplomaMuestra.jpeg"
+import Image from "next/image"
 
 export default function Index({ data, error }) {
 
     return <div className="p-1 bg-slate-200">
         <form className="p-4 mb-2 border-b border-gray-400 bg-white">
             <p className="text-center m-3">Ingrese su consulta aquí</p>
-            <InputSearch placeholder="Consultar..." name="query"/>
+            <InputSearch placeholder="Consultar..." name="query" />
             <small className="mt-1 text-red-700 italic text-center w-full block h-[20px]">{error}</small>
         </form>
-        { data?.nombre && <div className="mt-5 m-2 mx-auto w-full md:w-8/12 flex flex-col gap-5">
+        {data?.nombre ? <div className="mt-5 m-2 mx-auto w-full md:w-8/12 flex flex-col gap-5">
             <Card title="Datos Personales">
                 <span className="flex lg:flex-row w-full flex-col">
                     <span className="flex flex-col items-center">
@@ -22,14 +24,14 @@ export default function Index({ data, error }) {
                         <p className="text-center italic mx-2">note here</p>
                     </span>
                     <span className="w-full m-2 gap-2 flex flex-col">
-                        <LineInput label="Nombre" value={data?.nombre}/>
-                        <LineInput label="Cedula" value={data?.cedula}/>
-                        <LineInput label="Telefono" value={data?.telefono}/>
-                        <LineInput label="Email" value={data?.email}/>
+                        <LineInput label="Nombre" value={data?.nombre} />
+                        <LineInput label="Cedula" value={data?.cedula} />
+                        <LineInput label="Telefono" value={data?.telefono} />
+                        <LineInput label="Email" value={data?.email} />
                     </span>
                 </span>
             </Card>
-            { data?.items && <Card title="Pedidos">
+            {/* { data?.items && <Card title="Pedidos">
                 <ul>
                     {data?.items?.map( (item, index) => <li key={index} className="flex flex-row justify-between mx-10 p-2 border-b">
                         <p className="font-bold">{item.nombre}</p>
@@ -39,8 +41,15 @@ export default function Index({ data, error }) {
                         <p className="italic font-bold">Total: { data.itemsTotal }</p>
                     </li>
                 </ul>
-            </Card>}
-        </div>}
+            </Card>} */}
+        </div> :
+            <div className="mt-5 m-2 mx-auto w-full md:w-8/12 flex flex-col gap-5 bg-white p-5">
+                <p className="text-center text-lg">Ingresa su numero de documento para hacer la consulta de su diploma</p>
+                <div className="w-full flex justify-center items-center">
+                    <Image src={sampleDiploma} width={300} height={100}/>
+                </div>
+
+            </div>}
 
     </div>
 }
