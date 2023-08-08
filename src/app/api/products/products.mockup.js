@@ -16,6 +16,7 @@ export const products = [
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         price: '$USD 10.00',
+        realPrice: 10,
         regularPrice: '$USD 12.00',
         details: [
             {
@@ -44,6 +45,7 @@ export const products = [
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         price: null,
+        realPrice: 10,
         regularPrice: '$USD 12.00',
         details: [
             {
@@ -72,6 +74,7 @@ export const products = [
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         price: '$USD 10.00',
+        realPrice: 10,
         regularPrice: '$USD 12.00',
         details: [
             {
@@ -100,6 +103,7 @@ export const products = [
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         price: '$USD 10.00',
+        realPrice: 10,
         regularPrice: '$USD 12.00',
         details: [
             {
@@ -128,6 +132,7 @@ export const products = [
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         price: '$USD 10.00',
+        realPrice: 10,
         regularPrice: '$USD 12.00',
         details: [
             {
@@ -156,6 +161,7 @@ export const products = [
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         price: '$USD 10.00',
+        realPrice: 10,
         regularPrice: '$USD 12.00',
         details: [
             {
@@ -184,6 +190,7 @@ export const products = [
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         price: '$USD 10.00',
+        realPrice: 10,
         regularPrice: '$USD 12.00',
         details: [
             {
@@ -212,6 +219,7 @@ export const products = [
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         price: '$USD 10.00',
+        realPrice: 10,
         regularPrice: '$USD 12.00',
         details: [
             {
@@ -240,594 +248,7 @@ export const products = [
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 10,
-        name: 'Producto 10',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 11,
-        name: 'Producto 11',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 12,
-        name: 'Producto 12',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 13,
-        name: 'Producto 13',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 14,
-        name: 'Producto 14',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 15,
-        name: 'Producto 15',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 16,
-        name: 'Producto 16',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 17,
-        name: 'Producto 17',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 18,
-        name: 'Producto 18',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 19,
-        name: 'Producto 19',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 20,
-        name: 'Producto 20',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 21,
-        name: 'Producto 21',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 22,
-        name: 'Producto 22',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 23,
-        name: 'Producto 23',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 24,
-        name: 'Producto 24',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 25,
-        name: 'Producto 25',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 26,
-        name: 'Producto 26',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 27,
-        name: 'Producto 27',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 28,
-        name: 'Producto 28',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 29,
-        name: 'Producto 29',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    },
-    {
-        id: 30,
-        name: 'Producto 30',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
+        realPrice: 10,
         regularPrice: '$USD 12.00',
         details: [
             {
