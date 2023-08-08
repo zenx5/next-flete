@@ -175,9 +175,9 @@ export default function CustomHeader() {
                         </button>
 
                         <div className="flex items-center lg:ml-8">
-                        <a href="#" className="hidden text-sm font-medium text-white lg:block">
+                        <button onClick={()=>router.push('/sobrenosotros')} className="hidden text-sm font-medium text-white lg:block">
                             Sobre Nosotros
-                        </a>
+                        </button>
 
                         {/* Cart */}
                         <div className="ml-4 flow-root lg:ml-8">
