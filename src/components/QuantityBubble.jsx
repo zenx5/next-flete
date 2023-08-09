@@ -34,20 +34,20 @@ export default function QuantityBubble({
         }
     }
 
-    return <span className="bg-indigo-100 rounded-xl">
+    return <span className="flex flex-row items-center bg-black rounded-xl">
         <button
             onClick={()=>change( - parseInt(step) )}
-            className="font-bold text-xl text-indigo-600 hover:text-indigo-500 bg-indigo-100 hover:bg-indigo-200 pl-2 pr-1 rounded-l-xl"
+            className="font-bold text-xl text-white bg-black  pl-2 pr-1 rounded-l-xl"
         >-</button>
         <input
             type="text"
             value={quantity}
             onKeyDown={validateInput}
             onChange={updateQuantity}
-            className="w-[50px] text-indigo-600 text-center"/>
+            className="w-[50px] text-black font-weight text-center"/>
         <button
             onClick={()=>change( parseInt(step) )}
-            className="font-bold text-xl text-indigo-600 hover:text-indigo-500 bg-indigo-100 hover:bg-indigo-200 pl-1 pr-2 rounded-r-xl"
+            className="font-bold text-xl text-white bg-black pl-1 pr-2 rounded-r-xl"
         >+</button>
     </span>
 }

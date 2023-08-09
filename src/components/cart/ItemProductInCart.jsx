@@ -24,7 +24,7 @@ export default function ItemProducInCart({ product, quantity, onChange, onRemove
                 <div className="flex justify-end space-x-4">
                     <QuantityBubble min={0} onChange={handlerChangeQuantity} value={quantity}/>
                     <div className="flex border-l border-gray-300 pl-4">
-                        <button type="button" className="text-sm font-medium text-indigo-600 hover:text-indigo-500" onClick={onRemove}>Remove</button>
+                        <button type="button" className="text-sm font-medium text-black font-weight" onClick={onRemove}>Remove</button>
                     </div>
                 </div>
             </div>
