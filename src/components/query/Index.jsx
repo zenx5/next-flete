@@ -1,3 +1,4 @@
+'use client'
 import InputSearch from "../InputSearch"
 import LineInput from "../LineInput"
 import Card from "../Card"
@@ -5,6 +6,10 @@ import sampleDiploma from "../../../public/ImagesCadeteSiempre/diplomaMuestra.jp
 import Image from "next/image"
 
 export default function Index({ data, error }) {
+
+    const abrirImagen = () => {
+        window.open(sampleDiploma, '_blank');
+      };
 
     return <div className="p-1 bg-slate-200">
         <form className="p-4 mb-2 border-b border-gray-400 bg-white">
@@ -31,6 +36,16 @@ export default function Index({ data, error }) {
                     </span>
                 </span>
             </Card>
+            <Card title="Diploma">
+                <div className="w-full max-h-64 overflow-y-hidden flex justify-center items-center">
+                    <Image src={sampleDiploma} width={600} height={100} />
+                </div>
+                <div className="relative h-2 bottom-24 ">
+                    <button onClick={()=>{abrirImagen()}} className="bg-black bg-opacity-25 w-full py-10 text-white hover:bg-opacity-70">
+                        Descargar
+                    </button>
+                </div>
+            </Card>
             {/* { data?.items && <Card title="Pedidos">
                 <ul>
                     {data?.items?.map( (item, index) => <li key={index} className="flex flex-row justify-between mx-10 p-2 border-b">
@@ -46,7 +61,7 @@ export default function Index({ data, error }) {
             <div className="mt-5 m-2 mx-auto w-full md:w-8/12 flex flex-col gap-5 bg-white p-5">
                 <p className="text-center text-lg">Ingresa su numero de documento para hacer la consulta de su diploma</p>
                 <div className="w-full flex justify-center items-center">
-                    <Image src={sampleDiploma} width={300} height={100}/>
+                    <Image src={sampleDiploma} width={300} height={100} />
                 </div>
 
             </div>}

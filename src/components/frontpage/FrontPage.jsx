@@ -222,7 +222,7 @@ export default function FrontPage() {
 						<h2 id="category-heading" className="text-2xl font-bold tracking-tight text-gray-900">
 							Categorias
 						</h2>
-						
+
 					</div>
 
 					<div className="mt-4 flow-root">
@@ -248,13 +248,6 @@ export default function FrontPage() {
 								</div>
 							</div>
 						</div>
-					</div>
-
-					<div className="mt-6 px-4 sm:hidden">
-						<a href="Products" className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500">
-							Ver todas las categorias
-							<span aria-hidden="true"> &rarr;</span>
-						</a>
 					</div>
 				</section>
 
