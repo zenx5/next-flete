@@ -13,14 +13,14 @@ export default function MenuNav({ navigation, movil, onClick }) {
     return navigation.map((item) => (movil ?
         <div key={item.name} className="flow-root">
             <button
-                className="-m-2 block p-2 font-medium text-white"
+                className={ item?.className ?? "-m-2 block p-2 font-medium text-white"}
                 onClick={() => handlerClick(item.name, item.href) }>
                 {item.name}
             </button>
         </div>:
         <button
             key={item.name}
-            className="flex items-center text-sm font-medium text-white"
+            className={ item?.className ?? "flex items-center text-sm font-medium text-white"}
             onClick={() => handlerClick(item.name, item.href)}
         >
             {item.name}

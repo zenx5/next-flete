@@ -5,6 +5,6 @@ export const mainNavigation = [
 ]
 
 export const secondaryNavigation = [
-    { name:'Consultar', href:'/consulta' },
-    { name:'Sobre Nosotros', href:'/nosotros' }
+    { name:'Consultar', href:'/consulta', className:"hidden text-sm font-medium text-white lg:block" },
+    { name:'Sobre Nosotros', href:'/nosotros', className:"hidden text-sm font-medium text-white lg:block" }
 ]
