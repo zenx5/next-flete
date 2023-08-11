@@ -9,7 +9,6 @@ export default function useProducts(){
 
     useEffect(()=>{
         if( products.length===0 && !loaded ) {
-            console.log('useEffect');
             (async ()=>{
                 const { index } = Cart.get()
                 const response = await loadProducts(index)
