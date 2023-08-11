@@ -1,4 +1,5 @@
-import About from "./components/about"
+import About from "./component/About"
+
 
 
 function classNames(...classes) {

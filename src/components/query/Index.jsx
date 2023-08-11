@@ -7,9 +7,7 @@ import Image from "next/image"
 
 export default function Index({ data, error }) {
 
-    const abrirImagen = () => {
-        window.open(sampleDiploma, '_blank');
-      };
+
 
     return <div className="p-1 bg-slate-200">
         <form className="p-4 mb-2 border-b border-gray-400 bg-white">
@@ -41,7 +39,7 @@ export default function Index({ data, error }) {
                     <Image src={sampleDiploma} width={600} height={100} />
                 </div>
                 <div className="relative h-2 bottom-24 ">
-                    <button onClick={()=>{abrirImagen()}} className="bg-black bg-opacity-25 w-full py-10 text-white hover:bg-opacity-70">
+                    <button className="bg-black bg-opacity-25 w-full py-10 text-white hover:bg-opacity-70">
                         Descargar
                     </button>
                 </div>
