@@ -4,12 +4,11 @@ import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import {
     Bars3Icon,
-    ShoppingBagIcon,
     XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { useRouter } from 'next/navigation'
-import PopupCart from './cart/PopupCart';
+import ButtonCart from './cart/ButtonCart';
 
 
 const currencies = ['BS', 'USD']
@@ -23,14 +22,8 @@ const navigation = {
 
 
 export default function CustomHeader() {
-    const [open, setOpen] = useState(false)
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [quantity, setQuantity] = useState(0)
     const router = useRouter()
-
-    const handlerPopup = () => {
-        setOpen(prev => !prev)
-    }
 
     return <>
         <Transition.Root show={mobileMenuOpen} as={Fragment}>
@@ -167,11 +160,7 @@ export default function CustomHeader() {
 
                                         {/* Cart */}
                                         <div className="ml-4 flow-root lg:ml-8">
-                                            <button onClick={handlerPopup} className="group -m-2 flex items-center p-2">
-                                                <ShoppingBagIcon className="h-6 w-6 flex-shrink-0 text-white" aria-hidden="true" />
-                                                <span className="ml-2 text-sm font-medium text-white">{quantity}</span>
-                                                <span className="sr-only">items in cart, view bag</span>
-                                            </button>
+                                            <ButtonCart />
                                         </div>
                                     </div>
                                 </div>
@@ -181,6 +170,5 @@ export default function CustomHeader() {
                 </div>
             </nav>
         </header>
-        {open && <PopupCart onClose={() => setOpen(false)} />}
     </>
 }
