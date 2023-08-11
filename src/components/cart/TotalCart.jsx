@@ -15,11 +15,11 @@ export default function TotalCart({
                     <dd className="text-gray-900">${subtotal}</dd>
                   </div>
                   <div className="flex justify-between">
-                    <dt>Taxes</dt>
+                    <dt>Impuesto</dt>
                     <dd className="text-gray-900">${taxes}</dd>
                   </div>
                   <div className="flex justify-between">
-                    <dt>Shipping</dt>
+                    <dt>Envio</dt>
                     <dd className="text-gray-900">${shipping}</dd>
                   </div>
                   <div className="flex justify-between border-t 
