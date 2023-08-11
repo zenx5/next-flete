@@ -222,10 +222,7 @@ export default function FrontPage() {
 						<h2 id="category-heading" className="text-2xl font-bold tracking-tight text-gray-900">
 							Categorias
 						</h2>
-						<a href="Products" className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
-							Ver todas las categorias
-							<span aria-hidden="true"> &rarr;</span>
-						</a>
+
 					</div>
 
 					<div className="mt-4 flow-root">
@@ -251,13 +248,6 @@ export default function FrontPage() {
 								</div>
 							</div>
 						</div>
-					</div>
-
-					<div className="mt-6 px-4 sm:hidden">
-						<a href="Products" className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500">
-							Ver todas las categorias
-							<span aria-hidden="true"> &rarr;</span>
-						</a>
 					</div>
 				</section>
 
@@ -334,22 +324,6 @@ export default function FrontPage() {
 								alt=""
 								className="h-full w-full object-cover object-center"
 							/>
-						</div>
-						<div className="relative bg-gray-900 bg-opacity-75 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
-							<div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-								<h2 id="comfort-heading" className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-									Steam
-								</h2>
-								<p className="mt-3 text-xl text-white">
-									¡No podia faltar, haz tu recarga de Steam facil y de manera segura!
-								</p>
-								<a
-									href="#"
-									className="mt-8 block w-full rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
-								>
-									Recargar ya.
-								</a>
-							</div>
 						</div>
 					</div>
 				</section>
