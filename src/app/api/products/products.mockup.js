@@ -6,12 +6,12 @@ export const products = [
         images: [{
             id:1,
             name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
+            src: '/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg',
             alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
         },{
             id:2,
             name:'Imagen de Prueba 2',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
+            src: '/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg',
             alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
@@ -40,7 +40,7 @@ export const products = [
         images: [{
             id:1,
             name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
+            src: '/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg',
             alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
@@ -69,7 +69,7 @@ export const products = [
         images: [{
             id:1,
             name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
+            src: '/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg',
             alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
@@ -98,7 +98,7 @@ export const products = [
         images: [{
             id:1,
             name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
+            src: '/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg',
             alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
@@ -127,7 +127,7 @@ export const products = [
         images: [{
             id:1,
             name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
+            src: '/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg',
             alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
@@ -156,7 +156,7 @@ export const products = [
         images: [{
             id:1,
             name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
+            src: '/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg',
             alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
@@ -185,7 +185,7 @@ export const products = [
         images: [{
             id:1,
             name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
+            src: '/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg',
             alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
@@ -214,7 +214,7 @@ export const products = [
         images: [{
             id:1,
             name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
+            src: '/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg',
             alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
@@ -243,7 +243,7 @@ export const products = [
         images: [{
             id:1,
             name:'Imagen de Prueba',
-            src: 'https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg',
+            src: '/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg',
             alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
         }],
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
