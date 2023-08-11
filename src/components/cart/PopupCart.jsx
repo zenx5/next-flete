@@ -13,7 +13,10 @@ export default function PopupCart({ onClose, onClickOut }) {
 
     useEffect(() => {
         const handleOutSideClick = (event) => {
-            if (!ref.current?.contains(event.target)) {
+            if (
+                !ref.current?.contains(event.target) &&
+                !ref.current.parentElement.parentElement.parentElement.contains(event.target)
+            ) {
                 onClickOut()
             }
         };
@@ -47,7 +50,7 @@ export default function PopupCart({ onClose, onClickOut }) {
                             onRemove={removeProduct(product.id)}
                     />)}
                 </ul>
-                <button className="w-full font-bold text-black border border-black p-1 rounded disabled:text-gray-500 disabled:border-gray-500" disabled={products.length===0} onClick={openCheckout}>Ir al Checkout</button>
+                <button className="w-full font-bold text-black border border-black p-1 rounded disabled:text-gray-500 disabled:border-gray-500" disabled={products.filter( product => !removed.includes(product.id) ).length===0} onClick={openCheckout}>Ir al Checkout</button>
             </div>
         </div>
     </div>

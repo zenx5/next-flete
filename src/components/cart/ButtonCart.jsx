@@ -12,14 +12,15 @@ export default function ButtonCart() {
         if( id===null ) {
             const idTem = setInterval(()=>{
                 const cart = Cart.get()
-                setQuantity( prev => cart.quantity.reduce((acc,item)=>acc+item ) )
+                if( cart.quantity.length===0 ) setQuantity(0)
+                else setQuantity( prev => cart.quantity?.reduce((acc,item)=>acc+item ) )
             },500)
             setId( idTem )
         }
     },[id])
 
     const handlerPopup = () => {
-        setOpen(prev => !prev)
+        setOpen(prev => !prev )
     }
 
     return <span>
@@ -27,8 +28,7 @@ export default function ButtonCart() {
             <ShoppingBagIcon className="h-6 w-6 flex-shrink-0 text-white" aria-hidden="true" />
             <span className="ml-2 text-sm font-medium text-white">{quantity}</span>
             <span className="sr-only">items in cart, view bag</span>
-
         </button>
-        {open && <PopupCart onClose={() => setOpen(false)} onClickOut={()=>setOpen(false)}/>}
+        {open && <PopupCart onClose={() => setOpen(false)} onClickOut={() => setOpen(false)}/>}
     </span>
 }
