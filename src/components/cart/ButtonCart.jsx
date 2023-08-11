@@ -22,13 +22,13 @@ export default function ButtonCart() {
         setOpen(prev => !prev)
     }
 
-    return <span onBlur={()=>setOpen(false)}>
+    return <span>
         <button onClick={handlerPopup} className="group -m-2 flex items-center p-2">
             <ShoppingBagIcon className="h-6 w-6 flex-shrink-0 text-white" aria-hidden="true" />
             <span className="ml-2 text-sm font-medium text-white">{quantity}</span>
             <span className="sr-only">items in cart, view bag</span>
 
         </button>
-        {open && <PopupCart onClose={() => setOpen(false)} />}
+        {open && <PopupCart onClose={() => setOpen(false)} onClickOut={()=>setOpen(false)}/>}
     </span>
 }
