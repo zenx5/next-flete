@@ -30,6 +30,7 @@ import escudoGuardia from '../../../public/ImagesCadeteSiempre/guardiaNacionalEs
 import escudoEjercito from '../../../public/ImagesCadeteSiempre/escudoEjercito.png'
 import escudoMilicia from '../../../public/ImagesCadeteSiempre/escudoMilicia.png'
 import escudoAviacion from '../../../public/ImagesCadeteSiempre/escudoAviacion.png'
+import { useRouter } from 'next/navigation'
 
 const currencies = ['BS', 'USD']
 const navigation = {
@@ -106,26 +107,26 @@ const navigation = {
 const categories = [
 	{
 		name: 'Fuerza Armada Bolivariana',
-		href: '#',
+		href: '/productos',
 		imageSrc: escudoArmada
 		,
 	},
 	{
 		name: 'Guardia Nacional Bolivariana',
-		href: '#',
+		href: '/productos',
 		imageSrc: escudoGuardia,
 	},
 	{
 		name: 'Ejercito Bolivariano',
-		href: '#',
+		href: '/productos',
 		imageSrc: escudoEjercito,
 	},
 	{
 		name: 'Aviacion Militar Bolivariana',
-		href: '#',
+		href: '/productos',
 		imageSrc: escudoAviacion,
 	},
-	{ name: 'Milicia Bolivariana', href: '#', imageSrc: escudoMilicia },
+	{ name: 'Milicia Bolivariana', href: '/productos', imageSrc: escudoMilicia },
 ]
 const collections = [
 	{
@@ -184,6 +185,7 @@ function classNames(...classes) {
 }
 
 export default function FrontPage() {
+	const router = useRouter()
 
 	return (
 		<div className="bg-slate-100">
@@ -206,12 +208,12 @@ export default function FrontPage() {
 					<p className="mt-4 text-xl text-white">
 						¡Disponemos de toda la indumentaria para tus promociones!.
 					</p>
-					<a
-						href="#"
+					<button
+						onClick={()=>router.push('/productos')}
 						className="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100"
 					>
 						Comprar
-					</a>
+					</button>
 				</div>
 			</div>
 
@@ -230,9 +232,9 @@ export default function FrontPage() {
 							<div className="relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
 								<div className="absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-5 xl:gap-x-8 xl:space-x-0 xl:px-0">
 									{categories.map((category) => (
-										<a
+										<button
 											key={category.name}
-											href={category.href}
+											onClick={()=>router.push(category.href)}
 											className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
 										>
 											<span aria-hidden="true" className="absolute inset-0">
@@ -243,7 +245,7 @@ export default function FrontPage() {
 												className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"
 											/>
 											<span className="relative mt-auto text-center text-xl font-bold text-white">{category.name}</span>
-										</a>
+										</button>
 									))}
 								</div>
 							</div>
