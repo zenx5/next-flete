@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import Cart from "./cart.fake"
+import { products as $products } from "@/app/api/products/products.mockup"
 
 export default function useProducts(){
     const [loaded, setLoaded] = useState( false )
@@ -23,14 +24,15 @@ export default function useProducts(){
     },[loaded, products])
 
     const loadProducts = async (list) => {
-        const response = await fetch('/api/cart', {
-          method:'post',
-          body:JSON.stringify({
-            list
-          })
-        })
-        const { code, data } = await response.json()
-        return code==0 ? data : []
+        // const response = await fetch('/api/cart', {
+        //   method:'post',
+        //   body:JSON.stringify({
+        //     list
+        //   })
+        // })
+        // const { code, data } = await response.json()
+        // return code==0 ? data : []
+        return list.map( id => $products.find( product => product.id == id ))
     }
 
     const updateQuantity = id => value => {

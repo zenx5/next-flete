@@ -1,10 +1,11 @@
 import ProductList from '@/components/product/ProductList'
 import InputSearch from '@/components/InputSearch';
-import Card from '@/components/Card';
+import { products } from '../api/products/products.mockup';
 
 export default async function Products() {
-    const response = await fetch(`${process.env.API_URL}/products`, { cache:'force-cache' })
-    const { code, data:products } = await response.json()
+    // const response = await fetch(`${process.env.API_URL}/products`, { cache:'force-cache' })
+    // const { code, data:products } = await response.json()
+    const code = 0
     const isActive = "border-b-2 border-b-white"
 
 
