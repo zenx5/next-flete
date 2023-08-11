@@ -236,33 +236,4 @@ export const products = [
             },
         ],
     },
-    {
-        id: 9,
-        name: 'Producto 9',
-        href: '#',
-        images: [{
-            id:1,
-            name:'Imagen de Prueba',
-            src: '/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg',
-            alt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        }],
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        price: '$USD 10.00',
-        realPrice: 10,
-        regularPrice: '$USD 12.00',
-        details: [
-            {
-                name: 'Caracteristicas',
-                items: [
-                    'Caracteristica 1',
-                    'Caracteristica 2',
-                    'Caracteristica 3',
-                    'Caracteristica 4',
-                    'Caracteristica 5',
-                    'Caracteristica 6',
-                    'Caracteristica 7',
-                ],
-            },
-        ],
-    }
 ]
