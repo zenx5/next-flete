@@ -8,18 +8,10 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { useRouter } from 'next/navigation'
-import ButtonCart from './cart/ButtonCart';
+import ButtonCart from '../cart/ButtonCart';
+import MenuNav from './MenuNav';
 
-
-const currencies = ['BS', 'USD']
-const navigation = {
-    pages: [
-        { name: 'Productos', href: '/productos' },
-        { name: 'Perfil', href: '/usuario/perfil' },
-        { name: 'Iniciar Sesion', href: '/usuario/acceder' }
-    ],
-}
-
+import { mainNavigation } from '@/tools/navigation';
 
 export default function CustomHeader() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -70,13 +62,7 @@ export default function CustomHeader() {
                             </Tab.Group>
 
                             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                                {navigation.pages.map((page) => (
-                                    <div key={page.name} className="flow-root">
-                                        <button onClick={() => { router.push(page.href); setMobileMenuOpen(false) }} className="-m-2 block p-2 font-medium text-white">
-                                            {page.name}
-                                        </button>
-                                    </div>
-                                ))}
+                                <MenuNav navigation={mainNavigation} movil onClick={()=>setMobileMenuOpen(false)}/>
                             </div>
 
                             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
@@ -117,15 +103,7 @@ export default function CustomHeader() {
                                     {/* Flyout menus */}
                                     <Popover.Group className="inset-x-0 bottom-0 px-4">
                                         <div className="flex h-full justify-center space-x-8">
-                                            {navigation.pages.map((page) => (
-                                                <button
-                                                    key={page.name}
-                                                    onClick={() => router.push(page.href)}
-                                                    className="flex items-center text-sm font-medium text-white"
-                                                >
-                                                    {page.name}
-                                                </button>
-                                            ))}
+                                            <MenuNav navigation={mainNavigation} />
                                         </div>
                                     </Popover.Group>
                                 </div>
