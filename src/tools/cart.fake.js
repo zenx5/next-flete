@@ -1,14 +1,14 @@
 export default class Cart {
-    static Storage = window.localStorage
+
     static get(){
-        return JSON.parse( this.Storage.getItem('temp_cart') ) || {
+        return JSON.parse( window.localStorage.getItem('temp_cart') ) || {
             index: [],
             quantity: []
         }
     }
 
     static set(cart){
-        this.Storage.setItem('temp_cart', JSON.stringify(cart) )
+        window.localStorage.setItem('temp_cart', JSON.stringify(cart) )
     }
 
     static is( item ) {
@@ -21,8 +21,6 @@ export default class Cart {
         const index = cart.index.indexOf( item )
         return index!=-1 ? cart.quantity[index] : 0
     }
-
-
 
     static add( item, quantity = 1 ) {
         const cart = this.get()
@@ -52,7 +50,7 @@ export default class Cart {
     }
 
     static clear() {
-        this.Storage.setItem('temp_cart', JSON.stringify({
+        window.localStorage.setItem('temp_cart', JSON.stringify({
             index: [],
             quantity: []
         }))
