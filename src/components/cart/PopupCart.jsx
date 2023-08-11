@@ -33,7 +33,7 @@ export default function PopupCart({ onClose }) {
                             onRemove={removeProduct(product.id)}
                     />)}
                 </ul>
-                <button className="w-full font-bold text-black border border-black p-1 rounded" onClick={openCheckout}>Ir al Checkout</button>
+                <button className="w-full font-bold text-black border border-black p-1 rounded disabled:text-gray-500 disabled:border-gray-500" disabled={products.length===0} onClick={openCheckout}>Ir al Checkout</button>
             </div>
         </div>
     </div>

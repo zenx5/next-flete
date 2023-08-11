@@ -10,11 +10,11 @@ export default function ButtonCart() {
     const [quantity, setQuantity] = useState(0)
     useEffect(()=>{
         if( id===null ) {
-            const id = setInterval(()=>{
+            const idTem = setInterval(()=>{
                 const cart = Cart.get()
-                setQuantity( prev => cart.index.length )
+                setQuantity( prev => cart.quantity.reduce((acc,item)=>acc+item ) )
             },500)
-            setId( id )
+            setId( idTem )
         }
     },[id])
 
@@ -22,7 +22,7 @@ export default function ButtonCart() {
         setOpen(prev => !prev)
     }
 
-    return <span>
+    return <span onBlur={()=>setOpen(false)}>
         <button onClick={handlerPopup} className="group -m-2 flex items-center p-2">
             <ShoppingBagIcon className="h-6 w-6 flex-shrink-0 text-white" aria-hidden="true" />
             <span className="ml-2 text-sm font-medium text-white">{quantity}</span>
