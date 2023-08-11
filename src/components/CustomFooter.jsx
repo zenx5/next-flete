@@ -1,9 +1,7 @@
-'use client'
+import Link from "next/link"
 
-import { useRouter } from "next/navigation"
 
 export default function CustomFooter() {
-    const router = useRouter()
 
     const footerNavigation = {
         shop: [
@@ -98,13 +96,12 @@ export default function CustomFooter() {
                 <div className="mt-12 md:mt-16 xl:mt-0">
                     <h3 className="text-sm font-medium text-white">¿Aun no tienes cuenta?</h3>
                     <p className="mt-6 text-sm text-gray-300">Registrate para comenzar a disfrutar de nuestros productos</p>
-                    <button
-                        onClick={()=>{router.push('/usuario/registro')}}
-                        type="submit"
+                    <Link
+                        href="/usuario/registro"
                         className="flex w-full mt-10 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
                     >
                         Registrarse
-                    </button>
+                    </Link>
                 </div>
             </div>
             <div className="border-t border-gray-800 py-10">

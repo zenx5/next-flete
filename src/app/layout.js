@@ -10,7 +10,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <head></head>
+      <head>
+        <title>Cadete Siempre</title>
+      </head>
       <body className={inter.className}>
         <CustomHeader/>
         {children}
