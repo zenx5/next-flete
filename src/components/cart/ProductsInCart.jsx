@@ -1,39 +1,47 @@
 "use client"
 
-import Cart from "@/tools/cart.fake"
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
+import Cart from "@/tools/cart.fake"
 import ItemProducInCart from "./ItemProductInCart"
 import TotalCart from "./TotalCart"
 
-export default function ProductsInCart() {
+
+export default function ProductsInCart({ id }) {
     const [loaded, setLoaded] = useState( false )
     const [products, setProducts] = useState([])
+    const [quantity, setquantity] = useState(1)
     const [subtotal, setsubtotal] = useState(0)
     const [taxes, settaxes] = useState(0)
     const [shipping, setshipping] = useState(0)
     const [total, settotal] = useState(0)
 
+    const router = useRouter()
+
     useEffect(()=>{
       if( products.length===0 && !loaded ) {
         (async ()=>{
-          const { index } = Cart.get()
-          const response = await loadProducts(index)
-          setProducts( prev => response )
+          const listIds = id ? [id] : Cart.get().index
+          const response = await loadProducts( listIds )
+          if ( !response ) {
+            router.back()
+          } else {
+            setProducts( prev => response )
+          }
           setLoaded( true )
         })()
       }
-    },[loaded, products])
-
+    },[loaded, products, id, router])
 
     useEffect( ()=> {
       let _subtotal = 0, _total = 0;
       products.forEach( product => {
-        _subtotal += product.realPrice * Cart.quantity(product.id)
-        _total += product.realPrice * Cart.quantity(product.id)
+        _subtotal += product.realPrice * (id ? quantity : Cart.quantity(product.id))
+        _total += product.realPrice * (id ? quantity : Cart.quantity(product.id))
       })
       setsubtotal( prev => _subtotal )
       settotal( prev => _total )
-    },[products])
+    },[setsubtotal, settotal, products, id, quantity])
 
     const loadProducts = async (list) => {
       const response = await fetch('/api/cart', {
@@ -46,32 +54,28 @@ export default function ProductsInCart() {
       return data
     }
 
-    const getQuantity = (id) => {
-      return Cart.quantity(id)
+    const getQuantity = (item) => {
+      return id ? quantity : Cart.quantity(item)
     }
 
-    const handlerQuantity = (id) => (value) => {
-      const oldQuantity = getQuantity( id )
-      Cart.add(id, value - oldQuantity)
-      updateTotal()
+    const handlerQuantity = (item) => (value) => {
+      if( id ) {
+        setquantity( prev => value )
+      } else {
+        const oldQuantity = getQuantity( item )
+        Cart.add(item, value - oldQuantity)
+      }
     }
 
-    const handlerRemoveItem = (id) => () => {
-      Cart.remove(id, getQuantity( id ) )
-      setProducts( prev => {
-        return prev.filter( product => product.id!=id )
-      })
-      updateTotal()
-    }
-
-    const updateTotal = () => {
-      let _subtotal = 0, _total = 0;
-      products.forEach( product => {
-        _subtotal += product.realPrice * Cart.quantity(product.id)
-        _total += product.realPrice * Cart.quantity(product.id)
-      })
-      setsubtotal( prev => _subtotal )
-      settotal( prev => _total )
+    const handlerRemoveItem = (item) => () => {
+      if( id ) {
+        router.push(ROUTER_PATH.PRODUCTS)
+      } else {
+        Cart.remove(item, getQuantity( item ) )
+        setProducts( prev => {
+          return prev.filter( product => product.id!=item )
+        })
+      }
     }
 
     return <div className="flow-root">
