@@ -3,6 +3,7 @@ import useProducts from "@/tools/useProducts";
 import ItemProducInCart from "./ItemProductInCart"
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { ROUTER_PATH } from "@/tools/constants";
 
 export default function PopupCart({ onClose, onClickOut }) {
     const [removed, setRemoved] = useState([])
@@ -32,7 +33,7 @@ export default function PopupCart({ onClose, onClickOut }) {
     }
 
     const openCheckout = () => {
-        router.push('/confirmar-compra')
+        router.push(ROUTER_PATH.CHECKOUT)
         if( onClose ) onClose()
     }
 

@@ -6,6 +6,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import MenuNav from './MenuNav';
 
 import { mainNavigation, secondaryNavigation } from '@/tools/navigation';
+import { ROUTER_PATH } from '@/tools/constants';
 
 export default function MovilMenu(){
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -41,7 +42,7 @@ export default function MovilMenu(){
                     >
                         <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-black pb-12 shadow-xl">
                             <div className="flex justify-between px-4 pb-2 pt-5">
-                                <button onClick={() => { router.push('/'); setMobileMenuOpen(false) }} className='text-white w-full text-lg font-bold'>CadeteSiempre</button>
+                                <button onClick={() => { router.push(ROUTER_PATH.HOME); setMobileMenuOpen(false) }} className='text-white w-full text-lg font-bold'>CadeteSiempre</button>
                                 <button
                                     type="button"
                                     className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-white"

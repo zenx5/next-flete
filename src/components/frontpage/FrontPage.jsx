@@ -31,6 +31,7 @@ import escudoEjercito from '../../../public/ImagesCadeteSiempre/escudoEjercito.p
 import escudoMilicia from '../../../public/ImagesCadeteSiempre/escudoMilicia.png'
 import escudoAviacion from '../../../public/ImagesCadeteSiempre/escudoAviacion.png'
 import { useRouter } from 'next/navigation'
+import { ROUTER_PATH } from '@/tools/constants'
 
 const currencies = ['BS', 'USD']
 const navigation = {
@@ -107,26 +108,26 @@ const navigation = {
 const categories = [
 	{
 		name: 'Fuerza Armada Bolivariana',
-		href: '/productos',
+		href: ROUTER_PATH.PRODUCTS,
 		imageSrc: escudoArmada
 		,
 	},
 	{
 		name: 'Guardia Nacional Bolivariana',
-		href: '/productos',
+		href: ROUTER_PATH.PRODUCTS,
 		imageSrc: escudoGuardia,
 	},
 	{
 		name: 'Ejercito Bolivariano',
-		href: '/productos',
+		href: ROUTER_PATH.PRODUCTS,
 		imageSrc: escudoEjercito,
 	},
 	{
 		name: 'Aviacion Militar Bolivariana',
-		href: '/productos',
+		href: ROUTER_PATH.PRODUCTS,
 		imageSrc: escudoAviacion,
 	},
-	{ name: 'Milicia Bolivariana', href: '/productos', imageSrc: escudoMilicia },
+	{ name: 'Milicia Bolivariana', href: ROUTER_PATH.PRODUCTS, imageSrc: escudoMilicia },
 ]
 const collections = [
 	{
@@ -209,7 +210,7 @@ export default function FrontPage() {
 						¡Disponemos de toda la indumentaria para tus promociones!.
 					</p>
 					<button
-						onClick={()=>router.push('/productos')}
+						onClick={()=>router.push(ROUTER_PATH.PRODUCTS)}
 						className="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100"
 					>
 						Comprar

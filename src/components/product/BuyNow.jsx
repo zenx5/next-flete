@@ -1,13 +1,17 @@
 "use client";
-export default function BuyNow({ id, className }) {
+import { ROUTER_PATH } from '@/tools/constants';
+import { useRouter } from 'next/navigation';
 
-    const handlerClick_BuyNow = (event) => {
+export default function BuyNow({ id, className }) {
+    const router = useRouter()
+
+    const handlerClickBuyNow = (event) => {
         event.preventDefault()
-        console.log(`handlerClick, BuyNow ${id}`)
+        router.push(`${ROUTER_PATH.CHECKOUT}/${id}`)
     }
 
-    return <button 
+    return <button
         className={className}
-        onClick={handlerClick_BuyNow}
+        onClick={handlerClickBuyNow}
         >Comprar ahora</button>
 }
