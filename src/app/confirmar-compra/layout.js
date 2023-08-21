@@ -9,9 +9,9 @@ export default async function CheckoutPage({ children }) {
 
   const details = [
     { label: "Informacion de contacto", component: ContactDetails, className:"text-lg py-6 font-bold text-gray-900", defaultOpen:"true"},
-    { label: "Detalles de pago", component: PaymentDetails, className:"w-full py-6 text-left text-lg font-medium text-gray-500"},
-    { label: "Dirreción de envio", component: ShippingAddress , className:"w-full py-6 text-left text-lg font-medium text-gray-500"},
-    { label: "Dirreción de facturacion", component: PaymentsAddress, className:"w-full py-6 text-left text-lg font-medium text-gray-500" }
+    { label: "Detalles de pago", component: PaymentDetails, className:"w-full py-6 text-left text-lg font-medium text-gray-900"},
+    { label: "Dirreción de envio", component: ShippingAddress , className:"w-full py-6 text-left text-lg font-medium text-gray-900"},
+    { label: "Dirreción de facturacion", component: PaymentsAddress, className:"w-full py-6 text-left text-lg font-medium text-gray-900" }
   ]
 
 
