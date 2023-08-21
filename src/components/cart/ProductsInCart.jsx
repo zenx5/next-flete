@@ -79,7 +79,9 @@ export default function ProductsInCart({ id }) {
     }
 
     return <div className="flow-root">
-      <ul role="list" className="-my-6 divide-y divide-gray-200">
+      { !loaded ? <ul role="list" className="-my-6 divide-y divide-gray-200">
+            <ItemProducInCart product={{name:'Cargando...', price:'0 $USD'}} quantity={0} onRemove={()=>{}} />
+        </ul> : <ul role="list" className="-my-6 divide-y divide-gray-200">
         {products.map((product) =>
           <ItemProducInCart
             key={product.id}
@@ -88,7 +90,7 @@ export default function ProductsInCart({ id }) {
             onChange={handlerQuantity(product.id)}
             onRemove={handlerRemoveItem(product.id)}
           />)}
-      </ul>
+      </ul>}
       <TotalCart
         subtotal={subtotal}
         taxes={taxes}
