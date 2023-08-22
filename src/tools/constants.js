@@ -1,14 +1,15 @@
 export const ROUTER_PATH = {
     HOME: '/',
     PRODUCTS: '/productos',
-    CHECKOUT: '/detalles-orden',
-    SUCCESS: '/detalles-compra',
+    CHECKOUT: '/confirmar-compra',
+    SUCCESS: '/detalles-orden',
     PROFILE: '/usuario/perfil',
     LOGIN: '/usuario/acceder',
     SEARCH: '/consulta',
     ABOUT: '/nosotros',
     API: {
         CHECKOUT: '/api/checkout',
+        ORDERS: '/api/orders',
     }
 }
 
