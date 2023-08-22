@@ -8,7 +8,7 @@ import PaymentModal from "./PaymentModal";
 export default async function CheckoutPage({ children }) {
 
   const details = [
-    { label: "Informacion de contacto", component: ContactDetails, className:"text-lg py-6 font-bold text-gray-900", defaultOpen:"true"},
+    { label: "Informacion de contacto", component: ContactDetails, className:"text-lg pb-6 font-bold text-gray-900", defaultOpen:"true"},
     { label: "Detalles de pago", component: PaymentDetails, className:"w-full py-6 text-left text-lg font-medium text-gray-900"},
     { label: "Dirreción de envio", component: ShippingAddress , className:"w-full py-6 text-left text-lg font-medium text-gray-900"},
     { label: "Dirreción de facturacion", component: PaymentsAddress, className:"w-full py-6 text-left text-lg font-medium text-gray-900" }
@@ -22,13 +22,15 @@ export default async function CheckoutPage({ children }) {
 
         <div className="mx-auto grid max-w-lg grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
           <div className="mx-auto w-full max-w-lg">
-            <h2 className="text-lg font-bold text-gray-900 mb-5">Detalles de la orden</h2>
-            { children }
+            <span className="sticky top-10">
+              <h2 className="text-lg font-bold text-gray-900 mb-5">Detalles de la orden</h2>
+              { children }
+            </span>
           </div>
 
           <div className="mx-auto w-full max-w-lg h-lg">
 
-            <div className="mt-10 divide-y divide-gray-200 border-b border-gray-200">
+            <div className="mt-0 pt-0 divide-y divide-gray-200 border-b border-gray-200">
               {
                 details.map( ({label, component, className, defaultOpen }) =>
                   <ActionsDetails key={label} label={label} className={className} defaultopen={defaultOpen}>
