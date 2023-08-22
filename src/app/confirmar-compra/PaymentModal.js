@@ -4,6 +4,7 @@ import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { PAYMENT_METHODS } from "@/tools/constants";
+import OverlayModal from "@/components/OverlayModal";
 
 export default function PaymentModal() {
     const [payment, setpayment] = useState(null)
@@ -21,8 +22,7 @@ export default function PaymentModal() {
         router.push(pathnanme)
     }
 
-    return payment && <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+    return payment && <OverlayModal>
 
         <div className="fixed inset-0 z-10 overflow-y-auto">
             <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
@@ -46,5 +46,5 @@ export default function PaymentModal() {
                 </div>
             </div>
         </div>
-    </div>
+    </OverlayModal>
 }
