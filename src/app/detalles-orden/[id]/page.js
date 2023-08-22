@@ -25,9 +25,10 @@ const products = [
     return classes.filter(Boolean).join(' ')
   }
 
-  export default async function OrderDetailPage(request) {
+  export default async function OrderDetailPage({ params, searchParams }) {
 
-    const { params } = request
+    const selectedProduct = products.filter( ({ id }) => id===parseInt(searchParams?.item) ).length===0 ? products[0].id : searchParams?.item
+
 
     const response = await fetch( 'http://localhost:3000' + ROUTER_PATH.API.ORDERS + '/' + params.id)
 
@@ -35,7 +36,6 @@ const products = [
 
     return (
       <div className="bg-white">
-        <>{JSON.stringify(request)}</>
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900">Detalles de la Orden</h1>
 
@@ -108,7 +108,7 @@ const products = [
           <div className="mt-8">
             <h2 className="text-xl font-semibold tracking-tight text-gray-900 mb-4">Productos comprados</h2>
             <div className="space-y-24">
-              {[...products,...products].filter(product.id===1).map((product) => (
+              {[...products,...products].filter(product=>product.id===parseInt(selectedProduct)).map((product) => (
                 <div
                   key={product.id}
                   className="grid grid-cols-1 text-sm sm:grid-cols-12 sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-8"
