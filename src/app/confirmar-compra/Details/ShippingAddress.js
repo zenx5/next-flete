@@ -76,15 +76,14 @@ export default function ShippingAddress() {
                     />
                 </div>
 
-                <div className="col-span-2 grid-center">
+                {/* <div className="col-span-2 grid-center">
                     <label className="block text-sm font-medium leading-6 text-gray-700 opacity-0">Action</label>
                     <button
-                        type="submit"
                         className="flex items-center justify-center mx-auto mt-2 w-1/2 rounded-md border-0 px-3 py-2 shadow-sm bg-black"
                     >
                         <MapPinIcon className="h-5 w-5 text-white" aria-hidden="true" />
                     </button>
-                </div>
+                </div> */}
             </div>
         </div>
         </div>

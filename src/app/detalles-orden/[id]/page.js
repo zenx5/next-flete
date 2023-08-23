@@ -75,12 +75,14 @@ import Script from "next/script"
                         <h4 className="text-lg font-medium text-gray-900">Productos</h4>
                         <span className="w-fit px-10">
                           <ProductSlider products={order.products} />
+                          <p className="text-sm my-1 italic text-gray-600">Seleccione alguno de los productos para ver sus detalles</p>
                         </span>
                     </div>
                     </div>
                   </div>
               ))}
             </div>
+            
           </div>
         </div>
       </div>
