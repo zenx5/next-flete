@@ -6,15 +6,15 @@ export default function Totals({ totals }) {
                 <dd className="font-medium text-gray-900">{ totals.subtotal }</dd>
             </div>
             <div className="flex items-center justify-between py-4">
-                <dt className="text-gray-600">Shipping</dt>
+                <dt className="text-gray-600">Envio</dt>
                 <dd className="font-medium text-gray-900">{ totals.shipping }</dd>
             </div>
             <div className="flex items-center justify-between py-4">
-                <dt className="text-gray-600">Tax</dt>
+                <dt className="text-gray-600">Impuesto</dt>
                 <dd className="font-medium text-gray-900">{ totals.tax }</dd>
             </div>
             <div className="flex items-center justify-between pt-4">
-                <dt className="font-medium text-gray-900">Order total</dt>
+                <dt className="font-medium text-gray-900">Total</dt>
                 <dd className="font-medium text-indigo-600">{ totals.total }</dd>
             </div>
         </dl>

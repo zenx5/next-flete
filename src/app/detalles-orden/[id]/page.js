@@ -4,6 +4,7 @@ import ProductSlider from "../ProductSlider"
 import Totals from "./Totals"
 import PaymentInfo from "./PaymentInfo"
 import Address from "./Address"
+import Script from "next/script"
 
 
 
@@ -15,6 +16,9 @@ import Address from "./Address"
 
     return (
       <div className="bg-white h-screen">
+        <Script id="1">{`
+          localStorage.clear()
+        `}</Script>
         <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 sm:py-5 lg:px-8">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900">Detalles de la Orden</h1>
           <div className="mt-2 border-b border-gray-200 pb-5 text-sm sm:flex sm:justify-between">
