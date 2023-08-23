@@ -33,7 +33,7 @@ export default function ItemProduct({ product }) {
         </span>
         <span className="flex flex-col justify-end px-3 pb-4 ">
             <h3 className="mt-4 text-lg text-gray-800">{product.name}</h3>
-            <span className="block text-gray-500 text-sm">{product.description.slice(0,100)}</span>
+            {/* <span className="block text-gray-500 text-sm">{product.description.slice(0,100)}</span> */}
             <Price price={product.price} regularPrice={product.regularPrice} />
             <BuyNow id={product.id} className="flex justify-center w-full text-blue-400 hover:text-blue-500 hover:bg-blue-100 p-2" />
         </span>

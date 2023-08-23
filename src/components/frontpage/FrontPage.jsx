@@ -31,6 +31,7 @@ import escudoEjercito from '../../../public/ImagesCadeteSiempre/escudoEjercito.p
 import escudoMilicia from '../../../public/ImagesCadeteSiempre/escudoMilicia.png'
 import escudoAviacion from '../../../public/ImagesCadeteSiempre/escudoAviacion.png'
 import { useRouter } from 'next/navigation'
+import AcademyComponent from './AcademyComponent'
 
 const currencies = ['BS', 'USD']
 const navigation = {
@@ -104,30 +105,46 @@ const navigation = {
 		{ name: 'Stores', href: '#' },
 	],
 }
+
 const categories = [
-	{
-		name: 'Fuerza Armada Bolivariana',
-		href: '/productos',
-		imageSrc: escudoArmada
-		,
-	},
-	{
-		name: 'Guardia Nacional Bolivariana',
-		href: '/productos',
-		imageSrc: escudoGuardia,
-	},
-	{
-		name: 'Ejercito Bolivariano',
-		href: '/productos',
-		imageSrc: escudoEjercito,
-	},
-	{
-		name: 'Aviacion Militar Bolivariana',
-		href: '/productos',
-		imageSrc: escudoAviacion,
-	},
-	{ name: 'Milicia Bolivariana', href: '/productos', imageSrc: escudoMilicia },
+    {
+        name: 'Fuerza Armada Bolivariana',
+        href: '/productos',
+        imageSrc: escudoArmada
+        ,
+    },
+    {
+        name: 'Guardia Nacional Bolivariana',
+        href: '/productos',
+        imageSrc: escudoGuardia,
+    },
+    {
+        name: 'Ejercito Bolivariano',
+        href: '/productos',
+        imageSrc: escudoEjercito,
+    },
+    {
+        name: 'Aviacion Militar Bolivariana',
+        href: '/productos',
+        imageSrc: escudoAviacion,
+    },
+    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: escudoMilicia },
+    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+
 ]
+
 const collections = [
 	{
 		name: 'Tarjetas',
@@ -186,6 +203,7 @@ function classNames(...classes) {
 
 export default function FrontPage() {
 	const router = useRouter()
+	const [showAll, setShowAll] = useState(false);
 
 	return (
 		<div className="bg-slate-100">
@@ -209,7 +227,7 @@ export default function FrontPage() {
 						¡Disponemos de toda la indumentaria para tus promociones!.
 					</p>
 					<button
-						onClick={()=>router.push('/productos')}
+						onClick={() => router.push('/productos')}
 						className="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100"
 					>
 						Comprar
@@ -219,23 +237,38 @@ export default function FrontPage() {
 
 			<main>
 				{/* Category section */}
-				<section aria-labelledby="category-heading" className="pt-24 sm:pt-32 xl:mx-auto xl:max-w-7xl xl:px-8">
+				<section aria-labelledby="category-heading" className="pt-24 sm:pt-32 xl:mx-auto xl:h-auto xl:max-w-7xl xl:px-8">
 					<div className="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-0">
 						<h2 id="category-heading" className="text-2xl font-bold tracking-tight text-gray-900">
-							Categorias
+							Academias
 						</h2>
 
 					</div>
 
 					<div className="mt-4 flow-root">
 						<div className="-my-2">
-							<div className="relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
-								<div className="absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-5 xl:gap-x-8 xl:space-x-0 xl:px-0">
-									{categories.map((category) => (
+							<div className="block box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
+								<div className=" flex space-x-8 px-4 sm:px-6 lg:px-8 xl:grid xl:grid-cols-6 xl:gap-8 xl:space-x-0 xl:px-0 xl:my-10">
+									{showAll ? categories.map((category, index) => (
 										<button
-											key={category.name}
+											key={index}
 											onClick={()=>router.push(category.href)}
-											className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
+											className="relative flex h-40 w-28 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
+										>
+											<span aria-hidden="true" className="absolute inset-0">
+												<Image width={500} height={500} src={category.imageSrc} alt="" className="aspect-h-1 aspect-w-1 h-full w-full object-cover object-center" />
+											</span>
+											<span
+												aria-hidden="true"
+												className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"
+											/>
+											<span className="relative mt-auto text-center text-xl font-bold text-white">{category.name}</span>
+										</button>
+									)) : categories.slice(0, 6).map((category, index) => (
+										<button
+											key={index}
+											onClick={()=>router.push(category.href)}
+											className="relative flex h-40 w-28 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
 										>
 											<span aria-hidden="true" className="absolute inset-0">
 												<Image width={500} height={500} src={category.imageSrc} alt="" className="aspect-h-1 aspect-w-1 h-full w-full object-cover object-center" />
@@ -247,6 +280,10 @@ export default function FrontPage() {
 											<span className="relative mt-auto text-center text-xl font-bold text-white">{category.name}</span>
 										</button>
 									))}
+									{/* <AcademyComponent/> */}
+								</div>
+								<div className='w-full flex justify-center'>
+									<button className='text-blue-700 hover:text-blue-400' onClick={()=>setShowAll(prev=> !prev)}>{showAll ? 'Cerrar' : 'Ver todas las Academias'}</button>
 								</div>
 							</div>
 						</div>
@@ -256,7 +293,7 @@ export default function FrontPage() {
 				{/* Featured section */}
 				<section
 					aria-labelledby="social-impact-heading"
-					className="mx-auto max-w-7xl px-4 pt-24 sm:px-6 sm:pt-32 lg:px-8"
+					className={`mx-auto max-w-7xl px-4 transition-all duration-500 ease-in-out sm:px-6 lg:px-8 ${showAll ? 'pt-96' : 'pt-5'}`}
 				>
 					<div className="relative overflow-hidden rounded-lg">
 						<div className="absolute inset-0">

@@ -5,7 +5,7 @@ const nextConfig = {env: {
     },
     images: {
         // remotePatterns: [{ protocol: "https:", hostname: "**" }],
-        domains: ["localhost", "fastly.picsum.photos", "picsum.photos", "tailwindui.com"],
+        domains: ["localhost", "fastly.picsum.photos", "picsum.photos", "tailwindui.com", "detallesorballo.com"],
     },}
 
 module.exports = nextConfig
