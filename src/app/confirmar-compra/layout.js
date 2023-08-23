@@ -1,3 +1,4 @@
+import { ROUTER_PATH } from "@/tools/constants";
 import ActionsDetails from "./Details/ActionsDetails";
 import PaymentDetails from "./Details/PaymentDetails";
 import ShippingAddress from "./Details/ShippingAddress";
@@ -17,6 +18,15 @@ export default async function CheckoutPage({ children }) {
 
   return (
     <div className="bg-white height-fix">
+      <div className="sticky top-0 bg-white w-full z-10 shadow block lg:hidden">
+      <div className="py-2 w-full flex justify-end mx-auto px-4 sm:px-6 lg:px-8 xl:px-2 max-w-xl">
+              <button
+                type="submit"
+                form="checkout-form"
+                className="rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-500"
+              >Continue</button>
+            </div>
+            </div>
       <main className="mx-auto max-w-7xl px-4 pb-16 pt-4 sm:px-6 sm:pb-24 sm:pt-8 lg:px-8 xl:px-2 xl:pt-14">
         <h1 className="sr-only">Checkout</h1>
 
@@ -30,14 +40,14 @@ export default async function CheckoutPage({ children }) {
 
           <div className="mx-auto w-full max-w-lg h-lg">
 
-            <div className="mt-0 pt-0 divide-y divide-gray-200 border-b border-gray-200">
+            <form action={ROUTER_PATH.API.CHECKOUT} id="checkout-form" method="post" className="mt-0 pt-0 divide-y divide-gray-200 border-b border-gray-200">
               {
                 details.map( ({label, component, className, defaultOpen }) =>
                   <ActionsDetails key={label} label={label} className={className} defaultopen={defaultOpen}>
                     {component()}
                   </ActionsDetails>
                 )}
-            </div>
+            </form>
           </div>
         </div>
 

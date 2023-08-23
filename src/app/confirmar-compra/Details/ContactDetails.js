@@ -1,7 +1,6 @@
-import { ROUTER_PATH } from "@/tools/constants";
 
 export default function ContactDetails() {
-    return <form action={ROUTER_PATH.API.CHECKOUT} method="post">
+    return <div>
         <div className="mt-6">
             <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
                 Correo Electronico
@@ -48,7 +47,7 @@ export default function ContactDetails() {
 
         <button
             type="submit"
-            className="mt-6 w-full rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-500"
+            className="lg:block hidden mt-6 w-full rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-500"
         >Continue</button>
-    </form>
+    </div>
 }

@@ -15,7 +15,7 @@ import Script from "next/script"
     const selectedProduct = searchParams?.item===undefined ? 0 : searchParams?.item
 
     return (
-      <div className="bg-white h-screen">
+      <div className="bg-white h-full">
         <Script id="1">{`
           localStorage.clear()
         `}</Script>
@@ -51,9 +51,9 @@ import Script from "next/script"
               {order.products.filter((product,index)=>index===parseInt(selectedProduct)).map((product) => (
                 <div
                   key={product.id}
-                  className="grid grid-cols-1 text-sm sm:grid-cols-12 sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-8"
+                  className="grid grid-cols-1 text-sm lg:grid-cols-12 sm:grid-cols-7 sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-8"
                 >
-                  <div className="sm:col-span-4 md:col-span-5 md:row-span-2 md:row-end-2">
+                  <div className="sm:col-span-4 md:col-span-5 md:row-span-2 md:row-end-2 lg:block hidden">
                     <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-50">
                       <Image src={product.imageSrc} alt={product.imageAlt} className="object-cover object-center" width={500} height={500}/>
                     </div>
@@ -65,24 +65,23 @@ import Script from "next/script"
                     <p className="mt-1 font-medium text-gray-900">{product.price}</p>
                   </div>
                   <div className="sm:col-span-12 md:col-span-7">
-                    <dl className="grid grid-cols-1 gap-y-8 border-b border-gray-200 py-4 sm:grid-cols-2 sm:gap-x-6 sm:py-4 md:py-4">
-                      <div className="sm:col-span-2 min-h-[100px]">
-                        <dt className="font-medium text-gray-900">Descripción</dt>
-                        <dd className="mt-1 text-gray-500">{product.description}</dd>
+                      <dl className="grid grid-cols-1 gap-y-8 border-b border-gray-200 py-4 sm:grid-cols-2 sm:gap-x-6 sm:py-4 md:py-4">
+                        <div className="sm:col-span-2 min-h-[100px]">
+                          <dt className="font-medium text-gray-900">Descripción</dt>
+                          <dd className="mt-1 text-gray-500">{product.description}</dd>
+                        </div>
+                      </dl>
+                      <div className="my-2">
+                          <h4 className="text-lg font-medium text-gray-900">Productos</h4>
+                          <span className="w-fit px-10">
+                            <ProductSlider products={order.products} />
+                            <p className="text-sm my-1 italic text-gray-600">Seleccione alguno de los productos para ver sus detalles</p>
+                          </span>
                       </div>
-                    </dl>
-                    <div className="mt-2">
-                        <h4 className="text-lg font-medium text-gray-900">Productos</h4>
-                        <span className="w-fit px-10">
-                          <ProductSlider products={order.products} />
-                          <p className="text-sm my-1 italic text-gray-600">Seleccione alguno de los productos para ver sus detalles</p>
-                        </span>
-                    </div>
-                    </div>
                   </div>
+                </div>
               ))}
             </div>
-            
           </div>
         </div>
       </div>

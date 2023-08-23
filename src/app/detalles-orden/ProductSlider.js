@@ -11,7 +11,7 @@ export default function ProductSlider({products}) {
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 2,
-        initialSlide: 0,
+        initialSlide: 0
       };
 
     return (
