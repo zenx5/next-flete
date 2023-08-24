@@ -107,41 +107,41 @@ const navigation = {
 }
 
 const categories = [
-    {
-        name: 'Fuerza Armada Bolivariana',
-        href: '/productos',
-        imageSrc: escudoArmada
-        ,
-    },
-    {
-        name: 'Guardia Nacional Bolivariana',
-        href: '/productos',
-        imageSrc: escudoGuardia,
-    },
-    {
-        name: 'Ejercito Bolivariano',
-        href: '/productos',
-        imageSrc: escudoEjercito,
-    },
-    {
-        name: 'Aviacion Militar Bolivariana',
-        href: '/productos',
-        imageSrc: escudoAviacion,
-    },
-    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: escudoMilicia },
-    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-    { name: 'Milicia Bolivariana', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+	{
+		name: 'Fuerza Armada Bolivariana',
+		href: '/productos',
+		imageSrc: escudoArmada
+		,
+	},
+	{
+		name: 'Guardia Nacional Bolivariana',
+		href: '/productos',
+		imageSrc: escudoGuardia,
+	},
+	{
+		name: 'Ejercito Bolivariano',
+		href: '/productos',
+		imageSrc: escudoEjercito,
+	},
+	{
+		name: 'Aviacion Militar Bolivariana',
+		href: '/productos',
+		imageSrc: escudoAviacion,
+	},
+	{ name: 'Ejemplo', href: '/productos', imageSrc: escudoMilicia },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
 
 ]
 
@@ -206,7 +206,7 @@ export default function FrontPage() {
 	const [showAll, setShowAll] = useState(false);
 
 	return (
-		<div className="bg-slate-100">
+		<div className="bg-slate-300">
 			{/* Mobile menu */}
 
 
@@ -237,8 +237,8 @@ export default function FrontPage() {
 
 			<main>
 				{/* Category section */}
-				<section aria-labelledby="category-heading" className="pt-24 sm:pt-32 xl:mx-auto xl:h-auto xl:max-w-7xl xl:px-8">
-					<div className="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-0">
+				<section  className="hidden bg-white shadow-md rounded-t-md  mt-10 pt-24 sm:pt-32 lg:block xl:mx-auto xl:h-auto xl:max-w-7xl xl:px-8">
+					<div className="px-4 text-center w-full sm:flex sm:items-center sm:justify-center sm:px-6 lg:px-8 xl:px-0">
 						<h2 id="category-heading" className="text-2xl font-bold tracking-tight text-gray-900">
 							Academias
 						</h2>
@@ -247,13 +247,13 @@ export default function FrontPage() {
 
 					<div className="mt-4 flow-root">
 						<div className="-my-2">
-							<div className="block box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
-								<div className=" flex space-x-8 px-4 sm:px-6 lg:px-8 xl:grid xl:grid-cols-6 xl:gap-8 xl:space-x-0 xl:px-0 xl:my-10">
+							<div className="block box-content h-80 overflow-y-auto py-2 xl:overflow-visible">
+								<div className=" space-x-4 px-4  lg:px-8 lg:grid  lg:grid-cols-6 xl:gap-8 xl:space-x-0 xl:px-0 xl:my-10">
 									{showAll ? categories.map((category, index) => (
 										<button
 											key={index}
-											onClick={()=>router.push(category.href)}
-											className="relative flex h-40 w-28 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
+											onClick={() => router.push(category.href)}
+											className="relative flex h-40 w-auto flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
 										>
 											<span aria-hidden="true" className="absolute inset-0">
 												<Image width={500} height={500} src={category.imageSrc} alt="" className="aspect-h-1 aspect-w-1 h-full w-full object-cover object-center" />
@@ -267,8 +267,8 @@ export default function FrontPage() {
 									)) : categories.slice(0, 6).map((category, index) => (
 										<button
 											key={index}
-											onClick={()=>router.push(category.href)}
-											className="relative flex h-40 w-28 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
+											onClick={() => router.push(category.href)}
+											className="relative flex h-40 w-full flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
 										>
 											<span aria-hidden="true" className="absolute inset-0">
 												<Image width={500} height={500} src={category.imageSrc} alt="" className="aspect-h-1 aspect-w-1 h-full w-full object-cover object-center" />
@@ -282,8 +282,41 @@ export default function FrontPage() {
 									))}
 									{/* <AcademyComponent/> */}
 								</div>
-								<div className='w-full flex justify-center'>
-									<button className='text-blue-700 hover:text-blue-400' onClick={()=>setShowAll(prev=> !prev)}>{showAll ? 'Cerrar' : 'Ver todas las Academias'}</button>
+								<div className=' hidden lg:flex w-full justify-center'>
+									<button className='text-blue-700 hover:text-blue-400 mt-5 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium  hover:bg-gray-100' onClick={() => setShowAll(prev => !prev)}>{showAll ? 'Cerrar' : 'Ver todas las Academias'}</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section  className=" bg-white shadow-md rounded-t-md  mt-10 pt-24 sm:pt-32 lg:hidden ">
+					<div className="px-4 text-center w-full sm:flex sm:items-center sm:justify-center sm:px-6 lg:px-8 xl:px-0">
+						<h2 id="category-heading" className="text-2xl font-bold tracking-tight text-gray-900">
+							Academias
+						</h2>
+
+					</div>
+
+					<div className="mt-4 flow-root">
+						<div className="-my-2">
+							<div className="block box-content h-80 overflow-y-auto py-2 xl:overflow-visible">
+								<div className=" space-x-4 px-4 flex flex-col items-center sm:px-6 lg:px-8  xl:grid-cols-6 xl:gap-8 xl:space-x-0 xl:px-0 xl:my-10">
+									{categories.map((category, index) => (
+										<button
+											key={index}
+											onClick={() => router.push(category.href)}
+											className="relative flex h-40 w-full flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
+										>
+											<span aria-hidden="true" className="absolute inset-0">
+												<Image width={500} height={500} src={category.imageSrc} alt="" className="aspect-h-1 aspect-w-1 h-full w-full object-cover object-center" />
+											</span>
+											<span
+												aria-hidden="true"
+												className="absolute inset-x-0 bottom-0 w-full h-2/3 bg-gradient-to-t from-gray-800 opacity-50"
+											/>
+											<span className="relative mt-auto text-center w-full text-xl font-bold text-white">{category.name}</span>
+										</button>
+									))}
 								</div>
 							</div>
 						</div>
@@ -293,7 +326,7 @@ export default function FrontPage() {
 				{/* Featured section */}
 				<section
 					aria-labelledby="social-impact-heading"
-					className={`mx-auto max-w-7xl px-4 transition-all duration-500 ease-in-out sm:px-6 lg:px-8 ${showAll ? 'pt-96' : 'pt-5'}`}
+					className={`mx-auto max-w-7xl bg-white shadow-md px-4 transition-all duration-500 ease-in-out sm:px-6 lg:px-8 ${showAll ? 'pt-96' : 'pt-5'}`}
 				>
 					<div className="relative overflow-hidden rounded-lg">
 						<div className="absolute inset-0">
@@ -325,7 +358,7 @@ export default function FrontPage() {
 				{/* Collection section */}
 				<section
 					aria-labelledby="collection-heading"
-					className="mx-auto max-w-xl px-4 pt-24 sm:px-6 sm:pt-32 lg:max-w-7xl lg:px-8"
+					className="bg-white shadow-md mx-auto rounded-b-md max-w-xl px-4 pt-24 mb-10 sm:px-6 sm:pt-32 lg:max-w-7xl lg:px-8"
 				>
 					<h2 id="collection-heading" className="text-2xl font-bold tracking-tight text-gray-900">
 						¡Paga con tus medios de pagos favoritos!
@@ -334,7 +367,7 @@ export default function FrontPage() {
 						Efectivo, Tarjeta de Debito/Credito, Transferencia Bancaria
 					</p>
 
-					<div className="mt-10 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
+					<div className="mt-10 space-y-12 pb-24  lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
 						{collections.map((collection) => (
 							<a key={collection.name} href={collection.href} className="group block">
 								<div
@@ -355,7 +388,7 @@ export default function FrontPage() {
 				</section>
 
 				{/* Featured section */}
-				<section aria-labelledby="comfort-heading" className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+				{/* <section aria-labelledby="comfort-heading" className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
 					<div className="relative overflow-hidden rounded-lg">
 						<div className="absolute inset-0">
 							<img
@@ -365,7 +398,7 @@ export default function FrontPage() {
 							/>
 						</div>
 					</div>
-				</section>
+				</section> */}
 			</main>
 		</div>
 	)
