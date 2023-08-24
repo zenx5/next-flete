@@ -9,13 +9,27 @@ import facebook from "../../../../public/icons/facebook.svg";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 
-export default function ShareModal() {
+export default function ShareModal({ url }) {
     const [isOpen, setIsOpen] = useState(false);
+    const [isCopied, setIsCopied] = useState(false);
     const searchParams = useSearchParams()
 
     useEffect(() => {
         setIsOpen( prev => JSON.parse( searchParams.get('share') ) )
     },[searchParams])
+
+    useEffect(() => {
+        if (isCopied) {
+            setTimeout(() => {
+                setIsCopied(false)
+            }, 2000)
+        }
+    },[isCopied])
+
+    const handlerCopy = () => {
+        navigator.clipboard.writeText( url )
+        setIsCopied(true)
+    }
 
     return isOpen && <OverlayModal>
         <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -29,20 +43,20 @@ export default function ShareModal() {
                             </Link>
                         </span>
                         <div className="flex flex-row">
-                            <input type="text" className="w-full border border-black p-2 outline-none" value="https://heroicons.com/"/>
-                            <button className="bg-black text-white p-2">Copiar</button>
+                            <input type="text" className="w-full border border-black p-2 outline-none" value={url} disabled/>
+                            <button className="bg-black text-white p-2 w-40" onClick={handlerCopy} disabled={isCopied}>{ isCopied ? 'Copiado' : 'Copiar' }</button>
                         </div>
                         {/*Iconos circulares de redes sociales*/}
                         <div className="flex flex-row justify-center gap-10">
-                            <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center border border-black p-2">
+                            <Link href="#" target="_blank" className="bg-white rounded-full w-10 h-10 flex items-center justify-center border border-black p-2">
                                 <Image src={facebook} alt="facebook" width={50} height={50}/>
-                            </div>
-                            <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center border border-black p-2">
+                            </Link>
+                            <Link href="#" target="_blank" className="bg-white rounded-full w-10 h-10 flex items-center justify-center border border-black p-2">
                                 <Image src={twitter} alt="twitter" width={50} height={50}/>
-                            </div>
-                            <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center border border-black p-2">
+                            </Link>
+                            <Link href="#" target="_blank" className="bg-white rounded-full w-10 h-10 flex items-center justify-center border border-black p-2">
                                 <Image src={whatsapp} alt="whatsapp" width={50} height={50}/>
-                            </div>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -79,7 +79,7 @@ export default function ProductDetail({ product }) {
 						</div>
 					</section>}
 				</div>
-				<ShareModal />
+				<ShareModal url={"https://heroicons.com/"+product.id} />
 			</main>
 		</div>
 	)
