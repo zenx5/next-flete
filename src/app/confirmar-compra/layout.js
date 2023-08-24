@@ -1,3 +1,4 @@
+import { headers } from "next/headers"
 import { ROUTER_PATH } from "@/tools/constants";
 import ActionsDetails from "./Details/ActionsDetails";
 import PaymentDetails from "./Details/PaymentDetails";
@@ -8,12 +9,21 @@ import PaymentModal from "./PaymentModal";
 
 export default async function CheckoutPage({ children }) {
 
+  const headersList = headers()
+  const pathname = headersList.get("x-invoke-path")
   const details = [
     { label: "Informacion de contacto", component: ContactDetails, className:"text-lg pb-6 font-bold text-gray-900", defaultOpen:"true"},
     { label: "Detalles de pago", component: PaymentDetails, className:"w-full py-6 text-left text-lg font-medium text-gray-900"},
-    { label: "Dirreción de envio", component: ShippingAddress , className:"w-full py-6 text-left text-lg font-medium text-gray-900"},
+    { label: "Dirreción de envio", component: ShippingAddress , className:"w-full py-6 text-left text-lg font-medium text-gray-900",
+      hiddenInRoute: ROUTER_PATH.CHECKOUT_SHARED },
     { label: "Dirreción de facturacion", component: PaymentsAddress, className:"w-full py-6 text-left text-lg font-medium text-gray-900" }
   ]
+
+  const checkRoute = ({ hiddenInRoute }) => {
+    if( !hiddenInRoute ) return true
+    const expression = new RegExp(hiddenInRoute.replace('${id}','[0-9]{1,}'))
+    return !expression.test( pathname )
+  }
 
 
   return (
@@ -42,7 +52,7 @@ export default async function CheckoutPage({ children }) {
 
             <form action={ROUTER_PATH.API.CHECKOUT} id="checkout-form" method="post" className="mt-0 pt-0 divide-y divide-gray-200 border-b border-gray-200">
               {
-                details.map( ({label, component, className, defaultOpen }) =>
+                details.filter(checkRoute).map( ({label, component, className, defaultOpen }) =>
                   <ActionsDetails key={label} label={label} className={className} defaultopen={defaultOpen}>
                     {component()}
                   </ActionsDetails>
