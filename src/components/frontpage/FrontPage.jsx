@@ -244,7 +244,6 @@ export default function FrontPage() {
 						</h2>
 
 					</div>
-
 					<div className="mt-4 flow-root">
 						<div className="-my-2">
 							<div className="block box-content h-80 overflow-y-auto py-2 xl:overflow-visible">
@@ -267,7 +266,7 @@ export default function FrontPage() {
 									)) : categories.slice(0, 6).map((category, index) => (
 										<button
 											key={index}
-											onClick={() => router.push(category.href)}
+											onClick={() => router.push(`/${category.name}/productos`)}
 											className="relative flex h-40 w-full flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
 										>
 											<span aria-hidden="true" className="absolute inset-0">
