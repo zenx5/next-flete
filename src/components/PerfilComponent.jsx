@@ -1,18 +1,5 @@
 'use client'
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+
 import { Fragment, useState } from 'react'
 import { Disclosure, Menu, RadioGroup, Switch, Transition } from
   '@headlessui/react'
@@ -31,6 +18,8 @@ import {
 import LineInput from './LineInput'
 import Modal from './Modal'
 import Card from './Card'
+import Link from 'next/link'
+import { ROUTER_PATH } from '@/tools/constants'
 
 const user = {
   name: 'Lisa Marie',
@@ -459,9 +448,9 @@ export default function PerfilComponent() {
                                       {payment.status}
                                     </td>
                                     <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                                      <button onClick={() => { setModalState(prev => ({ ...prev, ordersModal: payment })) }} className="text-orange-600  py-1 px-2 ">
+                                      <Link target="_blank" href={ROUTER_PATH.SUCCESS + '/' + payment.id} className="text-orange-600  py-1 px-2 ">
                                         Detalle
-                                      </button>
+                                      </Link>
                                     </td>
                                   </tr>
                                 ))}

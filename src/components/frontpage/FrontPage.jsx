@@ -32,6 +32,7 @@ import escudoMilicia from '../../../public/ImagesCadeteSiempre/escudoMilicia.png
 import escudoAviacion from '../../../public/ImagesCadeteSiempre/escudoAviacion.png'
 import { useRouter } from 'next/navigation'
 import AcademyComponent from './AcademyComponent'
+import { ROUTER_PATH } from '@/tools/constants'
 
 const currencies = ['BS', 'USD']
 const navigation = {
@@ -109,40 +110,39 @@ const navigation = {
 const categories = [
 	{
 		name: 'Fuerza Armada Bolivariana',
-		href: '/productos',
+		href: ROUTER_PATH.PRODUCTS,
 		imageSrc: escudoArmada
 		,
 	},
 	{
 		name: 'Guardia Nacional Bolivariana',
-		href: '/productos',
+		href: ROUTER_PATH.PRODUCTS,
 		imageSrc: escudoGuardia,
 	},
 	{
 		name: 'Ejercito Bolivariano',
-		href: '/productos',
+		href: ROUTER_PATH.PRODUCTS,
 		imageSrc: escudoEjercito,
 	},
 	{
 		name: 'Aviacion Militar Bolivariana',
-		href: '/productos',
+		href: ROUTER_PATH.PRODUCTS,
 		imageSrc: escudoAviacion,
 	},
 	{ name: 'Ejemplo', href: '/productos', imageSrc: escudoMilicia },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg" },
-
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
 ]
 
 const collections = [
@@ -227,7 +227,7 @@ export default function FrontPage() {
 						¡Disponemos de toda la indumentaria para tus promociones!.
 					</p>
 					<button
-						onClick={() => router.push('/productos')}
+						onClick={()=>router.push(ROUTER_PATH.PRODUCTS)}
 						className="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100"
 					>
 						Comprar
@@ -266,7 +266,7 @@ export default function FrontPage() {
 									)) : categories.slice(0, 6).map((category, index) => (
 										<button
 											key={index}
-											onClick={() => router.push(`/${category.name}/productos`)}
+											onClick={() => router.push( ROUTER_PATH.PRODUCTS_BY_CATEGORY(category.name) ) }
 											className="relative flex h-40 w-full flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
 										>
 											<span aria-hidden="true" className="absolute inset-0">

@@ -6,6 +6,7 @@ import Details from './Details';
 import CardRelatedProduct from '../../CardRelatedProduct';
 import HeartButton from '../HeartButton';
 import ShareButton from '../ShareButton';
+import ShareModal from './ShareModal';
 
 
 export default function ProductDetail({ product }) {
@@ -78,6 +79,7 @@ export default function ProductDetail({ product }) {
 						</div>
 					</section>}
 				</div>
+				<ShareModal url={"https://heroicons.com/"+product.id} />
 			</main>
 		</div>
 	)
