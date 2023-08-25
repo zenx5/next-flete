@@ -1,16 +1,22 @@
-'use client'
-
 import { ROUTER_PATH } from "@/tools/constants"
-import { useRouter } from "next/navigation"
+import { headers } from "next/headers"
 
 export default function Layout({ children }){
-    const router = useRouter()
+    const headersList = headers()
+    const params = JSON.parse( decodeURIComponent( headersList.get("x-invoke-query") ) )
+    const error =  params.error ? parseInt(params.error) : 0
+
 
     return <main className="w-screen h-auto flex justify-center items-center py-10 bg-gray-50">
-        <form  className="px-4 py-8 border-2 border-blue-400 rounded-md shadow-md shadow-gray-200 bg-white">
+        <form
+            className="px-4 py-8 border-2 border-blue-400 rounded-md shadow-md shadow-gray-200 bg-white"
+            method="post"
+            action={ROUTER_PATH.API.USER}
+        >
             {children}
-            <button onClick={()=>router.push(ROUTER_PATH.PROFILE)} className="w-full text-white bg-blue-500 font-bold border border-blue-500 p-3 my-4 rounded hover:bg-blue-600">Enviar</button>
-            {/* <a href="#" className="block w-full text-blue-500 text-center border border-blue-500 p-3 rounded hover:bg-blue-500 hover:text-white">Acceder</a> */}
+            <input type="hidden" name="redirect" value={ROUTER_PATH.HOME} />
+            <button type="submit" className="w-full text-white bg-blue-500 font-bold border border-blue-500 p-3 my-4 rounded hover:bg-blue-600">Enviar</button>
+            {error===1 && <p className="text-center text-red-600 italic">Email o Contraseña incorrecta</p>}
         </form>
     </main>
 }
