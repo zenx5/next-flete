@@ -4,13 +4,12 @@ import MenuNav from './MenuNav';
 
 import { mainNavigation, secondaryNavigation } from '@/tools/navigation';
 import MovilMenu from './MovilMenu';
-import { getUser, isAuthenticated } from '@/tools/actions';
+import { isAuthenticated } from '@/tools/actions';
 import { ROUTER_ID, ROUTER_PATH } from '@/tools/constants';
 
 export default async function CustomHeader() {
 
     const isAuthenticatedBool = await isAuthenticated()
-    const user = await getUser()
 
     const mainNav = mainNavigation.filter( item => {
         if( isAuthenticatedBool ) { // Si esta autenticado

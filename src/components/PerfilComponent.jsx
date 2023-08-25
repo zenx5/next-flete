@@ -1,19 +1,9 @@
 'use client'
-
-import { Fragment, useState } from 'react'
-import { Disclosure, Menu, RadioGroup, Switch, Transition } from
-  '@headlessui/react'
-import { MagnifyingGlassIcon, QuestionMarkCircleIcon } from
-  '@heroicons/react/20/solid'
+import { useState } from 'react'
 import {
-  Bars3Icon,
-  BellIcon,
-  CogIcon,
   CreditCardIcon,
   KeyIcon,
-  SquaresPlusIcon,
   UserCircleIcon,
-  XMarkIcon,
 } from '@heroicons/react/24/outline'
 import LineInput from './LineInput'
 import Modal from './Modal'
@@ -201,7 +191,7 @@ function classNames(...classes) {
 
 
 
-export default function PerfilComponent() {
+export default function PerfilComponent({ user }) {
   const [selected, setSelected] = useState(0)
 
   let initialModalState = {
@@ -259,13 +249,13 @@ export default function PerfilComponent() {
                     <label>
                       Nombre
                     </label>
-                    <p className='text-slate-600'>Cesar</p>
+                    <p className='text-slate-600'>{user.name.split(" ")[0]}</p>
                   </div>
                   <div className='flex flex-col text-center'>
                     <label>
                       Apellido
                     </label>
-                    <p className='text-slate-600'>Vallenilla</p>
+                    <p className='text-slate-600'>{user.name.split(" ")[1]}</p>
                   </div>
                   <div className='flex flex-col text-center'>
                     <label>
@@ -277,7 +267,7 @@ export default function PerfilComponent() {
                     <label>
                       Email
                     </label>
-                    <p className='text-slate-600'>cesarev17@gmail.com</p>
+                    <p className='text-slate-600'>{user.email}</p>
                   </div>
                   <div className='flex flex-col text-center'>
                     <label>
