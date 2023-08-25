@@ -6,11 +6,32 @@ export const ROUTER_PATH = {
     SUCCESS: '/detalles-orden',
     PROFILE: '/usuario/perfil',
     LOGIN: '/usuario/acceder',
+    LOGOUT: '/usuario/salir',
     SEARCH: '/consulta',
     ABOUT: '/nosotros',
     API: {
+        USER: '/api/users',
+        LOGOUT: '/api/users/logout',
         CHECKOUT: '/api/checkout',
         ORDERS: '/api/orders',
+    }
+}
+
+export const ROUTER_ID = {
+    HOME: 1,
+    PRODUCTS: 2,
+    CHECKOUT: 3,
+    SUCCESS: 4,
+    PROFILE: 5,
+    LOGIN: 6,
+    LOGOUT: 7,
+    SEARCH: 8,
+    ABOUT: 9,
+    API: {
+        USER: 10,
+        LOGOUT: 11,
+        CHECKOUT: 12,
+        ORDERS: 13,
     }
 }
 
