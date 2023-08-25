@@ -4,9 +4,21 @@ import MenuNav from './MenuNav';
 
 import { mainNavigation, secondaryNavigation } from '@/tools/navigation';
 import MovilMenu from './MovilMenu';
+import { getUser, isAuthenticated } from '@/tools/actions';
+import { ROUTER_ID, ROUTER_PATH } from '@/tools/constants';
 
-export default function CustomHeader() {
+export default async function CustomHeader() {
 
+    const isAuthenticatedBool = await isAuthenticated()
+    const user = await getUser()
+
+    const mainNav = mainNavigation.filter( item => {
+        if( isAuthenticatedBool ) { // Si esta autenticado
+            return item.id!==ROUTER_ID.LOGIN
+        } else { // Si no esta autenticado
+            return item.id!==ROUTER_ID.PROFILE && item.id!==ROUTER_ID.LOGOUT
+        }
+    } )
 
     return <header className="relative z-10 bg-black">
         <nav aria-label="Top">
@@ -23,7 +35,7 @@ export default function CustomHeader() {
                             <div className="hidden h-full lg:flex">
                                 <div className="inset-x-0 bottom-0 px-4">
                                     <div className="flex h-full justify-center space-x-8">
-                                        <MenuNav navigation={mainNavigation} />
+                                        <MenuNav navigation={mainNav} />
                                     </div>
                                 </div>
                             </div>
