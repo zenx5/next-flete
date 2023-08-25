@@ -22,7 +22,7 @@ export default function TextField( props ) {
             </button>
         </span>}
         { type.toLowerCase()!=='password' && <span className="border border-blue-500 rounded">
-            <input type={type} className="w-full outline-none p-3 rounded" {...props}/>
+            <input type={type} className="w-full outline-none p-3 rounded" {...props.input}/>
         </span>}
         <span className="text-xs px-2 pt-1 text-gray-500">{helperText}</span>
     </div>
