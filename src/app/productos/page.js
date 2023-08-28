@@ -1,6 +1,6 @@
 import ProductList from '@/components/product/ProductList'
 import InputSearch from '@/components/InputSearch';
-import { products } from '../api/products/products.mockup';
+import { products } from '../../tools/mockup/products.mockup';
 
 export default async function Products() {
     // const response = await fetch(`${process.env.API_URL}/products`, { cache:'force-cache' })

@@ -1,5 +1,5 @@
 
-import { products } from '@/app/api/products/products.mockup';
+import { products } from '@/tools/mockup/products.mockup';
 import InputSearch from '@/components/InputSearch';
 import ProductList from '@/components/product/ProductList';
 
@@ -9,8 +9,6 @@ export default async function Products({ params }) {
     //const { code, data:products } = await response.json()
     const code = 0
     const isActive = "border-b-2 border-b-white"
-
-    console.log(academy)
 
 
     return (

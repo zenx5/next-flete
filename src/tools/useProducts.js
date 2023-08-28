@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import Cart from "./cart.fake"
-import { products as $products } from "@/app/api/products/products.mockup"
+import { products as $products } from "@/tools/mockup/products.mockup"
 
 export default function useProducts(){
     const [loaded, setLoaded] = useState( false )

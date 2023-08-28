@@ -1,5 +1,5 @@
 import ProductDetail from '@/components/product/details/ProductDetail'
-import { products } from '@/app/api/products/products.mockup';
+import { products } from '@/tools/mockup/products.mockup';
 
 export default async function Products({ params }) {
     const { id } = params;
