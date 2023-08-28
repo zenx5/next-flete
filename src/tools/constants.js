@@ -3,6 +3,7 @@ export const ROUTER_PATH = {
     PRODUCTS: '/productos',
     PRODUCTS_BY_CATEGORY: (category)=>`/${category}/productos`,
     CHECKOUT: '/confirmar-compra',
+    CHECKOUT_SHARED: '/confirmar-compra/${id}/pagar',
     SUCCESS: '/detalles-orden',
     PROFILE: '/usuario/perfil',
     LOGIN: '/usuario/acceder',

@@ -3,7 +3,7 @@ import { STATES } from "@/tools/constants"
 
 export default function ShippingAddress() {
 
-    return <form action="#" method="POST">
+    return <div>
         <div className="shadow sm:overflow-hidden sm:rounded-md">
         <div className="bg-white pb-4">
             <div className="grid grid-cols-4 gap-2">
@@ -87,5 +87,5 @@ export default function ShippingAddress() {
             </div>
         </div>
         </div>
-    </form>
+    </div>
 }
