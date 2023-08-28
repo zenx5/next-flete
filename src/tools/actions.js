@@ -8,6 +8,12 @@ const userCookie = {
     email: "",
     token: "",
     id: "",
+    birthdate: "",
+    phone: "",
+    phoneFamily: "",
+    grade: "",
+    academic: "",
+    nextGrade: "",
     expirationDate: "",
 };
 

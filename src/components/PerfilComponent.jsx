@@ -261,7 +261,7 @@ export default function PerfilComponent({ user }) {
                     <label>
                       Fecha Nacimiento
                     </label>
-                    <p className='text-slate-600'>02/11/1995</p>
+                    <p className='text-slate-600'>{user.birthdate}</p>
                   </div>
                   <div className='flex flex-col text-center'>
                     <label>
@@ -273,31 +273,31 @@ export default function PerfilComponent({ user }) {
                     <label>
                       Telefono
                     </label>
-                    <p className='text-slate-600'>1137966282</p>
+                    <p className='text-slate-600'>{user.phone}</p>
                   </div>
                   <div className='flex flex-col text-center'>
                     <label>
                       Telefono Familiar
                     </label>
-                    <p className='text-slate-600'>4241397963</p>
+                    <p className='text-slate-600'>{user.phoneFamily}</p>
                   </div>
                   <div className='flex flex-col text-center'>
                     <label>
                       Academia
                     </label>
-                    <p className='text-slate-600'>Aviacion Militar Balivariana</p>
+                    <p className='text-slate-600'>{user.academic}</p>
                   </div>
                   <div className='flex flex-col text-center'>
                     <label>
                       Grado
                     </label>
-                    <p className='text-slate-600'>Grado 1</p>
+                    <p className='text-slate-600'>{user.grade}</p>
                   </div>
                   <div className='flex flex-col text-center'>
                     <label>
                       Grado Siguiente
                     </label>
-                    <p className='text-slate-600'>Grado 2</p>
+                    <p className='text-slate-600'>{user.nextGrade}</p>
                   </div>
                 </div>
               </div>

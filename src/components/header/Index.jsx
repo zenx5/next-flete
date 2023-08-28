@@ -1,15 +1,18 @@
 import Link from 'next/link';
 import ButtonCart from '../cart/ButtonCart';
 import MenuNav from './MenuNav';
+import Script from 'next/script';
 
 import { mainNavigation, secondaryNavigation } from '@/tools/navigation';
 import MovilMenu from './MovilMenu';
-import { isAuthenticated } from '@/tools/actions';
+import { getUser, isAuthenticated } from '@/tools/actions';
 import { ROUTER_ID, ROUTER_PATH } from '@/tools/constants';
 
 export default async function CustomHeader() {
 
     const isAuthenticatedBool = await isAuthenticated()
+    const user = await getUser()
+
 
     const mainNav = mainNavigation.filter( item => {
         if( isAuthenticatedBool ) { // Si esta autenticado
@@ -17,7 +20,15 @@ export default async function CustomHeader() {
         } else { // Si no esta autenticado
             return item.id!==ROUTER_ID.PROFILE && item.id!==ROUTER_ID.LOGOUT
         }
-    } )
+    } ).map( item => {
+        if( user && item.id===ROUTER_ID.PRODUCTS ) {
+            return {
+                ...item,
+                href: '/' + user.academic + ROUTER_PATH.PRODUCTS
+            }
+        }
+        return item
+    })
 
     return <header className="relative z-10 bg-black">
         <nav aria-label="Top">

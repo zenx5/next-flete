@@ -1,21 +1,7 @@
-import { removeUser, setUser } from '@/tools/actions';
+import { setUser } from '@/tools/actions';
 import { ROUTER_PATH } from '@/tools/constants';
 import { NextResponse } from 'next/server';
-
-const users = [
-    {
-        id: 1,
-        name: 'John Doe', 
-        email: 'jdoe@mail.com',
-        password: '123456'
-    },
-    {
-        id: 2,
-        name: 'Jane Doe',
-        email: 'jandoe@mail.com',
-        password: '123456'
-    }
-]
+import { users } from '@/tools/mockup/users.mockup'
 
 export async function POST(request) {
     const form = await request.formData()
@@ -28,7 +14,13 @@ export async function POST(request) {
           id: user.id,
           name: user.name,
           email: user.email,
-          token: btoa(`${user.email}:${user.password}`)
+          token: btoa(`${user.email}:${user.password}`),
+          birthdate: user.birthdate,
+          phone: user.phone,
+          phoneFamily: user.phoneFamily,
+          grade: user.grade,
+          academic: user.academic,
+          nextGrade: user.nextGrade,
         })
         const url = new URL(redirectToUrl, request.url)
         return NextResponse.redirect(url, { status: 303 })
