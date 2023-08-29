@@ -15,7 +15,7 @@ import Script from "next/script"
     const selectedProduct = searchParams?.item===undefined ? 0 : searchParams?.item
 
     return (
-      <div className="bg-white h-full">
+      <div className="bg-white h-full p-5">
         <Script id="1">{`
           localStorage.clear()
         `}</Script>

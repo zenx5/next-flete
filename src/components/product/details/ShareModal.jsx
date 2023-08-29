@@ -27,7 +27,7 @@ export default function ShareModal({ url }) {
     },[isCopied])
 
     const handlerCopy = () => {
-        navigator.clipboard.writeText( url )
+        navigator.clipboard.writeText( 'http://localhost:3000/confirmar-compra/10/pagar')
         setIsCopied(true)
     }
 
@@ -43,7 +43,7 @@ export default function ShareModal({ url }) {
                             </Link>
                         </span>
                         <div className="flex flex-row">
-                            <input type="text" className="w-full border border-black p-2 outline-none" value={url} disabled/>
+                            <input type="text" className="w-full border border-black p-2 outline-none" value={'http://localhost:3000/confirmar-compra/10/pagar'} disabled/>
                             <button className="bg-black text-white p-2 w-40" onClick={handlerCopy} disabled={isCopied}>{ isCopied ? 'Copiado' : 'Copiar' }</button>
                         </div>
                         {/*Iconos circulares de redes sociales*/}
