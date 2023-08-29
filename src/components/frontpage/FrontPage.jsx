@@ -206,7 +206,7 @@ export default function FrontPage() {
 	const [showAll, setShowAll] = useState(false);
 
 	return (
-		<div className="bg-slate-300">
+		<div className="bg-gradient-to-b from-slate-100">
 			{/* Mobile menu */}
 
 
