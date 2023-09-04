@@ -3,11 +3,11 @@
 import { useState } from "react";
 
 
-export default function Card({ title, hideable, height, children }) {
+export default function Card({ title, hideable, height, children, className }) {
     const [isVisible, toggleVisibility] = useState(true)
     const classContent = hideable ? `w-full transition-[height] ease-linear duration-700 delay-100 overflow-hidden` : 'w-full h-auto'
 
-    return <div className="p-4 flex flex-col items-start bg-white rounded-lg shadow-lg shadow-gray-400">
+    return <div className={"p-4 flex flex-col items-start bg-white rounded-lg shadow-lg shadow-gray-400 " + className}>
         <span className="flex flex-row w-full justify-center">
             <h2 className="font-bold text-center text-gray-800 mr-4">{title}</h2>
             {hideable && <button onClick={()=>toggleVisibility(!isVisible)}>
