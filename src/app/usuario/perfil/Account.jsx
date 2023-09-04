@@ -1,3 +1,4 @@
+"use client";
 import RowUpdatable from "@/components/RowUpdatable"
 
 export default function Account({ user }) {
