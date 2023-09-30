@@ -1,6 +1,6 @@
 import ImageSelector from './ImageSelector';
 import AddToCart from '../AddToCart'
-import BuyNow from '../BuyNow'
+import AuctionUp from '../AuctionUp'
 import Price from '../Price';
 import Details from './Details';
 import CardRelatedProduct from '../../CardRelatedProduct';
@@ -39,15 +39,14 @@ export default function ProductDetail({ product }) {
 
 							<form className="mt-6">
 								<div className="mt-10 flex gap-2">
-									<AddToCart
+									{/* <AddToCart
 										id={product.id}
 										enableCount
 										classNameIcon="text-blue-400 w-5"
 										classNameContainer="p-3 text-blue-400 border-2 border-blue-400 rounded-md hover:text-blue-500 hover:bg-blue-100"
-									/>
-									<BuyNow
-										id={product.id}
-										className="p-3 text-blue-400 border-2 border-blue-400 rounded-md hover:text-blue-500 hover:bg-blue-100"/>
+									/> */}
+									<AuctionUp
+										id={product.id}/>
 									<HeartButton
 										id={product.id}
 										className="p-3 text-blue-400 border-2 border-blue-400 rounded-md hover:text-blue-500 hover:bg-blue-100"/>
