@@ -26,7 +26,7 @@ export default function ProductDetail({ product }) {
 
 							<div className="mt-3">
 								<h2 className="sr-only">Product information</h2>
-								<Price price={product.price} regularPrice={product.regularPrice} />
+								{/* <Price price={product.price} regularPrice={product.regularPrice} /> */}
 							</div>
 
 							<div className="mt-6">
@@ -62,7 +62,7 @@ export default function ProductDetail({ product }) {
 								</h2>
 
 								<div className="divide-y divide-gray-200 border-t">
-									{product?.details?.map((detail) => <Details key={detail.name} name={detail.name} items={detail.items}/> )}
+									{/* {product?.details?.map((detail) => <Details key={detail.name} name={detail.name} items={detail.items}/> )} */}
 								</div>
 							</section>
 						</div>
@@ -74,7 +74,7 @@ export default function ProductDetail({ product }) {
 						</h2>
 
 						<div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-							{product.relatedProducts?.map((product) => <CardRelatedProduct key={product.id} product={product} /> )}
+							{/* {product.relatedProducts?.map((product) => <CardRelatedProduct key={product.id} product={product} /> )} */}
 						</div>
 					</section>}
 				</div>
