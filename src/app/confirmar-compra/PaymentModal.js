@@ -30,7 +30,7 @@ export default function PaymentModal() {
                     <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                         <div className="flex items-center gap-5">
                             <div className="mx-auto flex h-30 w-30 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 sm:mx-0 sm:h-20 sm:w-20">
-                                <Image src={`/ImagesCadeteSiempre/${paymentMethods[payment]?.image}`} alt={paymentMethods[payment]?.title} width={100} height={100}/>
+                                <Image src={`/images/${paymentMethods[payment]?.image}`} alt={paymentMethods[payment]?.title} width={100} height={100}/>
                             </div>
                             <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
                                 <h3 className="text-base font-semibold leading-6 text-gray-900" id="modal-title">{paymentMethods[payment]?.title}</h3>

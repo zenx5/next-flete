@@ -25,11 +25,11 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
-import escudoArmada from '../../../public/ImagesCadeteSiempre/escudoArmada.png'
-import escudoGuardia from '../../../public/ImagesCadeteSiempre/guardiaNacionalEscudo.png'
-import escudoEjercito from '../../../public/ImagesCadeteSiempre/escudoEjercito.png'
-import escudoMilicia from '../../../public/ImagesCadeteSiempre/escudoMilicia.png'
-import escudoAviacion from '../../../public/ImagesCadeteSiempre/escudoAviacion.png'
+import escudoArmada from '../../../public/images/escudoArmada.png'
+import escudoGuardia from '../../../public/images/guardiaNacionalEscudo.png'
+import escudoEjercito from '../../../public/images/escudoEjercito.png'
+import escudoMilicia from '../../../public/images/escudoMilicia.png'
+import escudoAviacion from '../../../public/images/escudoAviacion.png'
 import { useRouter } from 'next/navigation'
 import AcademyComponent from './AcademyComponent'
 import { ROUTER_PATH } from '@/tools/constants'
@@ -130,19 +130,19 @@ const categories = [
 		imageSrc: escudoAviacion,
 	},
 	{ name: 'Ejemplo', href: '/productos', imageSrc: escudoMilicia },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
-	{ name: 'Ejemplo', href: '/productos', imageSrc: "/ImagesCadeteSiempre/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/images/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/images/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/images/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/images/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/images/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/images/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/images/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/images/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/images/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/images/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/images/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/images/imagen-de-prueba-320x240-1.jpg" },
+	{ name: 'Ejemplo', href: '/productos', imageSrc: "/images/imagen-de-prueba-320x240-1.jpg" },
 ]
 
 const collections = [
@@ -215,7 +215,7 @@ export default function FrontPage() {
 				{/* Decorative image and overlay */}
 				<div aria-hidden="true" className="absolute inset-0 overflow-hidden">
 					<img
-						src="/ImagesCadeteSiempre/bannerVenezuelaJose.png"
+						src="/images/bannerVenezuelaJose.png"
 						alt=""
 						className="h-full w-full object-cover object-center"
 					/>
