@@ -3,15 +3,14 @@ import { ROUTER_PATH } from '@/tools/constants';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-export default function AuctionUp({ id }) {
+export default function AuctionUp({ id, defaultValue, step }) {
     const router = useRouter()
-    const step = 50
     const currency = "$ USD"
-    const [value, setValue] = useState(0)
+    const [value, setValue] = useState( defaultValue - step )
 
     const handlerClickBuyNow = (event) => {
         event.preventDefault()
-        router.push(`${ROUTER_PATH.CHECKOUT}/${id}`)
+        // router.push(`${ROUTER_PATH.CHECKOUT}/${id}`)
     }
 
     const handlerChangeValue = (increment) => () => {
@@ -27,10 +26,12 @@ export default function AuctionUp({ id }) {
                 className="w-2/4 p-3 text-right outline-none"
                 placeholder="0.00"
                 value={value}
+                max={ defaultValue + step }
+                onChange={ event => setValue( event.target.value ) }
             />
             <span className="w-1/4 flex flex-col items-center border-l border-indigo-200">
-                <buton onClick={handlerChangeValue(step)} className="font-semibold cursor-pointer border-b border-indigo-200 w-full text-center hover:bg-indigo-100 hover:text-indigo-500">+</buton>
-                <buton onClick={handlerChangeValue(-step)} className="font-semibold cursor-pointer w-full text-center hover:bg-indigo-100 hover:text-indigo-500">-</buton>
+                <button type="button" onClick={handlerChangeValue(step)} disabled={ (defaultValue-step) <= value } className="disabled:bg-white disabled:text-gray-600 font-semibold cursor-pointer border-b border-indigo-200 w-full text-center hover:bg-indigo-100 hover:text-indigo-500">+</button>
+                <button type="button" onClick={handlerChangeValue(-step)} className="font-semibold cursor-pointer w-full text-center hover:bg-indigo-100 hover:text-indigo-500">-</button>
             </span>
         </span>
         <button
