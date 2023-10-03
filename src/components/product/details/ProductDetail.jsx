@@ -8,8 +8,32 @@ import HeartButton from '../HeartButton';
 import ShareButton from '../ShareButton';
 import ShareModal from './ShareModal';
 
+const opacities = [
+	"opacity-80",
+	"opacity-50",
+	"opacity-30"
+]
+
 
 export default function ProductDetail({ product }) {
+
+	const hideEmail = (email) => {
+		if( !email ) return ""
+		return email.split("@")
+			.map(
+				(part, position) =>
+					position ?
+						part :
+						part.split("").map(
+							(letter, iletter) =>
+								iletter > 1 ?
+								"*" :
+								letter
+						)
+						.join("")
+			)
+			.join("@")
+	}
 
 	return (
 		<div>
@@ -39,20 +63,32 @@ export default function ProductDetail({ product }) {
 
 							<form className="mt-6">
 								<div className="mt-10 flex gap-2">
-									{/* <AddToCart
-										id={product.id}
-										enableCount
-										classNameIcon="text-blue-400 w-5"
-										classNameContainer="p-3 text-blue-400 border-2 border-blue-400 rounded-md hover:text-blue-500 hover:bg-blue-100"
-									/> */}
 									<AuctionUp
-										id={product.id}/>
+										id={product.id}
+										defaultValue={product?.auctions[0]?.mount}
+										step={50}
+									/>
 									<HeartButton
 										id={product.id}
 										className="p-3 text-blue-400 border-2 border-blue-400 rounded-md hover:text-blue-500 hover:bg-blue-100"/>
 									<ShareButton
 										id={product.id}
 										className="p-3 text-blue-400 border-2 border-blue-400 rounded-md hover:text-blue-500 hover:bg-blue-100"/>
+								</div>
+								<div className="mt-5 flex gap-2 flex-col">
+									<h3 className="font-bold">Ultimas ofertas:</h3>
+									<div className="bg-gradient-to-b from-indigo-500">
+										<div className="bg-white ml-1 pl-4 py-1 flex flex-col gap-3">
+											{ product.auctions.map( (auction, index) => <span key={`auction-${index}`} className={"flex flex-row cursor-pointer gap-2 hover:opacity-100 " + opacities[index] }>
+												<span className="flex flex-row gap-1">
+													<UserIcon />
+													<span className="text-indigo-500 font-semibold">{ hideEmail( auction?.user?.email ) }</span>
+												</span>
+												<span>ofertó <span className="font-semibold text-indigo-500">{auction.mount}$</span></span>
+												<span className="flex flex-row italic flex-nowrap">hace {auction.left}</span>
+											</span>) }
+										</div>
+									</div>
 								</div>
 							</form>
 
@@ -83,3 +119,8 @@ export default function ProductDetail({ product }) {
 		</div>
 	)
 }
+
+
+const UserIcon = () => <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-indigo-500">
+	<path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg>
