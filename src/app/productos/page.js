@@ -1,5 +1,6 @@
 // import ProductList from '@/components/product/ProductList'
 import { products } from '../../tools/mockup/products.mockup';
+import { auctions } from '@/tools/mockup/auctions.mockup';
 import ProductRow from './ProductRow';
 
 export default async function Products() {
@@ -15,7 +16,10 @@ export default async function Products() {
         { id:"dimensions", label: "Dimensions", format: ({width, height, large, unit}) => {
             return `${width}${unit} x ${height}${unit} x ${large}${unit}`
         } },
-        { id:"last_auction", label: "Last Auction" },
+        { id:"auctions", label: "Last Auction", format: (auctionList) => {
+            const auction = auctions.find( auction => auction.id===auctionList[0] )
+            return auction?.mount ?? "-"
+        } },
         { id:"status", label: "Status" },
     ]
 
