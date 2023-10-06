@@ -22,34 +22,28 @@ import SectionFive from './SectionFive'
 
 export default function FrontPage() {
 
-	return (
+	return <div className="">
 		<div className="">
-		
-		
-			<div className="">
-		 !Aqui va el Hero!
-			</div>
-
-	<main>
-
-		<section>
-		  <SectionOne/>
-		</section>
-		<section>
-		  <SectionTwo/>
-		</section>
-		<section>
-		  <SectionThree/>
-		</section>
-		<section>
-		  <SectionFour/>
-		</section>
-		<section>
-		 <SectionFive/>
-		</section>
-			
-			
-	</main>
+			!Aqui va el Hero!
 		</div>
-	)
+
+		<main>
+
+			<section>
+			<SectionOne/>
+			</section>
+			<section>
+			<SectionTwo/>
+			</section>
+			<section>
+			<SectionThree/>
+			</section>
+			<section>
+			<SectionFour/>
+			</section>
+			<section>
+			<SectionFive/>
+			</section>
+		</main>
+	</div>
 }
