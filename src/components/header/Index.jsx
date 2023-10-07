@@ -18,17 +18,9 @@ export default async function CustomHeader() {
         if( isAuthenticatedBool ) { // Si esta autenticado
             return item.id!==ROUTER_ID.LOGIN
         } else { // Si no esta autenticado
-            return item.id!==ROUTER_ID.PROFILE && item.id!==ROUTER_ID.LOGOUT
+            return item.id!==ROUTER_ID.PROFILE && item.id!==ROUTER_ID.LOGOUT && item.id!==ROUTER_ID.PRODUCTS
         }
-    } ).map( item => {
-        if( user && item.id===ROUTER_ID.PRODUCTS ) {
-            return {
-                ...item,
-                href: '/' + user.academic + ROUTER_PATH.PRODUCTS
-            }
-        }
-        return item
-    })
+    } ).map( item => item )
 
     return <header className="relative z-10 bg-black">
         <nav aria-label="Top">
