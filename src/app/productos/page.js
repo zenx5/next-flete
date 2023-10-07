@@ -1,7 +1,11 @@
 import TableProduct from './TableProduct';
 import { ArrowLeft, ArrowRight } from '../../components/icons'
+import { getUser } from '../../tools/actions';
+import { redirect } from 'next/navigation';
 
 export default function Products() {
+    const user = getUser()
+    if( !user ) return redirect("/")
     const page = 1
     const min = 1
     const max = 5
