@@ -18,7 +18,7 @@ export const products = [
             large:6,
             unit: 'mts'
         },
-        last_auction: 3,
+        auctions: [3,2,1],
         status: "open"
     },
     {
@@ -35,7 +35,7 @@ export const products = [
             large:6,
             unit: 'mts'
         },
-        last_auction: 3,
+        auctions: [],
         status: "open"
     },
     {
@@ -52,7 +52,7 @@ export const products = [
             large:6,
             unit: 'mts'
         },
-        last_auction: 3,
+        auctions: [2,1],
         status: "open"
     }
 ]

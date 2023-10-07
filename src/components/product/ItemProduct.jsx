@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 
 import AddToCart from "./AddToCart"
 import Price from "./Price"
-import BuyNow from "./BuyNow"
+import BuyNow from "./AuctionUp"
 import { ROUTER_PATH } from '@/tools/constants';
 
 export default function ItemProduct({ product }) {
