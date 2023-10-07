@@ -1,5 +1,5 @@
 "use client";
-import ImageSelector from './ImageSelector';
+import ImageSelector from "./ImageSelector"
 import AddToCart from '../AddToCart'
 import AuctionUp from '../AuctionUp'
 import Price from '../Price';
@@ -10,11 +10,46 @@ import ShareButton from '../ShareButton';
 import ShareModal from './ShareModal';
 import { useState, useEffect } from 'react';
 import { onSnap } from '@/tools/firebase/actions';
+import moment from "moment";
 
 const opacities = [
 	"opacity-80",
 	"opacity-50",
 	"opacity-30"
+]
+
+const timeFormats = [
+	{
+		format: 'seconds',
+		label: ['segundo','segundos'],
+		limit: 60
+	},
+	{
+		format: 'minutes',
+		label: ['minuto','minutos'],
+		limit: 60
+	},
+	{
+		format: 'hours',
+		label: ['hora','horas'],
+		limit: 24
+	},
+	{
+		format: 'days',
+		label: ['dia','dias'],
+		limit: 32
+	},
+	{
+		format: 'mounth',
+		label: ['mes','meses'],
+		limit: 12
+	},
+	{
+		format: 'year',
+		label:['año', 'años'],
+		limit: 0
+	}
+
 ]
 
 
@@ -45,6 +80,17 @@ export default function ProductDetail({ productId }) {
 			.join("@")
 	}
 
+	const orderAutions = (auction1, auction2) => auction1.date<auction2.date ? 1 : -1
+
+	const getLeft = ( currentDate, index = 0 ) => {
+		const diff = moment(Date.now()).diff(currentDate, timeFormats[index].format )
+		if( diff === 0 ) return 'justo ahora'
+		else if( diff >= timeFormats[index].limit && timeFormats[index].limit!==0 ) {
+			return getLeft(currentDate, index + 1)
+		}
+		return diff>1 ? `hace ${diff} ${timeFormats[index].label[1]}` : `hace ${diff} ${timeFormats[index].label[0]}`
+	}
+
 	return <main className="mx-auto max-w-7xl bg-white sm:px-12 sm:pt-20 lg:px-16">
 		<div className="mx-auto max-w-2xl lg:max-w-none">
 			{/* Product */}
@@ -73,7 +119,8 @@ export default function ProductDetail({ productId }) {
 						<div className="mt-10 flex gap-2">
 							<AuctionUp
 								id={product.id}
-								defaultValue={product?.auctions?.at(0)?.mount}
+								auctions={ product?.auctions ?? [] }
+								initialValue={5000}
 								step={50}
 							/>
 							<HeartButton
@@ -87,13 +134,13 @@ export default function ProductDetail({ productId }) {
 							<h3 className="font-bold">Ultimas ofertas:</h3>
 							<div className="bg-gradient-to-b from-indigo-500">
 								<div className="bg-white ml-1 pl-4 py-1 flex flex-col gap-3">
-									{ product.auctions?.map( (auction, index) => <span key={`auction-${index}`} className={"flex flex-row cursor-pointer gap-2 hover:opacity-100 " + opacities[index] }>
+									{ product.auctions?.sort( orderAutions ).slice(0,3).map( (auction, index) => <span key={`auction-${index}`} className={"flex flex-row cursor-pointer gap-2 hover:opacity-100 " + opacities[index] }>
 										<span className="flex flex-row gap-1">
 											<UserIcon />
 											<span className="text-indigo-500 font-semibold">{ hideEmail( auction?.user?.email ) }</span>
 										</span>
 										<span>ofertó <span className="font-semibold text-indigo-500">{auction.mount}$</span></span>
-										<span className="flex flex-row italic flex-nowrap">hace {auction.left}</span>
+										<span className="flex flex-row italic flex-nowrap">{getLeft(auction.date)}</span>
 									</span>) }
 								</div>
 							</div>
