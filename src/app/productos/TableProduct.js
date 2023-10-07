@@ -13,12 +13,18 @@ const fields = [
         const {width, height, large, unit} = a
         return `${width}${unit} x ${height}${unit} x ${large}${unit}`
     } },
-    { id:"auctions", label: "Last Auction", format: (auctionList) => {
-        if( !auctionList || auctionList.length === 0 ) return "-"
-        const auction = auctions.find( auction => auction.id===auctionList[0] )
-        return auction?.mount ?? "-"
+    { id:"auctions", label: "Last Auction", format: (auctions) => {
+        if( !auctions || auctions.length === 0 ) return "-"
+        const lastAuction = auctions.reduce( (auction, acc) => auction.date>acc.date ? auction : acc , { mount : 0, date : 0 })
+        return <span className="flex flex-col gap-0 items-center justify-center">
+            <span>{lastAuction.mount} $USD</span>
+            <small className="text-gray-400 italic">{lastAuction?.user?.email ?? '-'}</small>
+        </span>
     } },
-    { id:"status", label: "Status" },
+    { id:"status", label: "Status", format: label => {
+        const className = label==='active' ? "bg-green-300 text-green-800" : "bg-gray-300 "
+        return <span className={ "px-3 py-2 rounded-full uppercase font-medium " + className }>{label}</span>
+    } },
 ]
 
 
@@ -29,7 +35,6 @@ export default function TableProduct() {
             setEntities( prev => {
                 const aux = []
                 for( const item of data ) {
-                    console.log(item)
                     aux.push(item)
                 }
                 return aux
