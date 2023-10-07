@@ -4,7 +4,7 @@ import { headers } from "next/headers"
 export default function Layout({ children }){
     const headersList = headers()
     const params = JSON.parse( decodeURIComponent( headersList.get("x-invoke-query") ) )
-    const error =  params.error ? parseInt(params.error) : 0
+    const error =  params?.error ? parseInt(params?.error) : 0
 
 
     return <main className="w-screen h-auto flex justify-center items-center py-10 bg-gray-50">

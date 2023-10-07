@@ -2,7 +2,7 @@ import Link from "next/link"
 
 
 export default function CustomFooter() {
-
+/*
     const footerNavigation = {
         shop: [
             { name: 'Fuerza Armada Bolivariana', href: '#' },
@@ -109,4 +109,5 @@ export default function CustomFooter() {
             </div>
         </div>
     </footer>
+    */
 }

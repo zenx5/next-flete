@@ -2,7 +2,7 @@
 import InputSearch from "../InputSearch"
 import LineInput from "../LineInput"
 import Card from "../Card"
-import sampleDiploma from "../../../public/ImagesCadeteSiempre/diplomaMuestra.jpeg"
+import sampleDiploma from "../../../public/images/diplomaMuestra.jpeg"
 import Image from "next/image"
 
 export default function Index({ data, error }) {

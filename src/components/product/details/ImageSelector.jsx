@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Tab } from '@headlessui/react'
 import { info } from 'autoprefixer';
+import Image from 'next/image';
 
 export default function ImageSelector({ images }) {
     const [selectedIndex, setSelectedIndex] = useState(0)
@@ -20,16 +21,16 @@ export default function ImageSelector({ images }) {
             {/* Image selector */}
             <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
                 <Tab.List className="grid grid-cols-4 gap-6">
-                    {images?.map((image) => (
+                    {images?.map((image, index) => (
                         <Tab
-                            key={image.id}
+                            key={`Tab-image-${index}`}
                             className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
                         >
                             {({ selected }) => (
                                 <>
                                     <span className="sr-only">{image.name}</span>
                                     <span className="absolute inset-0 overflow-hidden rounded-md">
-                                        <img src={image.src} alt="" className="h-full w-full object-cover object-center" />
+                                        <Image src={image.src} alt={image.src} className="h-full w-full object-cover object-center" width={100} height={100} />
                                     </span>
                                     <span
                                         className={classNames(
@@ -44,16 +45,18 @@ export default function ImageSelector({ images }) {
                     ))}
                 </Tab.List>
             </div>
-            
+
             <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
                 {images?.map((image, index) => (
-                    <Tab.Panel key={image.id} className="flex flex-row items-center">
+                    <Tab.Panel key={`Image-list-${index}`} className="flex flex-row items-center">
                         {images.length && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={"w-6 h-6 md:hidden " + (index==0 ? "text-gray-500" : "cursor-pointer text-blue-500")} onClick={handlerClickChangeImage(index,-1)}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                         </svg>}
-                        <img
+                        <Image
                             src={image.src}
-                            alt={image.alt}
+                            alt={image.src}
+                            width={1000}
+                            height={1000}
                             className="h-full w-full object-cover object-center sm:rounded-lg shadow-xl"
                         />
                         {images.length && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={"w-6 h-6 md:hidden " + ((index==images.length-1) ? "text-gray-500" : "cursor-pointer text-blue-500")} onClick={handlerClickChangeImage(index,1)}>
