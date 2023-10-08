@@ -1,26 +1,18 @@
 import { setUser } from '@/tools/actions';
 import { ROUTER_PATH } from '@/tools/constants';
 import { NextResponse } from 'next/server';
-import { users } from '@/tools/mockup/users.mockup'
+import { actionSearch } from '../../../tools/firebase/actions';
 
 export async function POST(request) {
     const form = await request.formData()
     const redirectToUrl = form.get('redirect') || ROUTER_PATH.HOME
 
     if( form.get('action')==='login' ) {
-      const user = users.find( user => user.email===form.get('email') && user.password===form.get('password') )
-      if( user ) {
+      const users = await actionSearch("users", "email", "==", form.get('email'))
+      if( users.length > 0 && users[0].password===form.get('password') ) {
         setUser({
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          token: btoa(`${user.email}:${user.password}`),
-          birthdate: user.birthdate,
-          phone: user.phone,
-          phoneFamily: user.phoneFamily,
-          grade: user.grade,
-          academic: user.academic,
-          nextGrade: user.nextGrade,
+          ...users[0],
+          password: undefined
         })
         const url = new URL(redirectToUrl, request.url)
         return NextResponse.redirect(url, { status: 303 })
@@ -31,4 +23,14 @@ export async function POST(request) {
     }
 
     return NextResponse.json({ error: 'Invalid action' })
+  }
+
+  export async function GET() {
+
+    const doc = await actionSearch("users", "email", "==", "admin@mail.com")
+
+    return NextResponse.json({
+      ...doc[0],
+      password:undefined
+    })
   }
