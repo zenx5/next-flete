@@ -4,12 +4,12 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { actionSave } from '../../tools/firebase/actions';
 
-export default function AuctionUp({ id, auctions, step, initialValue }) {
+export default function AuctionUp({ id, auctions, step, initialValue, user }) {
     const router = useRouter()
     const currency = "$ USD"
     const [value, setValue] = useState( 0 )
     const [limit, setLimit] = useState( 0 )
-
+    console.log( 'auction up', user )
     useEffect(()=>{
         if( auctions.length>0 && value===0 ) {
             const max = auctions.reduce( (element,acc) => element.date > acc.date ? element : acc, { date: 0 } )
@@ -28,7 +28,10 @@ export default function AuctionUp({ id, auctions, step, initialValue }) {
         event.preventDefault()
         const newauctions = [...auctions, {
             user:{
-                email:'omartinez1618@gmail.com'
+                id      :   user?.id,
+                name    :   user?.name,
+                email   :   user?.email,
+                phone   :   user?.phone
             },
             mount: value,
             date: Date.now()
