@@ -8,6 +8,7 @@ import HeartButton from '../HeartButton';
 import ShareButton from '../ShareButton';
 import ShareModal from './ShareModal';
 import { UserIcon } from "../../icons";
+import { timeFormats } from '../../../tools/constants';
 
 const opacities = [
 	"opacity-80",
@@ -15,42 +16,10 @@ const opacities = [
 	"opacity-30"
 ]
 
-const timeFormats = [
-	{
-		format: 'seconds',
-		label: ['segundo','segundos'],
-		limit: 60
-	},
-	{
-		format: 'minutes',
-		label: ['minuto','minutos'],
-		limit: 60
-	},
-	{
-		format: 'hours',
-		label: ['hora','horas'],
-		limit: 24
-	},
-	{
-		format: 'days',
-		label: ['dia','dias'],
-		limit: 32
-	},
-	{
-		format: 'mounth',
-		label: ['mes','meses'],
-		limit: 12
-	},
-	{
-		format: 'year',
-		label:['año', 'años'],
-		limit: 0
-	}
-
-]
 
 
-export default function ProductDetail({ productId }) {
+
+export default function ProductDetail({ productId, user }) {
 	const [product, setProduct] = useState({})
 
 	useEffect(()=>{
@@ -112,6 +81,7 @@ export default function ProductDetail({ productId }) {
 								id={product.id}
 								auctions={ product?.auctions ?? [] }
 								initialValue={5000}
+								user={user}
 								step={50}
 							/>
 							<HeartButton

@@ -207,3 +207,37 @@ export const STATES = [
         "state_code": "V"
     }
 ]
+
+
+export const timeFormats = [
+	{
+		format: 'seconds',
+		label: ['segundo','segundos'],
+		limit: 60
+	},
+	{
+		format: 'minutes',
+		label: ['minuto','minutos'],
+		limit: 60
+	},
+	{
+		format: 'hours',
+		label: ['hora','horas'],
+		limit: 24
+	},
+	{
+		format: 'days',
+		label: ['dia','dias'],
+		limit: 32
+	},
+	{
+		format: 'mounth',
+		label: ['mes','meses'],
+		limit: 12
+	},
+	{
+		format: 'year',
+		label:['año', 'años'],
+		limit: 0
+	}
+]
