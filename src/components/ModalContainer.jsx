@@ -25,7 +25,7 @@ export default function ModalContainer() {
     },[searchParams])
 
 
-    return open && <div className="absolute z-10" ariaLabelledby="modal-title" role="dialog" ariaModal="true">
+    return open && <div className="absolute z-10" ariaLabelledby="modal-title" role="dialog" aria-modal="true">
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
             <div className="fixed inset-0 z-10 overflow-y-auto">
                 { content ? content : <div className="flex items-center justify-center min-h-screen text-center text-white font-bold">Loading...</div> }
