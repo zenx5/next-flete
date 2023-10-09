@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import CustomHeader from '@/components/header/Index'
 import { Inter } from 'next/font/google'
 import CustomFooter from '@/components/CustomFooter'
+import ModalContainer from '../components/ModalContainer';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
         <CustomHeader/>
         {children}
         <CustomFooter/>
+        <ModalContainer />
       </body>
     </html>
   )

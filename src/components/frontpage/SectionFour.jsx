@@ -30,7 +30,7 @@ export default function SectionFour() {
       </div>
 
       <div className="flex flex-col">
-      <div class="w-48 h-48 mx-9 my-4 border-4 rounded-full flex place-items-center">
+      <div className="w-48 h-48 mx-9 my-4 border-4 rounded-full flex place-items-center">
       <p>Seguridad garantizada en tus envíos</p>
     </div>
     <button className="bg-blue-900 hover:bg-blue-700 text-white w-20 font-bold self-center">
@@ -39,7 +39,7 @@ export default function SectionFour() {
     </div>
 
       <div className="flex flex-col">
-      <div class="w-48 h-48 mx-9 my-4 border-4 rounded-full flex place-items-center">
+      <div className="w-48 h-48 mx-9 my-4 border-4 rounded-full flex place-items-center">
       <p>Seguridad garantizada en tus envíos</p>
     </div>
     <button className="bg-blue-900 hover:bg-blue-700 text-white w-20 font-bold self-center">
@@ -48,7 +48,7 @@ export default function SectionFour() {
     </div>
 
     <div className="flex flex-col">
-    <div class="w-48 h-48 mx-9 my-4 border-4 rounded-full flex place-items-center">
+    <div className="w-48 h-48 mx-9 my-4 border-4 rounded-full flex place-items-center">
     <p>Seguridad garantizada en tus envíos</p>
   </div>
   <button className="bg-blue-900 hover:bg-blue-700 text-white w-20 font-bold self-center">

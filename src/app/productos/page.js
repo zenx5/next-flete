@@ -2,6 +2,7 @@ import TableProduct from './TableProduct';
 import { ArrowLeft, ArrowRight } from '../../components/icons'
 import { getUser } from '../../tools/actions';
 import { redirect } from 'next/navigation';
+import { USER_TYPE } from '../../tools/constants';
 
 export default function Products() {
     const user = getUser()
@@ -12,7 +13,7 @@ export default function Products() {
     return (
         <main className="flex min-h-screen flex-col bg-slate-100">
             <div className="w-2/3 mx-auto mt-10">
-                <TableProduct />
+                <TableProduct isAdmin={user?.type===USER_TYPE.ADMIN}/>
                 <div className="flex flex-row items-center justify-end gap-10">
                     <div className="p-4 flex flex-row gap-2">
                         <span>Rows per page</span>

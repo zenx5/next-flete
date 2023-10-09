@@ -8,11 +8,12 @@ export default function RegisterPage() {
         </svg>
         <p className="text-center text-blue-300 italic mt-2">¡¡Bienvenido a Cadete Siempre!!</p>
         <span className="flex flex-col border-t border-blue-500 mt-4">
-            <TextField label="Nombre" type="text" placeholder="Pedro"/>
-            <TextField label="Apellido" type="text" placeholder="Perez"/>
-            <TextField label="Email" type="email" placeholder="example@mail.com"/>
-            <TextField label="Contraseña" type="password" placeholder="Contraseña"/>
-            <TextField label="Contraseña" type="password" placeholder="Confirme contraseña"/>
+            <input type="hidden" name="action" value="register" />
+            <TextField label="Nombre" type="text" placeholder="Pedro" input={{ id:'firstname', name:'firstname'}}/>
+            <TextField label="Apellido" type="text" placeholder="Perez" input={{ id:'lastname', name:'lastname'}}/>
+            <TextField label="Email" type="email" placeholder="example@mail.com" input={{ id:'email', name:'email'}}/>
+            <TextField label="Contraseña" type="password" placeholder="Contraseña" input={{ id:'password', name:'password'}}/>
+            <TextField label="Contraseña" type="password" placeholder="Confirme contraseña" input={{ id:'password_confirmed', name:'password_confirmed'}}/>
         </span>
     </div>
 }

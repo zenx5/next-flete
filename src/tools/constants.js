@@ -7,6 +7,7 @@ export const ROUTER_PATH = {
     SUCCESS: '/detalles-orden',
     PROFILE: '/usuario/perfil',
     LOGIN: '/usuario/acceder',
+    REGISTER: '/usuario/registro',
     LOGOUT: '/usuario/salir',
     SEARCH: '/consulta',
     ABOUT: '/nosotros',
@@ -25,6 +26,7 @@ export const ROUTER_ID = {
     SUCCESS: 4,
     PROFILE: 5,
     LOGIN: 6,
+    REGISTER: 14,
     LOGOUT: 7,
     SEARCH: 8,
     ABOUT: 9,
@@ -205,3 +207,46 @@ export const STATES = [
         "state_code": "V"
     }
 ]
+
+
+export const timeFormats = [
+	{
+		format: 'seconds',
+		label: ['segundo','segundos'],
+		limit: 60
+	},
+	{
+		format: 'minutes',
+		label: ['minuto','minutos'],
+		limit: 60
+	},
+	{
+		format: 'hours',
+		label: ['hora','horas'],
+		limit: 24
+	},
+	{
+		format: 'days',
+		label: ['dia','dias'],
+		limit: 32
+	},
+	{
+		format: 'mounth',
+		label: ['mes','meses'],
+		limit: 12
+	},
+	{
+		format: 'year',
+		label:['año', 'años'],
+		limit: 0
+	}
+]
+
+export const USER_TYPE = {
+    ADMIN: 'admin'
+}
+
+export const ENTITIES = {
+    auctions: "products",
+    users: "users"
+}

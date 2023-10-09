@@ -1,11 +1,9 @@
 import { ROUTER_PATH } from "@/tools/constants"
 import { headers } from "next/headers"
+import { getError } from "../../../tools/actions"
 
-export default function Layout({ children }){
-    const headersList = headers()
-    const params = JSON.parse( decodeURIComponent( headersList.get("x-invoke-query") ) )
-    const error =  params?.error ? parseInt(params?.error) : 0
-
+export default async function Layout({ children }){
+    const error = getError()
 
     return <main className="w-screen h-auto flex justify-center items-center py-10 bg-gray-50">
         <form
@@ -16,7 +14,7 @@ export default function Layout({ children }){
             {children}
             <input type="hidden" name="redirect" value={ROUTER_PATH.HOME} />
             <button type="submit" className="w-full text-white bg-blue-500 font-bold border border-blue-500 p-3 my-4 rounded hover:bg-blue-600">Enviar</button>
-            {error===1 && <p className="text-center text-red-600 italic">Email o Contraseña incorrecta</p>}
+            <p className="text-center text-red-600 italic">{error.message}</p>
         </form>
     </main>
 }
