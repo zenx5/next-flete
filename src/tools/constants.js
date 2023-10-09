@@ -241,3 +241,12 @@ export const timeFormats = [
 		limit: 0
 	}
 ]
+
+export const USER_TYPE = {
+    ADMIN: 'admin'
+}
+
+export const ENTITIES = {
+    auctions: "products",
+    users: "users"
+}
