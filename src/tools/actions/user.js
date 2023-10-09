@@ -4,17 +4,9 @@ import { cookies } from "next/headers"
 
 // Definir estructura de Cookies de usuario
 const userCookie = {
-    name: "",
-    email: "",
-    token: "",
     id: "",
-    birthdate: "",
-    phone: "",
-    phoneFamily: "",
-    grade: "",
-    academic: "",
-    nextGrade: "",
-    expirationDate: "",
+    name: "",
+    email: ""
 };
 
 export const execAction = async (action) => {

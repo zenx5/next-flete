@@ -8,6 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors:{
+        'orange-flete':'#D36E2D',
+        'azul-flete':'#002361'
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

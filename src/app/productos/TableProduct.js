@@ -3,35 +3,24 @@ import { useState, useEffect } from "react"
 import { onSnap } from "@/tools/firebase/actions"
 import ProductRow from "./ProductRow";
 import { SearchIcon } from "@/components/icons";
+import { formatAuction, formatDimension, formatName, formatStatus, formatLocation } from "@/tools/formatFields";
+
 
 const fields = [
-    { id:"name", label: "Name" },
-    { id:"from", label: "From" },
-    { id:"to", label: "To" },
+    { id:"name", label: "Name", format: formatName},
+    { id:"from", label: "From", format: formatLocation },
+    { id:"to", label: "To", format: formatLocation },
     { id:"weight", label: "Weight" },
-    { id:"dimensions", label: "Dimensions", format: (a) => {
-        if( !a ) return ""
-        const {width, height, large, unit} = a
-        return `${width}${unit} x ${height}${unit} x ${large}${unit}`
-    } },
-    { id:"auctions", label: "Last Auction", format: (auctions) => {
-        if( !auctions || auctions.length === 0 ) return "-"
-        const lastAuction = auctions.reduce( (auction, acc) => auction.date>acc.date ? auction : acc , { mount : 0, date : 0 })
-        return <span className="flex flex-col gap-0 items-center justify-center">
-            <span>{lastAuction.mount} $USD</span>
-            <small className="text-gray-400 italic">{lastAuction?.user?.email ?? '-'}</small>
-        </span>
-    } },
-    { id:"status", label: "Status", format: label => {
-        const className = label==='active' ? "bg-green-300 text-green-800" : "bg-gray-300 "
-        return <span className={ "px-3 py-2 rounded-full uppercase font-medium " + className }>{label}</span>
-    } },
+    { id:"dimensions", label: "Dimensions", format: formatDimension },
+    { id:"auctions", label: "Last Auction", format: formatAuction },
+    { id:"status", label: "Status", format: formatStatus },
 ]
 
 
-export default function TableProduct() {
+export default function TableProduct({ isAdmin }) {
     const [target, setTarget] = useState("")
     const [entities, setEntities] = useState([])
+
     useEffect(()=>{
         onSnap( process.env.NEXT_PUBLIC_ENTITY_PRODUCT_NAME , data => {
             setEntities( prev => {
@@ -68,7 +57,7 @@ export default function TableProduct() {
                 </tr>
             </thead>
             <tbody className="table-row-group">
-                { entities.filter( filterAuction ).map( entity => <ProductRow key={'row' + entity.id} item={entity} fields={fields}/> ) }
+                { entities.filter( filterAuction ).map( entity => <ProductRow key={'row' + entity.id} item={entity} fields={fields} isAdmin={isAdmin} /> ) }
             </tbody>
         </table>
     </div>

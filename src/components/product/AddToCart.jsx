@@ -16,7 +16,6 @@ export default function AddToCart({ id, enableCount, classNameContainer, label=n
 
     const handlerClick_AddToCart = (event) => {
         event.preventDefault()
-        console.log(`handlerClick, AddToCart ${id}`)
         Cart.add(id)
         const value = Cart.quantity(id)
         if( value ) {
