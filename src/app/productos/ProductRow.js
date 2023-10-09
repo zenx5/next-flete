@@ -20,13 +20,13 @@ export default function ProductRow({ item, fields, isAdmin }) {
         ) }
         <td className="leading-6 text-sm font-normal text-center text-[#212B36] border-b-0">
             <span className="flex flex-row gap-1">
-                { isAdmin && <Link className="py-1 px-1 rounded-md border border-red-600 bg-red-600 text-white hover:bg-slate-800 hover:text-white uppercase text-sm" href="?modal=delete-auction">
+                { isAdmin && <Link className="py-1 px-1 rounded-md border-2 border-red-600 hover:bg-red-600 text-red-600 bg-transparent hover:text-white uppercase text-sm" href="?modal=delete-auction">
                     <DeleteIcon />
                 </Link>}
-                { isAdmin && <Link className="py-1 px-1 rounded-md border border-blue-600 bg-blue-600 text-white hover:bg-slate-800 hover:text-white uppercase text-sm" href="?modal=edit-auction">
+                { isAdmin && <Link className="py-1 px-1 rounded-md border-2 border-blue-600 hover:bg-blue-600 text-blue-600 bg-transparent hover:text-white uppercase text-sm" href="?modal=edit-auction">
                     <EditIcon />
                 </Link>}
-                <Link className="py-1 px-1 rounded-md border border-green-600 bg-green-600 text-white hover:bg-slate-800 hover:text-white uppercase text-sm" href={`${ROUTER_PATH.PRODUCTS}/${item.id}`}>
+                <Link className="py-1 px-1 rounded-md border-2 border-green-600 hover:bg-green-600 hover:text-white bg-transparent text-green-600 uppercase text-sm" href={`${ROUTER_PATH.PRODUCTS}/${item.id}`}>
                     <OpenIcon />
                 </Link>
             </span>
