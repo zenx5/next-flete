@@ -23,7 +23,7 @@ export default function ProductRow({ item, fields, isAdmin }) {
                 { isAdmin && <Link className="py-1 px-1 rounded-md border-2 border-red-600 hover:bg-red-600 text-red-600 bg-transparent hover:text-white uppercase text-sm" href="?modal=delete-auction">
                     <DeleteIcon />
                 </Link>}
-                { isAdmin && <Link className="py-1 px-1 rounded-md border-2 border-blue-600 hover:bg-blue-600 text-blue-600 bg-transparent hover:text-white uppercase text-sm" href="?modal=edit-auction">
+                { isAdmin && <Link className="py-1 px-1 rounded-md border-2 border-blue-600 hover:bg-blue-600 text-blue-600 bg-transparent hover:text-white uppercase text-sm" href={`?modal=edit-auction&params=id&id=${item.id}`}>
                     <EditIcon />
                 </Link>}
                 <Link className="py-1 px-1 rounded-md border-2 border-green-600 hover:bg-green-600 hover:text-white bg-transparent text-green-600 uppercase text-sm" href={`${ROUTER_PATH.PRODUCTS}/${item.id}`}>
