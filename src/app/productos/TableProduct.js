@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react"
+import Link from "next/link";
 import { onSnap } from "@/tools/firebase/actions"
 import ProductRow from "./ProductRow";
 import { SearchIcon } from "@/components/icons";
@@ -43,11 +44,12 @@ export default function TableProduct({ isAdmin }) {
     }
 
     return <div>
-        <div>
-            <div className="flex flex-row items-center border border-gray-200 hover:border-gray-900 rounded-lg py-2 px-4 my-5 gap-5 bg-white">
+        <div className="flex flex-row items-center gap-4 justify-between">
+            <div className="flex flex-row items-center border border-gray-200 hover:border-gray-900 rounded-lg py-2 px-4 my-5 gap-5 bg-white w-10/12">
                 <SearchIcon />
                 <input type="text" value={target} onChange={event=>setTarget(event.target.value)} className="outline-none p-2 w-full" placeholder="Buscar..."/>
             </div>
+            <Link href={`?modal=edit-auction&params=id&id=0`} className="bg-green-500 hover:bg-green-700 text-white rounded p-2 w-2/12 text-center">Crear Envio</Link>
         </div>
         <table className="table w-full border-spacing-0 border-collapse">
             <thead>
