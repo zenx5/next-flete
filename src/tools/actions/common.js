@@ -1,6 +1,5 @@
 "use server";
 import { cookies } from "next/headers";
-import modals from "../modals";
 
 export const setError = (message, code) => {
     const expires = Date.now() + 15 * 1000;
