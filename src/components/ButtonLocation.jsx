@@ -4,7 +4,7 @@ import TextField from "./TextField";
 import { MapPinIcon } from "./icons"
 import { useState } from "react";
 
-export default function ButtonLocation({ title }) {
+export default function ButtonLocation({ title, name, position }) {
     const [open, setOpen] = useState(false)
     const libraries = [ "places" ]
 
@@ -33,9 +33,10 @@ export default function ButtonLocation({ title }) {
             <p className="border border-gray-500 font-medium bg-gray-500 p-2 w-full text-center text-white rounded-t-md group-hover:bg-blue-500">{ title }</p>
             <span className="flex flex-row items-center justify-center gap-5 border border-gray-500 border-t-0 rounded-b-md w-full p-2">
                 <MapPinIcon className="w-10 h-10 group-hover:text-blue-500" />
-                <span>
-                    <p>Name</p>
-                    <p>location</p>
+                <span className="flex flex-col">
+                    <p>{ name }</p>
+                    <small className="text-[10px] m-0 p-0 opacity-50 italic">Lat { position.lat }</small>
+                    <small className="text-[10px] m-0 p-0 opacity-50 italic">Lng { position.lng }</small>
                 </span>
             </span>
         </button>
