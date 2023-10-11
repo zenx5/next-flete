@@ -62,8 +62,9 @@ export default function AuctionForm({ auctionId }) {
     }
 
     const handlerCreate = async () => {
-        const response = await actionSave( ENTITIES.auctions, auction )
-        console.log( response )
+        if( !await actionSave( ENTITIES.auctions, auction ) ) {
+            console.log('algo va mal')
+        }
     }
 
 
@@ -87,7 +88,7 @@ export default function AuctionForm({ auctionId }) {
                         title="From"
                         name={auction.from.name}
                         position={auction.from.position}
-                        onChange={ (name, position) => handlerChangeAuction('to', { name, position })}
+                        onChange={ (name, position) => handlerChangeAuction('from', { name, position })}
                     />
                     <ButtonLocation
                         title="To"
