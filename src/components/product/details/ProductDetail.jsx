@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { onSnap } from '@/tools/firebase/actions';
 import moment from "moment";
 import ImageSelector from "./ImageSelector"
@@ -7,7 +8,7 @@ import AuctionUp from '../AuctionUp'
 import HeartButton from '../HeartButton';
 import ShareButton from '../ShareButton';
 import ShareModal from './ShareModal';
-import { UserIcon } from "../../icons";
+import { MapPinIcon, UserIcon } from "../../icons";
 import { timeFormats } from '../../../tools/constants';
 
 const opacities = [
@@ -20,7 +21,7 @@ const opacities = [
 
 
 export default function ProductDetail({ productId, user }) {
-	const [product, setProduct] = useState({})
+	const [product, setProduct] = useState(null)
 
 	useEffect(()=>{
 		onSnap(process.env.NEXT_PUBLIC_ENTITY_PRODUCT_NAME, (result)=>{
@@ -57,7 +58,7 @@ export default function ProductDetail({ productId, user }) {
 		return diff>1 ? `hace ${diff} ${timeFormats[index].label[1]}` : `hace ${diff} ${timeFormats[index].label[0]}`
 	}
 
-	return <main className="mx-auto max-w-7xl bg-white sm:px-12 sm:pt-20 lg:px-16">
+	return product && <main className="mx-auto max-w-7xl bg-white sm:px-12 sm:pt-20 lg:px-16">
 		<div className="mx-auto max-w-2xl lg:max-w-none">
 			{/* Product */}
 			<div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 border-b-2 border-gray-400 pb-3">
@@ -73,6 +74,16 @@ export default function ProductDetail({ productId, user }) {
 							className="space-y-6 text-base text-gray-700"
 							dangerouslySetInnerHTML={{ __html: product.description }}
 						/>
+						<div className="flex flex-col gap-1">
+							<span className="flex flex-col">
+								<span><label className="font-semibold">Desde:</label> { product.from.name }</span>
+								<span className="italic ml-2 opacity-40">{product.from.position.lat}, {product.from.position.lng}</span>
+							</span>
+							<span className="flex flex-col">
+								<span><label className="font-semibold">Hasta:</label> { product.to.name }</span>
+								<span className="italic ml-2 opacity-40">{product.to.position.lat}, {product.to.position.lng}</span>
+							</span>
+						</div>
 					</div>
 
 					<form className="mt-6">
@@ -84,39 +95,29 @@ export default function ProductDetail({ productId, user }) {
 								user={user}
 								step={50}
 							/>
-							<HeartButton
-								id={product.id}
-								className="p-3 text-blue-400 border-2 border-blue-400 rounded-md hover:text-blue-500 hover:bg-blue-100"/>
+							<Link href={`?modal=map-auction&params=id&id=${product.id}`} className="p-3 text-indigo-400 border-2 border-indigo-400 rounded-md hover:text-indigo-500 hover:bg-indigo-100">
+								<MapPinIcon />
+							</Link>
 							<ShareButton
 								id={product.id}
-								className="p-3 text-blue-400 border-2 border-blue-400 rounded-md hover:text-blue-500 hover:bg-blue-100"/>
+								className="p-3 text-indigo-400 border-2 border-indigo-400 rounded-md hover:text-indigo-500 hover:bg-indigo-100"/>
 						</div>
 						{ ( product?.auctions && product.auctions?.length!==0) && <div className="mt-5 flex gap-2 flex-col">
 							<h3 className="font-bold">Ultimas ofertas:</h3>
 							<div className="bg-gradient-to-b from-indigo-500">
 								<div className="bg-white ml-1 pl-4 py-1 flex flex-col gap-3">
-									{ product.auctions?.sort( orderAutions ).slice(0,3).map( (auction, index) => <span key={`auction-${index}`} className={"flex flex-row cursor-pointer gap-2 hover:opacity-100 " + opacities[index] }>
-										<span className="flex flex-row gap-1">
+									{ product.auctions?.sort( orderAutions ).slice(0,3).map( (auction, index) => <span key={`auction-${index}`} className={"flex flex-row w-full overflow-hidden gap-2 cursor-pointer hover:opacity-100 " + opacities[index] }>
+										<span className="flex flex-row gap-1 w-full">
 											<UserIcon />
 											<span className="text-indigo-500 font-semibold">{ hideEmail( auction?.user?.email ) }</span>
+											ofertó <span className="font-semibold text-indigo-500">{auction.mount}$</span>
+											<span className="italic flex flex-nowrap w-full">{getLeft(auction.date)}</span>
 										</span>
-										<span>ofertó <span className="font-semibold text-indigo-500">{auction.mount}$</span></span>
-										<span className="flex flex-row italic flex-nowrap">{getLeft(auction.date)}</span>
 									</span>) }
 								</div>
 							</div>
 						</div>}
 					</form>
-
-					<section aria-labelledby="details-heading" className="mt-12">
-						<h2 id="details-heading" className="sr-only">
-							Detalles Adicionales
-						</h2>
-
-						<div className="divide-y divide-gray-200 border-t">
-							{/* {product?.details?.map((detail) => <Details key={detail.name} name={detail.name} items={detail.items}/> )} */}
-						</div>
-					</section>
 				</div>
 			</div>
 		</div>
