@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 import { actionSave } from '@/tools/firebase/actions';
+import { ENTITIES } from '../../tools/constants';
 
 export default function AuctionUp({ id, auctions, step, initialValue, user }) {
     const currency = "$ USD"
@@ -22,32 +23,31 @@ export default function AuctionUp({ id, auctions, step, initialValue, user }) {
 
     const handlerClickBuyNow = (event) => {
         event.preventDefault()
-        const newauctions = [...auctions, {
-            user:{
-                id      :   user?.id,
-                name    :   user?.name,
-                email   :   user?.email,
-                phone   :   user?.phone
-            },
-            mount: value,
-            date: Date.now()
-        }]
-        actionSave('products', {
-            auctions: newauctions
-        }, id )
-        const max = newauctions.reduce( (element,acc) => element.date > acc.date ? element : acc, { date: 0 } )
-        if( max.date > 0 ) {
-            setValue( prev => max.mount - step )
-            setLimit( prev => max.mount )
-        } else {
-            setValue( prev => initialValue - step )
-            setLimit( prev => initialValue )
+        try{
+            const newauctions = [...auctions, {
+                user:{
+                    id      :   user.id,
+                    name    :   user?.name ?? "",
+                    email   :   user?.email ?? "",
+                    phone   :   user?.phone ?? ""
+                },
+                mount: value,
+                date: Date.now()
+            }]
+            actionSave(ENTITIES.auctions, {
+                auctions: newauctions
+            }, id )
+            const max = newauctions.reduce( (element,acc) => element.date > acc.date ? element : acc, { date: 0 } )
+            if( max.date > 0 ) {
+                setValue( prev => max.mount - step )
+                setLimit( prev => max.mount )
+            } else {
+                setValue( prev => initialValue - step )
+                setLimit( prev => initialValue )
+            }
+        } catch( error ) {
+            console.log( error.message )
         }
-    }
-
-    const maxValue = () => {
-        if( auctions.length===0 ) return initialValue - step
-        return auctions.reduce( (element,acc) => element.date > acc.date ? element : acc, { date: 0 } )?.mount - step
     }
 
     const handlerChangeValue = (increment) => () => {
