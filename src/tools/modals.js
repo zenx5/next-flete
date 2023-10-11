@@ -3,6 +3,7 @@ import ButtonLocation from '@/components/ButtonLocation'
 import { actionGet, actionSave } from './firebase/actions'
 import { ENTITIES } from './constants'
 import AuctionForm from '../components/modals/AuctionForm'
+import MapAuction from '../components/modals/MapAuction'
 
 
 const modals = [
@@ -17,7 +18,13 @@ const modals = [
         component: (auctionId) => <AuctionForm auctionId={auctionId}/>,
         routes: [],
         recovery: async data => data.id
-    }
+    },
+    {
+        name:'map-auction',
+        component: (auctionId) => <MapAuction auctionId={auctionId} />,
+        routes: [],
+        recovery: async data => data.id
+    },
 ]
 
 export default modals

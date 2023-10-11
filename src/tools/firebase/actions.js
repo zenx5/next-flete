@@ -6,16 +6,19 @@ import defaultData from "./defaultData"
 export const onSnap = (name, callback, id) => {
     if( id ) {
         onSnapshot( doc(db, name, id) , doc => callback({
-            id: doc.id,
             ...defaultData[name],
-            ...doc.data()
+            ...doc.data(),
+            id: doc.id,
         }))
     } else {
-        onSnapshot( collection(db, name), snap => callback( snap.docs.map( doc => ({
-            id: doc.id,
-            ...defaultData[name],
-            ...doc.data()
-        }))) )
+        onSnapshot( collection(db, name), snap => callback(
+            snap.docs.map( doc => ({
+                    ...defaultData[name],
+                    ...doc.data(),
+                    id: doc.id
+                })
+            )
+        ) )
     }
 }
 
