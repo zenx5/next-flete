@@ -6,9 +6,9 @@ import BarSide from './BarSide'
 
 
 const subNavigation = [
-  { name: 'Perfil', href: 0, icon: "UserCircleIcon", current: false },
-  { name: 'Contraseña', href: 1, icon: "KeyIcon", current: false },
-  { name: 'Historial de Pedidos y Pagos', href: 2, icon: "CreditCardIcon", current: false },
+  { name: 'Perfil', href: 0, current: false },
+  { name: 'Contraseña', href: 1, current: false },
+  { name: 'Historial', href: 2, current: false },
 ]
 
 const payments = [
@@ -184,7 +184,7 @@ export default function PageProfile({ user }) {
               contents={[
                 <Account key="content-1" user={user} />,
                 <PasswordChange key="content-2" />,
-                <History key="content-3" payments={payments} orders={orders} />
+                // <History key="content-3" payments={payments} orders={orders} />
               ]}
             />
           </div >
