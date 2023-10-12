@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>Cadete Siempre</title>
+        <title>Hay Flete</title>
       </head>
       <body className={inter.className}>
         <CustomHeader/>

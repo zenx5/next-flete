@@ -16,16 +16,16 @@ export default function BarSide({ items=[], contents=[] }) {
                     key={item.name}
                     onClick={() => setSelected(item.href)}
                     className={classNames(
-                        item.href === selected ? 'border-orange-600 bg-orange-50 text-orange-600' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                        item.href === selected ? 'border-orange-flete bg-orange-50 text-orange-flete' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900',
                         'group flex items-center border-l-4 py-2 px-3 text-base font-medium w-full'
                     )}
                     >
-                    <item.icon
+                    { item?.icon && <item.icon
                         className={classNames(
                         item.href === selected ? 'text-orange-500' : 'text-gray-400 group - hover:text-gray-500',
                         '-ml-1 mr-3 h-6 w-6 flex-shrink-0'
                         )}
-                    />
+                    />}
                     <span className="truncate">{item.name}</span>
                     </button>
                 ))}
