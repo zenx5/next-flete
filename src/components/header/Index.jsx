@@ -1,13 +1,10 @@
-import Link from 'next/link';
-import ButtonCart from '../cart/ButtonCart';
 import MenuNav from './MenuNav';
-import Script from 'next/script';
 import Image from 'next/image';
-
 import { mainNavigation, secondaryNavigation } from '@/tools/navigation';
 import MovilMenu from './MovilMenu';
 import { getUser, isAuthenticated } from '@/tools/actions';
-import { ROUTER_ID, ROUTER_PATH } from '@/tools/constants';
+import { ROUTER_ID } from '@/tools/constants';
+import { UserIcon } from '../icons';
 
 export default async function CustomHeader() {
 
@@ -20,14 +17,14 @@ export default async function CustomHeader() {
             return item.id!==ROUTER_ID.LOGIN
         }
         // Si no esta autenticado
-        return item.id!==ROUTER_ID.PROFILE && item.id!==ROUTER_ID.LOGOUT && item.id!==ROUTER_ID.PRODUCTS
+        return item.id!==ROUTER_ID.PROFILE && item.id!==ROUTER_ID.PRODUCTS
     } )
 
     const accessNav = secondaryNavigation.filter( item => {
         if( isAuthenticatedBool ) {
             return item.id!==ROUTER_ID.LOGIN && item.id!==ROUTER_ID.REGISTER
         }
-        return item.id!==ROUTER_ID.LOGOUT
+        return item.id!==ROUTER_ID.LOGOUT && item.id!==ROUTER_ID.PROFILE
     })
 
     return <header className="">
@@ -38,8 +35,12 @@ export default async function CustomHeader() {
             <div className="hidden h-full lg:flex justify-center space-x-8 items-center">
                 <MenuNav navigation={mainNav} />
             </div>
-            <div className="hidden h-full lg:flex justify-center space-x-8 items-center">
+            <div className="hidden h-full lg:flex justify-center space-x-4 items-center">
                 <MenuNav navigation={accessNav} />
+                {/* <UserIcon className="w-6 h-6 text-black cursor-pointer hover:text-orange-flete m-0"/> */}
+            </div>
+            <div className="flex lg:hidden">
+                <MovilMenu navigation={[...mainNav, ...accessNav.map( item => ({ ...item, className:undefined }))]}/>
             </div>
         </div>
     </header>
