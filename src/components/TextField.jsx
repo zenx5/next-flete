@@ -2,16 +2,31 @@
 
 import { useState } from "react";
 
+
 export default function TextField( props ) {
-    const { label, type='text', helperText } = props
+    const {
+        label,
+        type='text',
+        helperText
+    } = props
     const [visible, toggleVisible] = useState(false)
+    const className = {
+        label : "left-4 top-3 relative w-fit "  + (props?.className?.label ? props?.className?.label : "bg-white px-2 text-blue-500"),
+        content : ((isPassword)=>{
+            return (isPassword ? "flex flex-row justify-between " : "") + (props?.className?.content ? props?.className?.content : "border border-blue-500 rounded")
+
+        })(props.type.toLowerCase()==='password'),
+        input: (props.type.toLowerCase()==='password' ? "w-full " : "w-fit ") + ( props?.className?.input ? props?.className?.input : "outline-none p-3 rounded w-full"),
+        helperText: props?.className?.helperText ? props?.className?.helperText : "text-xs px-2 pt-1 text-gray-500",
+        icon: props?.className?.icon ? props?.className?.icon : "w-6 h-6 text-blue-500"
+    }
 
     return <div className="flex flex-col">
-        <span className="left-4 top-3 relative w-fit bg-white px-2 text-blue-500">{label}</span>
-        { type?.toLowerCase()==='password' && <span className="flex flex-row border border-blue-500 rounded">
-            <input type={visible ? 'text' : 'password'} className="w-fit outline-none p-3 rounded" {...props?.input}/>
+        <span className={className.label}>{label}</span>
+        { type?.toLowerCase()==='password' && <span className={className.content}>
+            <input type={visible ? 'text' : 'password'} className={className.input} {...props?.input}/>
             <button type="button" onClick={()=>toggleVisible(prev =>!prev)} className="pr-2">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className.icon}>
                     { visible ? <>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -21,9 +36,9 @@ export default function TextField( props ) {
                 </svg>
             </button>
         </span>}
-        { type.toLowerCase()!=='password' && <span className="border border-blue-500 rounded">
-            <input type={type} className="w-full outline-none p-3 rounded" {...props.input}/>
+        { type.toLowerCase()!=='password' && <span className={className.content}>
+            <input type={type} className={className.input} {...props.input}/>
         </span>}
-        <span className="text-xs px-2 pt-1 text-gray-500">{helperText}</span>
+        <span className={className.helperText}>{helperText}</span>
     </div>
 }
