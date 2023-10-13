@@ -4,11 +4,11 @@ import { DeleteIcon, EditIcon, OpenIcon } from "../../components/icons"
 import { actionDelete } from "../../tools/firebase/actions"
 import { ENTITIES } from "@/tools/constants"
 
-export default function ProductRow({ item, fields, isAdmin }) {
+export default function ProductRow({ item, fields, isAdmin, isOwner }) {
 
     const formater = (value, formatAction) => {
         if( formatAction ) {
-            return formatAction(value, item, isAdmin)
+            return formatAction(value, item, (isAdmin || isOwner))
         }
         return value
     }
@@ -26,10 +26,10 @@ export default function ProductRow({ item, fields, isAdmin }) {
         ) }
         <td className="leading-6 text-sm font-normal text-center text-[#212B36] border-b-0">
             <span className="flex flex-row gap-1">
-                { isAdmin && <button onClick={handlerDelete} className="py-1 px-1 rounded-md border-2 border-red-600 hover:bg-red-600 text-red-600 bg-transparent hover:text-white uppercase text-sm" >
+                { (isAdmin || isOwner) && <button onClick={handlerDelete} className="py-1 px-1 rounded-md border-2 border-red-600 hover:bg-red-600 text-red-600 bg-transparent hover:text-white uppercase text-sm" >
                     <DeleteIcon />
                 </button>}
-                { isAdmin && <Link className="py-1 px-1 rounded-md border-2 border-blue-600 hover:bg-blue-600 text-blue-600 bg-transparent hover:text-white uppercase text-sm" href={`?modal=edit-auction&params=id&id=${item.id}`}>
+                { (isAdmin || isOwner) && <Link className="py-1 px-1 rounded-md border-2 border-blue-600 hover:bg-blue-600 text-blue-600 bg-transparent hover:text-white uppercase text-sm" href={`?modal=edit-auction&params=id&id=${item.id}`}>
                     <EditIcon />
                 </Link>}
                 <Link className="py-1 px-1 rounded-md border-2 border-green-600 hover:bg-green-600 hover:text-white bg-transparent text-green-600 uppercase text-sm" href={`${ROUTER_PATH.PRODUCTS}/${item.id}`}>
