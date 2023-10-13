@@ -5,11 +5,10 @@ import { onSnap } from '@/tools/firebase/actions';
 import moment from "moment";
 import ImageSelector from "./ImageSelector"
 import AuctionUp from '../AuctionUp'
-import HeartButton from '../HeartButton';
 import ShareButton from '../ShareButton';
 import ShareModal from './ShareModal';
-import { MapPinIcon, UserIcon } from "../../icons";
-import { timeFormats } from '../../../tools/constants';
+import { MapPinIcon, UserIcon, ChevronDownIcon, ChevronUpIcon } from "../../icons";
+import { USER_TYPE, timeFormats } from '../../../tools/constants';
 
 const opacities = [
 	"opacity-80",
@@ -17,11 +16,9 @@ const opacities = [
 	"opacity-30"
 ]
 
-
-
-
 export default function ProductDetail({ productId, user }) {
 	const [product, setProduct] = useState(null)
+	const [open, setOpen] = useState(false)
 
 	useEffect(()=>{
 		onSnap(process.env.NEXT_PUBLIC_ENTITY_PRODUCT_NAME, (result)=>{
@@ -93,30 +90,36 @@ export default function ProductDetail({ productId, user }) {
 								auctions={ product?.auctions ?? [] }
 								initialValue={5000}
 								user={user}
+								disabled={ user.type===USER_TYPE.ADMIN || product?.createdBy?.id===user.id || product.status==='closed' || product.status==='accept' }
 								step={50}
 							/>
-							<Link href={`?modal=map-auction&params=id&id=${product.id}`} className="p-3 text-indigo-400 border-2 border-indigo-400 rounded-md hover:text-indigo-500 hover:bg-indigo-100">
+							<Link href={`?modal=map-auction&params=id&id=${product.id}`} className="p-3 text-orange-400 border-2 border-orange-400 rounded-md hover:text-orange-500 hover:bg-orange-100">
 								<MapPinIcon />
 							</Link>
 							<ShareButton
 								id={product.id}
-								className="p-3 text-indigo-400 border-2 border-indigo-400 rounded-md hover:text-indigo-500 hover:bg-indigo-100"/>
+								className="p-3 text-orange-400 border-2 border-orange-400 rounded-md hover:text-orange-500 hover:bg-orange-100"/>
 						</div>
 						{ ( product?.auctions && product.auctions?.length!==0) && <div className="mt-5 flex gap-2 flex-col">
 							<h3 className="font-bold">Ultimas ofertas:</h3>
-							<div className="bg-gradient-to-b from-indigo-500">
+							<div className="bg-gradient-to-b from-orange-500">
 								<div className="bg-white ml-1 pl-4 py-1 flex flex-col gap-3">
-									{ product.auctions?.sort( orderAutions ).slice(0,3).map( (auction, index) => <span key={`auction-${index}`} className={"flex flex-row w-full overflow-hidden gap-2 cursor-pointer hover:opacity-100 " + opacities[index] }>
+									{ product.auctions?.sort( orderAutions ).slice(0, open ? product.auctions.length : 3).map( (auction, index) => <span key={`auction-${index}`} className={"flex flex-row w-full overflow-hidden gap-2 cursor-pointer hover:opacity-100 " + (!open ? opacities[index] : "opacity-60") }>
 										<span className="flex flex-row gap-1 w-full">
 											<UserIcon />
-											<span className="text-indigo-500 font-semibold">{ hideEmail( auction?.user?.email ) }</span>
-											ofertó <span className="font-semibold text-indigo-500">{auction.mount}$</span>
+											<span className="text-orange-500 font-semibold">{ hideEmail( auction?.user?.email ) }</span>
+											ofertó <span className="font-semibold text-orange-500">{auction.mount}$</span>
 											<span className="italic flex flex-nowrap w-full">{getLeft(auction.date)}</span>
 										</span>
 									</span>) }
 								</div>
 							</div>
 						</div>}
+						<span className="flex flex-row justify-center mt-4">
+							<button type="button" onClick={()=>setOpen(prev => !prev)}>
+								{ open ? <ChevronUpIcon /> : <ChevronDownIcon /> }
+							</button>
+						</span>
 					</form>
 				</div>
 			</div>
