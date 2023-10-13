@@ -88,6 +88,11 @@ export default function TableProduct({ userId, isAdmin }) {
             <tbody className="table-row-group">
                 { entities.filter( filterGroup ).filter( filterSearch ).map( entity => <ProductRow key={'row' + entity.id} item={entity} fields={fields} isAdmin={isAdmin} isOwner={entity?.createdBy?.id===userId}/> ) }
             </tbody>
+            { entities.filter( filterGroup ).filter( filterSearch ).length===0 && <tbody className="italic text-gray-500 text-center w-full">
+                <tr>
+                    <td colSpan={fields.length + 1} className="py-10">- No hay ofertas -</td>
+                </tr>
+            </tbody> }
         </table>
         <div className="flex flex-row items-center justify-end gap-10">
             <div className="p-4 flex flex-row gap-2">
