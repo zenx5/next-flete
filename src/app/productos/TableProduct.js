@@ -75,7 +75,7 @@ export default function TableProduct({ userId, isAdmin }) {
                 <SearchIcon />
                 <input type="text" value={target} onChange={event=>setTarget(event.target.value)} className="outline-none p-2 w-full" placeholder="Buscar..."/>
             </div>
-            <Link href={`?modal=edit-auction&params=id&id=0`} className="bg-green-500 hover:bg-green-700 text-white rounded p-2 w-2/12 text-center">Crear Envio</Link>
+            <Link href={`?modal=edit-auction&params=id&id=0`} className="bg-orange-500 hover:bg-orange-700 text-white rounded p-2 w-2/12 text-center">Crear Envio</Link>
         </div>
         <Tabs onChange={tab=>setCurrentTab(tab)}/>
         <table className="table w-full border-spacing-0 border-collapse">
@@ -96,7 +96,7 @@ export default function TableProduct({ userId, isAdmin }) {
                     <option value={5}>5</option>
                     <option value={10}>10</option>
                     <option value={25}>25</option>
-                    <option value={-1}>All</option>
+                    <option value={total}>All</option>
                 </select>
             </div>
             <div className="p-4">
