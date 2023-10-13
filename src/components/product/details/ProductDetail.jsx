@@ -105,9 +105,8 @@ export default function ProductDetail({ productId, user }) {
 							<div className="bg-gradient-to-b from-orange-500">
 								<div className="bg-white ml-1 pl-4 py-1 flex flex-col gap-3">
 									{ product.auctions?.sort( orderAutions ).slice(0, open ? product.auctions.length : 3).map( (auction, index) => <span key={`auction-${index}`} className={"flex flex-row w-full overflow-hidden gap-2 cursor-pointer hover:opacity-100 " + (!open ? opacities[index] : "opacity-60") }>
-										<span className="flex flex-row gap-1 w-full">
-											<UserIcon />
-											<span className="text-orange-500 font-semibold">{ hideEmail( auction?.user?.email ) }</span>
+										<span className="flex flex-row gap-1 w-full items-center">
+											<span className={"text-orange-500 " + (auction?.user?.id===user?.id ? "font-bold" : "font-semibold")}>{ auction?.user?.id===user?.id ? auction?.user?.email : hideEmail( auction?.user?.email ) }</span>
 											ofertó <span className="font-semibold text-orange-500">{auction.mount}$</span>
 											<span className="italic flex flex-nowrap w-full">{getLeft(auction.date)}</span>
 										</span>
