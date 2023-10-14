@@ -1,10 +1,12 @@
 "use client";
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Link from "next/link";
 import { onSnap } from "@/tools/firebase/actions"
 import ProductRow from "./ProductRow";
 import { SearchIcon } from "@/components/icons";
 import { formatAuction, formatDimension, formatName, formatStatus, formatLocation } from "@/tools/formatFields";
+import { ArrowLeft, ArrowRight } from '../../components/icons'
+import Tabs from "./Tabs";
 
 
 const fields = [
@@ -18,9 +20,15 @@ const fields = [
 ]
 
 
-export default function TableProduct({ isAdmin }) {
+export default function TableProduct({ userId, isAdmin }) {
     const [target, setTarget] = useState("")
+    const [currentTab, setCurrentTab] = useState(0)
     const [entities, setEntities] = useState([])
+    const [perPage, setPerPage] = useState(5)
+    const [page, setPage] = useState(1)
+    const [min, setMin] = useState(1)
+    const [max, setMax] = useState(5)
+    const [total, setTotal] = useState(0)
 
     useEffect(()=>{
         onSnap( process.env.NEXT_PUBLIC_ENTITY_PRODUCT_NAME , data => {
@@ -34,14 +42,32 @@ export default function TableProduct({ isAdmin }) {
         }, null)
     },[])
 
-    const filterAuction = (auction) => {
+    const filterSearch = useCallback( (entity) => {
         if( target.trim()==="" ) return true
         return (
-            auction.name.trim().toLowerCase().includes( target.trim().toLowerCase() ) ||
-            auction.from.trim().toLowerCase().includes( target.trim().toLowerCase() ) ||
-            auction.to.trim().toLowerCase().includes( target.trim().toLowerCase() )
+            entity.name.trim().toLowerCase().includes( target.trim().toLowerCase() ) ||
+            entity.from.trim().toLowerCase().includes( target.trim().toLowerCase() ) ||
+            entity.to.trim().toLowerCase().includes( target.trim().toLowerCase() )
         )
-    }
+    },[target])
+
+    const filterGroup = useCallback( (entity) => {
+        if( !entity?.createdBy ) return false
+        if(currentTab===0) return entity.createdBy.id!==userId
+        if(currentTab===1) return entity.auctions.map( auction => auction.user.id ).includes( userId )
+        if(currentTab===2) return entity.createdBy.id===userId
+        return false
+    }, [currentTab, userId])
+
+
+    useEffect(()=>{
+        const _total = entities.filter( filterGroup ).filter( filterSearch ).length
+        setTotal( prev => _total )
+        setMin( perPage*(page - 1) + 1 )
+        setMax( perPage*page>_total ? _total : perPage*page )
+    },[entities, filterGroup, filterSearch, page, perPage])
+
+
 
     return <div>
         <div className="flex flex-row items-center gap-4 justify-between">
@@ -49,8 +75,9 @@ export default function TableProduct({ isAdmin }) {
                 <SearchIcon />
                 <input type="text" value={target} onChange={event=>setTarget(event.target.value)} className="outline-none p-2 w-full" placeholder="Buscar..."/>
             </div>
-            <Link href={`?modal=edit-auction&params=id&id=0`} className="bg-green-500 hover:bg-green-700 text-white rounded p-2 w-2/12 text-center">Crear Envio</Link>
+            <Link href={`?modal=edit-auction&params=id&id=0`} className="bg-orange-500 hover:bg-orange-700 text-white rounded p-2 w-2/12 text-center">Crear Envio</Link>
         </div>
+        <Tabs onChange={tab=>setCurrentTab(tab)}/>
         <table className="table w-full border-spacing-0 border-collapse">
             <thead>
                 <tr className="table-row align-middle outline-0">
@@ -59,8 +86,34 @@ export default function TableProduct({ isAdmin }) {
                 </tr>
             </thead>
             <tbody className="table-row-group">
-                { entities.filter( filterAuction ).map( entity => <ProductRow key={'row' + entity.id} item={entity} fields={fields} isAdmin={isAdmin} /> ) }
+                { entities.filter( filterGroup ).filter( filterSearch ).map( entity => <ProductRow key={'row' + entity.id} item={entity} fields={fields} isAdmin={isAdmin} isOwner={entity?.createdBy?.id===userId}/> ) }
             </tbody>
+            { entities.filter( filterGroup ).filter( filterSearch ).length===0 && <tbody className="italic text-gray-500 text-center w-full">
+                <tr>
+                    <td colSpan={fields.length + 1} className="py-10">- No hay ofertas -</td>
+                </tr>
+            </tbody> }
         </table>
+        <div className="flex flex-row items-center justify-end gap-10">
+            <div className="p-4 flex flex-row gap-2">
+                <span>Rows per page</span>
+                <select className="outline-none" onChange={event=> setPerPage(event.target.value)} value={perPage}>
+                    <option value={5}>5</option>
+                    <option value={10}>10</option>
+                    <option value={25}>25</option>
+                    <option value={total}>All</option>
+                </select>
+            </div>
+            <div className="p-4">
+                {min} - {max} of { total }
+            </div>
+            <div className="flex flex-row p-4 items-center">
+                <button onClick={() => setPage( prev - 1 )} disabled={page===1} className="disabled:text-gray-500"><ArrowLeft /></button>
+                <select className="font-semibold px-4 py-1 mx-2 border border-gray-400 rounded" value={page} onChange={ev => setPage( ev.target.value )}>
+                    { Array(Math.round( total/perPage + 0.5 )).fill(1).map( (f, index) => <option key={`page-index-${index+1}`} value={index + 1}>{index + 1}</option> )}
+                </select>
+                <button onClick={() => setPage( prev + 1 )} disabled={page===Math.round( total/perPage + 0.5 )  } className="disabled:text-gray-500"><ArrowRight /></button>
+            </div>
+        </div>
     </div>
 }
