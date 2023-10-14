@@ -8,8 +8,8 @@ export default function ButtonLocation({ title, name, position, onChange }) {
     const [open, setOpen] = useState(false)
     const [namePlace, setNamePlace] = useState(name)
     const [pos, setPos] = useState( {
-        lat: parseInt( position.lat ),
-        lng: parseInt( position.lng )
+        lat: parseFloat( position.lat ),
+        lng: parseFloat( position.lng )
     } )
     const libraries = [ "places" ]
 
@@ -24,8 +24,8 @@ export default function ButtonLocation({ title, name, position, onChange }) {
     });
 
     const center = {
-        lat: parseInt( position.lat ),
-        lng: parseInt( position.lng )
+        lat: parseFloat( position.lat ),
+        lng: parseFloat( position.lng )
     }
 
     const options = {
