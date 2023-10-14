@@ -12,6 +12,8 @@ export default function AuctionForm({ auctionId }) {
             setAuction({
                 id:null,
                 name:"",
+                description:"",
+                price:0,
                 from: {
                     name:"",
                     position: {
@@ -36,7 +38,6 @@ export default function AuctionForm({ auctionId }) {
             })
         } else {
             onSnap(ENTITIES.auctions,doc => {
-                console.log( 'doc', doc )
                 setAuction(prev => doc)
             }, auctionId)
         }
@@ -75,14 +76,30 @@ export default function AuctionForm({ auctionId }) {
                 { auctionId=="0" && <Link href="?" onClick={handlerCreate} className="bg-green-500 hover:bg-green-700 text-white rounded p-2 w-2/12 text-center">Crear</Link>}
             </div>
             <form >
+                <span className="flex flex-row gap-1 justify-between">
+                    <TextField
+                        label="Name"
+                        type="text"
+                        input={{
+                            value:auction.name ?? "",
+                            onChange: event => handlerChangeAuction('name', event.target.value)
+                        }}/>
+                    <TextField
+                        label="Price"
+                        type="number"
+                        input={{
+                            value:auction.price ?? "",
+                            onChange: event => handlerChangeAuction('price', event.target.value)
+                        }}/>
+                </span>
                 <TextField
-                    label="Name"
+                    label="Description"
                     type="text"
                     input={{
-                        value:auction.name ?? "",
-                        onChange: event => handlerChangeAuction('name', event.target.value)
+                        value:auction.description ?? "",
+                        onChange: event => handlerChangeAuction('description', event.target.value)
                     }}/>
-                <p className="mt-5 font-semibold">Ubicación</p>
+                <p className="mt-5 font-semibold mb-2">Ubicación</p>
                 <span className="flex flex-row gap-5 justify-around">
                     <ButtonLocation
                         title="From"
@@ -99,7 +116,7 @@ export default function AuctionForm({ auctionId }) {
                 </span>
                 <p className="mt-5 font-semibold">Medidas</p>
                 <span className="flex flex-col gap-2 px-5">
-                    <span className="flex flex-row gap-2">
+                    <span className="flex flex-row gap-2 justify-around">
                         <TextField
                             label="Width"
                             type="number"
@@ -115,7 +132,7 @@ export default function AuctionForm({ auctionId }) {
                                 onChange: event => handlerChangeAuction('dimensions', { ...auction.dimensions, height:event.target.value })
                             }} />
                     </span>
-                    <span className="flex flex-row gap-2">
+                    <span className="flex flex-row gap-2 justify-around">
                         <TextField
                             label="Large"
                             type="number"
