@@ -89,14 +89,11 @@ export default function ProductDetail({ productId, user }) {
 							<AuctionUp
 								id={product.id}
 								auctions={ product?.auctions ?? [] }
-								initialValue={5000}
+								initialValue={product?.price}
 								user={user}
 								disabled={ user.type===USER_TYPE.ADMIN || product?.createdBy?.id===user.id || product.status==='closed' || product.status==='accept' }
 								step={50}
 							/>
-							{/* <Link href={`?modal=map-auction&params=id&id=${product.id}`} className="p-3 text-orange-400 border-2 border-orange-400 rounded-md hover:text-orange-500 hover:bg-orange-100">
-								<MapPinIcon />
-							</Link> */}
 							<ShareButton
 								id={product.id}
 								className="p-3 text-orange-400 border-2 border-orange-400 rounded-md hover:text-orange-500 hover:bg-orange-100"/>
