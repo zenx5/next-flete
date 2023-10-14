@@ -16,9 +16,7 @@ export default function MapAuction({ auctionId }) {
       })
 
     useEffect(()=>{
-        console.log('use effect 1')
         onSnap(ENTITIES.auctions, doc => {
-            console.log( doc )
             setAuction(doc)
             setCenter({
                 lat: (parseFloat(doc.from.position.lat) + parseFloat(doc.to.position.lat))/2,
@@ -42,7 +40,6 @@ export default function MapAuction({ auctionId }) {
     });
 
     useEffect(()=>{
-        console.log('use effect 2')
         if( isLoaded && auction ) {
             setDirectionsValue({
                 origin: auction.from.position,
@@ -71,14 +68,10 @@ export default function MapAuction({ auctionId }) {
             }} />
             {   (directionsValue.destination !== '' && directionsValue.origin !== '') && <DirectionsService
                     options={directionsValue}
-                    onLoad={(d)=>console.log('load',d)}
                     callback={(result, status) => {
                         if (result !== null && !response) {
                             if (status === 'OK') {
-                                console.log( result )
                                 setResponse(result)
-                            } else {
-                                console.log('response: ', result)
                             }
                         }
                     }}
