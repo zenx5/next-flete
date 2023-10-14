@@ -7,8 +7,9 @@ import ImageSelector from "./ImageSelector"
 import AuctionUp from '../AuctionUp'
 import ShareButton from '../ShareButton';
 import ShareModal from './ShareModal';
-import { MapPinIcon, UserIcon, ChevronDownIcon, ChevronUpIcon } from "../../icons";
-import { USER_TYPE, timeFormats } from '../../../tools/constants';
+import { ChevronDownIcon, ChevronUpIcon } from "@/components/icons";
+import { USER_TYPE, timeFormats } from '@/tools/constants';
+import MapAuction from '@/components/modals/MapAuction';
 
 const opacities = [
 	"opacity-80",
@@ -63,7 +64,7 @@ export default function ProductDetail({ productId, user }) {
 				<ImageSelector images={product?.images} />
 
 				{/* Product info */}
-				<div className="mt-4 md:mt-0 px-5 pt-8 bg-white">
+				<div className="mt-4 md:mt-0 px-5 pt-0 bg-white">
 					<h1 className="text-3xl font-bold tracking-tight text-gray-900">{product.name}</h1>
 					<div className="mt-6">
 						<h3 className="sr-only">Description</h3>
@@ -88,14 +89,11 @@ export default function ProductDetail({ productId, user }) {
 							<AuctionUp
 								id={product.id}
 								auctions={ product?.auctions ?? [] }
-								initialValue={5000}
+								initialValue={product?.price}
 								user={user}
 								disabled={ user.type===USER_TYPE.ADMIN || product?.createdBy?.id===user.id || product.status==='closed' || product.status==='accept' }
 								step={50}
 							/>
-							<Link href={`?modal=map-auction&params=id&id=${product.id}`} className="p-3 text-orange-400 border-2 border-orange-400 rounded-md hover:text-orange-500 hover:bg-orange-100">
-								<MapPinIcon />
-							</Link>
 							<ShareButton
 								id={product.id}
 								className="p-3 text-orange-400 border-2 border-orange-400 rounded-md hover:text-orange-500 hover:bg-orange-100"/>
@@ -122,6 +120,7 @@ export default function ProductDetail({ productId, user }) {
 					</form>
 				</div>
 			</div>
+			<MapAuction auctionId={product.id} />
 		</div>
 		<ShareModal url={"https://heroicons.com/"+product.id} />
 	</main>

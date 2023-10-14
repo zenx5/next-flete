@@ -1,10 +1,9 @@
 export default function SectionFive() {
 
-	return (
-        <><div className="grid grid-cols-1 md:grid-cols-2 bg-zinc-600 h-[46rem] md:h-[26rem] text-white">
+	return <section><div className="grid grid-cols-1 md:grid-cols-2 bg-zinc-600 h-[46rem] md:h-[26rem] text-white">
       <div className="">
         <img
-          src="https://www.comparapps.com/wp-content/uploads/2020/03/imagenes-para-paginas-web.png"
+          src="/images/imagenes-para-paginas-web.png"
           alt=""
           className="object-cover object-center h-full" />
       </div>
@@ -39,7 +38,7 @@ export default function SectionFive() {
         </div>
         <div className="">
         <img
-          src="https://www.comparapps.com/wp-content/uploads/2020/03/imagenes-para-paginas-web.png"
+          src="/images/imagenes-para-paginas-web.png"
           alt=""
           className="object-cover object-center h-full" />
       </div>
@@ -49,7 +48,7 @@ export default function SectionFive() {
       <div className="grid grid-cols-1 md:grid-cols-2 bg-black h-[46rem] md:h-[26rem] text-white">
       <div className="">
         <img
-          src="https://www.comparapps.com/wp-content/uploads/2020/03/imagenes-para-paginas-web.png"
+          src="/images/imagenes-para-paginas-web.png"
           alt=""
           className="object-cover object-center h-full" />
       </div>
@@ -67,8 +66,6 @@ export default function SectionFive() {
         </button>
       </div>
     </div>
-      </>
-      
-    )
+  </section>
 
 }

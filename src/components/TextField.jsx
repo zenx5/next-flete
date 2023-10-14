@@ -15,8 +15,8 @@ export default function TextField( props ) {
         content : ((isPassword)=>{
             return (isPassword ? "flex flex-row justify-between " : "") + (props?.className?.content ? props?.className?.content : "border border-blue-500 rounded")
 
-        })(props.type.toLowerCase()==='password'),
-        input: (props.type.toLowerCase()==='password' ? "w-full " : "w-fit ") + ( props?.className?.input ? props?.className?.input : "outline-none p-3 rounded w-full"),
+        })(type.toLowerCase()==='password'),
+        input: (type.toLowerCase()==='password' ? "w-full " : "w-fit ") + ( props?.className?.input ? props?.className?.input : "outline-none p-3 rounded w-full"),
         helperText: props?.className?.helperText ? props?.className?.helperText : "text-xs px-2 pt-1 text-gray-500",
         icon: props?.className?.icon ? props?.className?.icon : "w-6 h-6 text-blue-500"
     }

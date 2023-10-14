@@ -11,24 +11,12 @@ export default function FrontPage() {
 		<div className="">
 			!Aqui va el Hero!
 		</div>
-
 		<main>
-
-			<section>
 			<SectionOne/>
-			</section>
-			<section>
 			<SectionTwo/>
-			</section>
-			<section>
 			<SectionThree/>
-			</section>
-			<section>
 			<SectionFour/>
-			</section>
-			<section>
 			<SectionFive/>
-			</section>
 		</main>
 	</div>
 }

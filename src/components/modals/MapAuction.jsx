@@ -17,11 +17,10 @@ export default function MapAuction({ auctionId }) {
 
     useEffect(()=>{
         onSnap(ENTITIES.auctions, doc => {
-            console.log( doc )
             setAuction(doc)
             setCenter({
-                lat: (parseInt(doc.from.position.lat) + parseInt(doc.to.position.lat))/2,
-                lng: (parseInt(doc.from.position.lng) + parseInt(doc.to.position.lng))/2
+                lat: (parseFloat(doc.from.position.lat) + parseFloat(doc.to.position.lat))/2,
+                lng: (parseFloat(doc.from.position.lng) + parseFloat(doc.to.position.lng))/2
             })
         }, auctionId)
     },[auctionId])
@@ -50,39 +49,41 @@ export default function MapAuction({ auctionId }) {
         }
     },[isLoaded, auction])
 
-    return <div className="w-1/2 h-1/2 mx-auto mt-20">
+    return <div className="w-1/2 h-1/2 mx-auto mt-5">
         { (isLoaded && auction) && <GoogleMap
             options={options}
             zoom={7}
             center={center}
             mapTypeId={google.maps.MapTypeId.ROADMAP}
-            mapContainerStyle={{ width: 'auto', height: '800px' }}
+            mapContainerStyle={{ width: 'auto', height: '300px' }}
             onLoad={() => console.log('Map Component Loaded...')}
         >
             <Marker position={{
-                lat: parseInt( auction.to.position.lat ),
-                lng: parseInt( auction.to.position.lng ),
+                lat: parseFloat( auction.to.position.lat ),
+                lng: parseFloat( auction.to.position.lng ),
             }} />
             <Marker position={{
-                lat: parseInt( auction.from.position.lat ),
-                lng: parseInt( auction.from.position.lng ),
+                lat: parseFloat( auction.from.position.lat ),
+                lng: parseFloat( auction.from.position.lng ),
             }} />
             {   (directionsValue.destination !== '' && directionsValue.origin !== '') && <DirectionsService
                     options={directionsValue}
                     callback={(result, status) => {
-                        if (result !== null) {
+                        if (result !== null && !response) {
                             if (status === 'OK') {
-                                console.log( result )
                                 setResponse(result)
-                            } else {
-                                console.log('response: ', result)
                             }
                         }
                     }}
               />
             }
             { response && <DirectionsRenderer options={{
-                directions: response
+                directions: {
+                    ...response,
+                    request:{
+                        ...response.request
+                    }
+                }
             }} /> }
 
         </GoogleMap>}

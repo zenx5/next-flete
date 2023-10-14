@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function SectionThree() {
 
-	return <div className="grid grid-cols-1 md:grid-cols-2 bg-white pt-2 md:pt-8 pb-12 md:pb-16">
+	return <section className="grid grid-cols-1 md:grid-cols-2 bg-white pt-2 md:pt-8 pb-12 md:pb-16">
         <div className="flex flex-col pt-12 md:pt-16">
         <div className="px-14 md:px-20 py-4"><p className="text-3xl">Sobre Nosotros</p></div>
         <div className="px-14 md:px-20">
@@ -18,13 +18,13 @@ export default function SectionThree() {
         </div>
         <div className="flex flex-col items-center pt-3 ">
           <Image
-            src="https://www.comparapps.com/wp-content/uploads/2020/03/imagenes-para-paginas-web.png"
+            src="/images/imagenes-para-paginas-web.png"
             alt=""
             width={100}
             height={100}
             className="h-full w-11/12 object-cover object-center"
           />
       </div>
-    </div>
+    </section>
 
 }

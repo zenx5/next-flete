@@ -1,10 +1,9 @@
 export default function SectionFour() {
 
-	return (
-        <div className="grid grid-cols-1 md:grid-cols-2 bg-amber-600 pt-16 pb-20">
+	return <section className="grid grid-cols-1 md:grid-cols-2 bg-amber-600 pt-16 pb-20">
         <div className="w-full flex flex-col items-center">
         <img
-        src="https://falerocargo.com/wp-content/uploads/2017/10/camion-falero-frente.png"
+        src="/images/camion-falero-frente.png"
         alt=""
         className="h-full w-2/3 object-cover object-center"
       />
@@ -57,8 +56,6 @@ export default function SectionFour() {
   </div>
     </div>
         </div>
-        </div>
-     
-    )
+  </section>
 
 }
