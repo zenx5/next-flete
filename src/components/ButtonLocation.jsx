@@ -43,7 +43,7 @@ export default function ButtonLocation({ title, name, position, onChange }) {
     }
 
     return <>
-        <button className="group flex flex-col items-center rounded-md w-1/3" type="button" onClick={()=>setOpen(true)}>
+        <button className="group flex flex-col items-center rounded-md w-2/3" type="button" onClick={()=>setOpen(true)}>
             <p className="border border-gray-500 font-medium bg-gray-500 p-2 w-full text-center text-white rounded-t-md group-hover:bg-blue-500">{ title }</p>
             <span className="flex flex-row items-center justify-center gap-5 border border-gray-500 border-t-0 rounded-b-md w-full p-2">
                 <MapPinIcon className="w-10 h-10 group-hover:text-blue-500" />
