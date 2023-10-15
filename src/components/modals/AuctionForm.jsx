@@ -5,8 +5,10 @@ import ButtonLocation from "../ButtonLocation"
 import { actionSave, onSnap } from "../../tools/firebase/actions"
 import { ENTITIES } from "../../tools/constants"
 
-export default function AuctionForm({ auctionId }) {
+export default function AuctionForm({ auctionId, userId }) {
     const [auction, setAuction] = useState(null)
+    const [user, setUser] = useState(null)
+
     useEffect(()=>{
         if( auctionId==="0" ){
             setAuction({
@@ -43,6 +45,13 @@ export default function AuctionForm({ auctionId }) {
         }
     }, [auctionId])
 
+    useEffect(()=>{
+        if( userId ) {
+            onSnap(ENTITIES.users, doc => setUser(prev => doc ), userId)
+        }
+
+    }, [userId])
+
     const handlerChangeAuction = (tag, value) => {
         if( auctionId=="0") {
             setAuction(prev=>({
@@ -63,7 +72,14 @@ export default function AuctionForm({ auctionId }) {
     }
 
     const handlerCreate = async () => {
-        if( !await actionSave( ENTITIES.auctions, auction ) ) {
+        if( !await actionSave( ENTITIES.auctions, {
+            ...auction,
+            createdBy: {
+                id: user.id,
+                name: user.name,
+                email: user.email
+            }
+        } ) ) {
             console.log('algo va mal')
         }
     }
@@ -105,12 +121,14 @@ export default function AuctionForm({ auctionId }) {
                         title="From"
                         name={auction.from.name}
                         position={auction.from.position}
+                        geolocate={auctionId==="0"}
                         onChange={ (name, position) => handlerChangeAuction('from', { name, position })}
                     />
                     <ButtonLocation
                         title="To"
                         name={auction.to.name}
                         position={auction.to.position}
+                        geolocate={auctionId==="0"}
                         onChange={ (name, position) => handlerChangeAuction('to', { name, position })}
                     />
                 </span>

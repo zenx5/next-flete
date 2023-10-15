@@ -15,13 +15,16 @@ const modals = [
     },
     {
         name:'edit-auction',
-        component: (auctionId) => <AuctionForm auctionId={auctionId}/>,
+        component: ({auctionId, userId}) => <AuctionForm auctionId={auctionId} userId={userId}/>,
         routes: [],
-        recovery: async data => data.id
+        recovery: async data => ({
+            auctionId:data.id,
+            userId: data.userid
+        })
     },
     {
         name:'map-auction',
-        component: (auctionId) => <MapAuction auctionId={auctionId} />,
+        component: (auctionId) => <MapAuction auctionId={auctionId}  />,
         routes: [],
         recovery: async data => data.id
     },
