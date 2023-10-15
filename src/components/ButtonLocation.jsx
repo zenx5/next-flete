@@ -44,13 +44,9 @@ export default function ButtonLocation({ title, name, position, geolocate, onCha
     useEffect(()=>{
         if( geolocate ) {
             navigator?.geolocation?.getCurrentPosition( position => {
-                const {
-                    longitude,
-                    latitude
-                } = position.coords
                 setPos({
-                    lat : latitude,
-                    lng : longitude
+                    lat : position.coords.latitude,
+                    lng : position.coords.longitude
                 })
             })
 
