@@ -51,18 +51,19 @@ export default function AuctionUp({ id, auctions, step, initialValue, user, disa
                 className="w-2/4 p-3 text-right outline-none disabled:text-gray-500"
                 placeholder="0.00"
                 value={value}
-                disabled={disabled}
+                disabled={ disabled || value===0 }
                 max={ limit + step }
+                min={0}
                 onChange={ event => setValue( event.target.value ) }
             />
             <span className="w-1/4 flex flex-col items-center border-l border-orange-flete">
-                <button type="button" onClick={handlerChangeValue(step)} disabled={ disabled || ((limit-step) <= value) } className="disabled:bg-white disabled:text-gray-600 font-semibold cursor-pointer border-b border-orange-200 w-full text-center hover:bg-orange-100 hover:text-orange-flete disabled:cursor-default">+</button>
-                <button type="button" onClick={handlerChangeValue(-step)} disabled={disabled} className="font-semibold cursor-pointer w-full text-center hover:bg-orange-100 hover:text-orange-flete disabled:bg-white disabled:text-gray-600 disabled:cursor-default">-</button>
+                <button type="button" onClick={handlerChangeValue(step)} disabled={ disabled || value===0  || ((limit-step) <= value) } className="disabled:bg-white disabled:text-gray-600 font-semibold cursor-pointer border-b border-orange-200 w-full text-center hover:bg-orange-100 hover:text-orange-flete disabled:cursor-default">+</button>
+                <button type="button" onClick={handlerChangeValue(-step)} disabled={ disabled || value===0 } className="font-semibold cursor-pointer w-full text-center hover:bg-orange-100 hover:text-orange-flete disabled:bg-white disabled:text-gray-600 disabled:cursor-default">-</button>
             </span>
         </span>
         <button
             className="border-l-2 border-orange-flete py-3 px-6 hover:bg-orange-100 hover:text-orange-flete disabled:bg-white disabled:text-gray-600 rounded-r-md"
-            disabled={disabled}
+            disabled={ disabled || value===0 }
             onClick={handlerClickBuyNow}
         >Ofertar</button>
     </div>

@@ -184,6 +184,9 @@ export default function PageProfile({ user }) {
               contents={[
                 <Account key="content-1" user={user} />,
                 <PasswordChange key="content-2" />,
+                <div key="content-3" className="flex w-full h-full col-span-9 items-center justify-center italic">
+                  Aqui va el historial
+                </div>
                 // <History key="content-3" payments={payments} orders={orders} />
               ]}
             />
