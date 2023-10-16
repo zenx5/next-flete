@@ -40,8 +40,9 @@ export async function POST(request) {
             password
           }
           if( await actionSave("users", user) ) {
+            const users = await actionSearch("users", "email", "==", email)
             setUser({
-              ...user,
+              ...users[0],
               password: undefined
             })
             const url = new URL(redirectToUrl, request.url)
