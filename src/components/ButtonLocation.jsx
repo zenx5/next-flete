@@ -1,10 +1,10 @@
 "use client";
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, Marker, useLoadScript, get } from "@react-google-maps/api";
 import TextField from "./TextField";
 import { MapPinIcon } from "./icons"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function ButtonLocation({ title, name, position, onChange }) {
+export default function ButtonLocation({ title, name, position, geolocate, onChange }) {
     const [open, setOpen] = useState(false)
     const [namePlace, setNamePlace] = useState(name)
     const [pos, setPos] = useState( {
@@ -39,8 +39,19 @@ export default function ButtonLocation({ title, name, position, onChange }) {
             lat : event.latLng.lat(),
             lng : event.latLng.lng()
         })
-
     }
+
+    useEffect(()=>{
+        if( geolocate ) {
+            navigator?.geolocation?.getCurrentPosition( position => {
+                setPos({
+                    lat : position.coords.latitude,
+                    lng : position.coords.longitude
+                })
+            })
+
+        }
+    }, [geolocate])
 
     return <>
         <button className="group flex flex-col items-center rounded-md w-2/3" type="button" onClick={()=>setOpen(true)}>
