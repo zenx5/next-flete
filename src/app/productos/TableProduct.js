@@ -54,8 +54,8 @@ export default function TableProduct({ userId, isAdmin }) {
 
     const filterGroup = useCallback( (entity) => {
         if( !entity?.createdBy ) return false
-        if(currentTab===TABS.AVAILABLE) return entity.createdBy.id!==userId
-        if(currentTab===TABS.FAVORITE) return entity.auctions.map( auction => auction.user.id ).includes( userId )
+        if(currentTab===TABS.AVAILABLE) return entity.createdBy.id!==userId && entity.status==='active'
+        if(currentTab===TABS.FAVORITE) return entity.auctions.map( auction => auction.user.id ).includes( userId ) && entity.status!=='closed'
         if(currentTab===TABS.SELF) return entity.createdBy.id===userId
         return false
     }, [currentTab, userId])
@@ -76,8 +76,8 @@ export default function TableProduct({ userId, isAdmin }) {
 
     const filterByTab = targetTab => (entity) => {
         if( !entity?.createdBy ) return false
-        if(targetTab===TABS.AVAILABLE) return entity.createdBy.id!==userId
-        if(targetTab===TABS.FAVORITE) return entity.auctions.map( auction => auction.user.id ).includes( userId )
+        if(targetTab===TABS.AVAILABLE) return entity.createdBy.id!==userId && entity.status==='active'
+        if(targetTab===TABS.FAVORITE) return entity.auctions.map( auction => auction.user.id ).includes( userId ) && entity.status!=='closed'
         if(targetTab===TABS.SELF) return entity.createdBy.id===userId
         return false
     }
