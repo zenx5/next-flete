@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { ENTITIES, ROUTER_PATH } from "./constants"
-import { actionSave } from "./firebase/actions"
+import { actionGet, actionSave } from "./firebase/actions"
 
 const handlerChangeField = (field, value, row) => event => {
     if( event.target.value !== value ) {
@@ -37,16 +37,49 @@ export const formatAuction = (auctions, row, isAdmin) => {
     </span>
 }
 
-export const formatStatus = (label, row, isAdmin) => {
+export const formatStatus = (status, row, isAdmin) => {
     if( isAdmin ) {
-        return <select className="rounded-full px-3 py-2" value={label} onChange={handlerChangeField("status", label, row)}>
+        const validateChange = async (event) => {
+            if( status==="accept" ) return;
+            switch( event.target.value ) {
+                case "active":
+                case "closed":
+                    handlerChangeField("status", status, row)(event)
+                    break;
+                case "accept":
+                    if( row.auctions.length > 0 ) {
+                        handlerChangeField("status", status, row)(event)
+                        const auction = row.auctions[ row.auctions.length - 1 ]
+                        const user = await actionGet(ENTITIES.users, auction.user.id )
+                        const oldauctions = user?.auctions ?? []
+                        const newauction = {
+                            ...row,
+                            price: auction.mount,
+                            date: auction.date,
+                        }
+                        delete newauction.auctions
+                        delete newauction.status
+                        actionSave(ENTITIES.users, {
+                            ...user,
+                            auctions: [
+                                ...oldauctions,
+                                newauction
+                            ]
+                        }, user.id)
+                    }
+                    break;
+            }
+        }
+        return <select className="rounded-full px-3 py-2" value={status} onChange={validateChange}>
             <option className="p-2 font-medium" value="active">ACTIVE</option>
             <option className="p-2 font-medium" value="closed">CLOSED</option>
             <option className="p-2 font-medium" value="accept">ACCEPT</option>
         </select>
     }
-    const className = label==='active' ? "bg-green-300 text-green-800" : "bg-gray-300 "
-    return <span className={ "px-3 py-2 rounded-full uppercase font-medium " + className }>{label}</span>
+    const className = status==='active' ?
+        "bg-green-300 text-green-800" :
+        status==='accept' ? "bg-yellow-300" : "bg-gray-300"
+    return <span className={ "px-3 py-2 rounded-full uppercase font-medium " + className }>{status}</span>
 }
 
 export const formatName = (name, row, isAdmin) => {

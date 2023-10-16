@@ -250,3 +250,9 @@ export const ENTITIES = {
     auctions: "products",
     users: "users"
 }
+
+export const TABS = {
+    AVAILABLE: 0,
+    FAVORITE: 1,
+    SELF: 2
+}
