@@ -8,9 +8,6 @@ import SectionFive from './SectionFive'
 export default function FrontPage() {
 
 	return <div className="">
-		<div className="">
-			!Aqui va el Hero!
-		</div>
 		<main>
 			<SectionOne/>
 			<SectionTwo/>
