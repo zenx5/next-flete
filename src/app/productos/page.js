@@ -6,9 +6,9 @@ import { USER_TYPE } from '../../tools/constants';
 export default function Products() {
     const user = getUser()
     if( !user ) return redirect("/")
-    
+
     return (
-        <main className="flex min-h-screen flex-col bg-slate-100">
+        <main className="flex min-h-screen flex-col bg-slate-100 mt-10">
             <div className="w-2/3 mx-auto mt-10">
                 <TableProduct isAdmin={user?.type===USER_TYPE.ADMIN} userId={user.id}/>
             </div>
