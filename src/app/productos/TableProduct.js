@@ -7,6 +7,7 @@ import { SearchIcon } from "@/components/icons";
 import { formatAuction, formatDimension, formatName, formatStatus, formatLocation } from "@/tools/formatFields";
 import { ArrowLeft, ArrowRight } from '../../components/icons'
 import Tabs from "./Tabs";
+import { TABS } from "../../tools/constants";
 
 
 const fields = [
@@ -53,9 +54,9 @@ export default function TableProduct({ userId, isAdmin }) {
 
     const filterGroup = useCallback( (entity) => {
         if( !entity?.createdBy ) return false
-        if(currentTab===0) return entity.createdBy.id!==userId
-        if(currentTab===1) return entity.auctions.map( auction => auction.user.id ).includes( userId )
-        if(currentTab===2) return entity.createdBy.id===userId
+        if(currentTab===TABS.AVAILABLE) return entity.createdBy.id!==userId && entity.status==='active'
+        if(currentTab===TABS.FAVORITE) return entity.auctions.map( auction => auction.user.id ).includes( userId ) && entity.status!=='closed'
+        if(currentTab===TABS.SELF) return entity.createdBy.id===userId
         return false
     }, [currentTab, userId])
 
@@ -67,6 +68,20 @@ export default function TableProduct({ userId, isAdmin }) {
         setMax( perPage*page>_total ? _total : perPage*page )
     },[entities, filterGroup, filterSearch, page, perPage])
 
+    const labelTabs = [
+        'Envios disponibles',
+        'Favoritos',
+        'Mis Envios',
+    ]
+
+    const filterByTab = targetTab => (entity) => {
+        if( !entity?.createdBy ) return false
+        if(targetTab===TABS.AVAILABLE) return entity.createdBy.id!==userId && entity.status==='active'
+        if(targetTab===TABS.FAVORITE) return entity.auctions.map( auction => auction.user.id ).includes( userId ) && entity.status!=='closed'
+        if(targetTab===TABS.SELF) return entity.createdBy.id===userId
+        return false
+    }
+
 
 
     return <div>
@@ -77,7 +92,7 @@ export default function TableProduct({ userId, isAdmin }) {
             </div>
             <Link href={`?modal=edit-auction&params=id,userid&id=0&userid=${userId}`} className="bg-orange-500 hover:bg-orange-700 text-white rounded p-2 w-2/12 text-center">Crear Envio</Link>
         </div>
-        <Tabs onChange={tab=>setCurrentTab(tab)}/>
+        <Tabs onChange={tab=>setCurrentTab(tab)} labels={ labelTabs.map( (label, index) => `${label} (${entities.filter( filterByTab(index) ).length})` ) }/>
         <table className="table w-full border-spacing-0 border-collapse">
             <thead>
                 <tr className="table-row align-middle outline-0">

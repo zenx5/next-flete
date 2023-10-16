@@ -4,18 +4,13 @@ import { useState } from "react"
 export default function Tabs({
     activeColor='blue',
     deactiveColor='gray',
-    onChange
+    onChange,
+    labels
 }) {
     const [current, setCurrent] = useState(0)
 
-    const items = [
-        'Envios disponibles',
-        'Favoritos',
-        'Mis Envios'
-    ]
-
     return <nav className="flex gap-0 w-full ">
-        { items.map( (item, index) => <button
+        { labels.map( (item, index) => <button
             key={`nav-item-${index}`}
             className={
                 `${ current===index ?

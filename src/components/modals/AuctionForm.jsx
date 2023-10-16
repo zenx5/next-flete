@@ -15,6 +15,7 @@ export default function AuctionForm({ auctionId, userId }) {
                 id:null,
                 name:"",
                 description:"",
+                status: 'active',
                 price:0,
                 from: {
                     name:"",
