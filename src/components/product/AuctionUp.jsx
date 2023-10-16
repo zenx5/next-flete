@@ -8,16 +8,13 @@ export default function AuctionUp({ id, auctions, step, initialValue, user, disa
     const [value, setValue] = useState( 0 )
     const [limit, setLimit] = useState( 0 )
     useEffect(()=>{
-        if( auctions.length>0 && value===0 ) {
+        if( auctions.length>0 ) {
             const max = auctions.reduce( (element,acc) => element.date > acc.date ? element : acc, { date: 0 } )
-            if( max.date > 0 ) {
-                setValue( prev => max.mount - step )
-                setLimit( prev => max.mount )
-            } else {
-                setValue( prev => initialValue - step )
-                setLimit( prev => initialValue )
-            }
-
+            setValue( prev => parseFloat( max.mount ) - parseFloat( step ) )
+            setLimit( prev => parseFloat( max.mount ) )
+        } else {
+            setValue( prev => parseFloat( initialValue ) )
+            setLimit( prev => parseFloat( initialValue ) )
         }
     },[initialValue, auctions, value, step])
 
@@ -37,14 +34,6 @@ export default function AuctionUp({ id, auctions, step, initialValue, user, disa
             actionSave(ENTITIES.auctions, {
                 auctions: newauctions
             }, id )
-            const max = newauctions.reduce( (element,acc) => element.date > acc.date ? element : acc, { date: 0 } )
-            if( max.date > 0 ) {
-                setValue( prev => max.mount - step )
-                setLimit( prev => max.mount )
-            } else {
-                setValue( prev => initialValue - step )
-                setLimit( prev => initialValue )
-            }
         } catch( error ) {
             console.log( error.message )
         }
