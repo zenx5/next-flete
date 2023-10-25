@@ -231,7 +231,7 @@ export const timeFormats = [
 		limit: 32
 	},
 	{
-		format: 'mounth',
+		format: 'month',
 		label: ['mes','meses'],
 		limit: 12
 	},

@@ -20,12 +20,40 @@ const opacities = [
 export default function ProductDetail({ productId, user }) {
 	const [product, setProduct] = useState(null)
 	const [open, setOpen] = useState(false)
+	const [leftTime, setLeftTime] = useState([])
 
 	useEffect(()=>{
 		onSnap(process.env.NEXT_PUBLIC_ENTITY_PRODUCT_NAME, (result)=>{
 			setProduct( prev => result )
 		}, productId)
 	},[productId])
+
+	useEffect(()=>{
+		if( product && leftTime.length===0 ) {
+			setInterval( () => {
+				const diff = moment(product?.endTime).diff( Date.now() )
+				setLeftTime( prev => [
+					{
+						label: 'Dias',
+						value: Math.floor(diff / (1000 * 60 * 60 * 24))
+					},
+					{
+						label: 'Horas',
+						value: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+					},
+					{
+						label: 'Minutos',
+						value: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+					},
+					{
+						label: 'Segundos',
+						value: Math.floor((diff % (1000 * 60)) / 1000)
+					}
+				])
+			},1000)
+		}
+
+	},[leftTime, product])
 
 	const hideEmail = (email) => {
 		if( !email ) return ""
@@ -56,7 +84,8 @@ export default function ProductDetail({ productId, user }) {
 		return diff>1 ? `hace ${diff} ${timeFormats[index].label[1]}` : `hace ${diff} ${timeFormats[index].label[0]}`
 	}
 
-	return product && <main className="mx-auto max-w-7xl bg-white sm:px-12 sm:pt-20 lg:px-16">
+
+	return product && <>
 		<div className="mx-auto max-w-2xl lg:max-w-none">
 			{/* Product */}
 			<div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 border-b-2 border-gray-400 pb-3">
@@ -72,14 +101,25 @@ export default function ProductDetail({ productId, user }) {
 							className="space-y-6 text-base text-gray-700"
 							dangerouslySetInnerHTML={{ __html: product.description }}
 						/>
-						<div className="flex flex-col gap-1">
+						<div className="flex flex-col gap-1 text-sm mt-4">
 							<span className="flex flex-col">
 								<span><label className="font-semibold">Desde:</label> { product.from.name }</span>
-								<span className="italic ml-2 opacity-40">{product.from.position.lat}, {product.from.position.lng}</span>
+								<span className="italic ml-3 opacity-40">{product.from.position.lat}, {product.from.position.lng}</span>
 							</span>
 							<span className="flex flex-col">
 								<span><label className="font-semibold">Hasta:</label> { product.to.name }</span>
-								<span className="italic ml-2 opacity-40">{product.to.position.lat}, {product.to.position.lng}</span>
+								<span className="italic ml-3 opacity-40">{product.to.position.lat}, {product.to.position.lng}</span>
+							</span>
+							<span className="flex flex-col">
+								<span className="font-semibold">Cierra en:</span>
+								<span className="italic ml-3 opacity-40">
+									<span className="flex flex-row gap-2 px-2">
+										{leftTime.map( item => <span key={item.label}  className="py-2 px-4 flex flex-col gap-1 items-center">
+											<span>{ item.value }</span>
+											<span>{ item.label }</span>
+										</span>)}
+									</span>
+								</span>
 							</span>
 						</div>
 					</div>
@@ -123,5 +163,5 @@ export default function ProductDetail({ productId, user }) {
 			<MapAuction auctionId={product.id} />
 		</div>
 		<ShareModal url={"https://heroicons.com/"+product.id} />
-	</main>
+	</>
 }
