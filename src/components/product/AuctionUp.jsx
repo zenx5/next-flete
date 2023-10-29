@@ -4,7 +4,7 @@ import { actionSave } from '@/tools/firebase/actions';
 import { ENTITIES } from '../../tools/constants';
 
 export default function AuctionUp({ id, auctions, step, initialValue, user, disabled }) {
-    const currency = "$ USD"
+    const currency = "$USD"
     const [value, setValue] = useState( 0 )
     const [limit, setLimit] = useState( 0 )
     useEffect(()=>{
@@ -45,10 +45,10 @@ export default function AuctionUp({ id, auctions, step, initialValue, user, disa
 
     return <div className="h-fit m-0 p-0 flex flex-row text-orange-flete border-2 border-orange-flete rounded-md">
         <span className="flex flex-row items-center">
-            <span id="currency" className="w-1/4 text-center border-r border-orange-flete h-full items-center flex justify-center">{ currency }</span>
+            <span id="currency" className="w-1/4 text-center border-r border-orange-flete h-full items-center flex justify-center px-4">{ currency }</span>
             <input
                 type="number"
-                className="w-2/4 p-3 text-right outline-none disabled:text-gray-500"
+                className="w-2/4 px-2 py-3 text-right outline-none disabled:text-gray-500"
                 placeholder="0.00"
                 value={value}
                 disabled={ disabled || value===0 }
@@ -62,7 +62,7 @@ export default function AuctionUp({ id, auctions, step, initialValue, user, disa
             </span>
         </span>
         <button
-            className="border-l-2 border-orange-flete py-3 px-6 hover:bg-orange-100 hover:text-orange-flete disabled:bg-white disabled:text-gray-600 rounded-r-md"
+            className="border-l-2 border-orange-flete p-3 hover:bg-orange-100 hover:text-orange-flete disabled:bg-white disabled:text-gray-600 rounded-r-md"
             disabled={ disabled || value===0 }
             onClick={handlerClickBuyNow}
         >Ofertar</button>
