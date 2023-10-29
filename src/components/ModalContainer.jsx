@@ -45,7 +45,7 @@ export default function ModalContainer() {
 
 
     return open && <div className="absolute z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <Link href="?" className="fixed rounded-md text-black z-20 top-10 right-10 p-2 border border-black">
+        <Link href="?" className="fixed rounded-md text-black z-20 top-10 right-10 p-2 border bg-white">
             <CloseIcon />
         </Link>
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
