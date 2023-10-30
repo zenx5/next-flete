@@ -28,7 +28,7 @@ export default function SliderMain() {
 		setSpeed( prev => duration )
 	}
 
-    return <Slider {...{...settings, autoplaySpeed: speed }} afterChange={handlerChangeSlick}>
+    return sliders.length>0 && <Slider {...{...settings, autoplaySpeed: speed }} afterChange={handlerChangeSlick}>
         { sliders.filter( slider => slider.isVisible ).map( slider => <div key={slider.id} className="text-center"> <span className="h-[30vh] justify-center items-center flex  bg-white"><Image src={slider.src} alt="" width={500} height={100} /></span> </div> )}
     </Slider>
 }
