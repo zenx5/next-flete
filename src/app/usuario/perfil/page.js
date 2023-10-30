@@ -3,12 +3,14 @@ import Account from "./Account";
 import PasswordChange from "./PasswordChange";
 import History from "./History";
 import BarSide from './BarSide'
+import Marketing from "./Marketing";
 
 
 const subNavigation = [
   { name: 'Perfil', href: 0, current: false },
   { name: 'Contraseña', href: 1, current: false },
   { name: 'Historial', href: 2, current: false },
+  { name: 'Marketing', href: 3, current: false },
 ]
 
 const payments = [
@@ -186,7 +188,8 @@ export default function PageProfile({ user }) {
                 <PasswordChange key="content-2" />,
                 <div key="content-3" className="flex w-full h-full items-center justify-center italic">
                   Aqui va el historial
-                </div>
+                </div>,
+                <Marketing key="content-4" />
                 // <History key="content-3" payments={payments} orders={orders} />
               ]}
             />
