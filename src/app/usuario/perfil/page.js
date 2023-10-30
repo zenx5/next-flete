@@ -4,6 +4,7 @@ import PasswordChange from "./PasswordChange";
 import History from "./History";
 import BarSide from './BarSide'
 import Marketing from "./Marketing";
+import { USER_TYPE } from "../../../tools/constants";
 
 
 const subNavigation = [
@@ -182,7 +183,7 @@ export default function PageProfile({ user }) {
         <main className="mx-auto max-w-7xl pb-10 lg:px-8 lg:py-12">
           <div className="lg:grid lg:grid-cols-12 lg:gap-x-5">
             <BarSide
-              items={subNavigation}
+              items={subNavigation.filter( (item, index) => user.type===USER_TYPE.ADMIN || index!==3 )}
               contents={[
                 <Account key="content-1" user={user} />,
                 <PasswordChange key="content-2" />,
@@ -190,8 +191,7 @@ export default function PageProfile({ user }) {
                   Aqui va el historial
                 </div>,
                 <Marketing key="content-4" />
-                // <History key="content-3" payments={payments} orders={orders} />
-              ]}
+              ].filter( (item, index) => user.type===USER_TYPE.ADMIN || index!==3 )}
             />
           </div >
         </main >
