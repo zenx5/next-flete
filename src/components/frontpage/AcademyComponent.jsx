@@ -1,10 +1,10 @@
 'use client'
 
-import escudoArmada from '../../../public/images/escudoArmada.png'
-import escudoGuardia from '../../../public/images/guardiaNacionalEscudo.png'
-import escudoEjercito from '../../../public/images/escudoEjercito.png'
-import escudoMilicia from '../../../public/images/escudoMilicia.png'
-import escudoAviacion from '../../../public/images/escudoAviacion.png'
+import escudoArmada from '@/public/images/escudoArmada.png'
+import escudoGuardia from '@/public/images/guardiaNacionalEscudo.png'
+import escudoEjercito from '@/public/images/escudoEjercito.png'
+import escudoMilicia from '@/public/images/escudoMilicia.png'
+import escudoAviacion from '@/public/images/escudoAviacion.png'
 import { useState } from 'react'
 
 const categories = [

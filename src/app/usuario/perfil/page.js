@@ -4,7 +4,7 @@ import PasswordChange from "./PasswordChange";
 import History from "./History";
 import BarSide from './BarSide'
 import Marketing from "./Marketing";
-import { USER_TYPE } from "../../../tools/constants";
+import { USER_TYPE } from "@/tools/constants";
 
 
 const subNavigation = [

@@ -1,5 +1,5 @@
 import ProductDetail from '@/components/product/details/ProductDetail'
-import { getUser } from '../../../tools/actions';
+import { getUser } from '@/tools/actions';
 import { redirect } from 'next/navigation';
 
 export default async function Products({ params }) {

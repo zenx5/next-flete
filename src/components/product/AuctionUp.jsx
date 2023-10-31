@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 import { actionSave } from '@/tools/firebase/actions';
-import { ENTITIES } from '../../tools/constants';
+import { ENTITIES } from '@/tools/constants';
 
 export default function AuctionUp({ id, auctions, step, initialValue, user, disabled }) {
     const currency = "$USD"
