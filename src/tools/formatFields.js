@@ -95,7 +95,7 @@ export const formatName = (name, row, isAdmin) => {
 }
 
 export const formatLocation = (location, row, isAdmin) => {
-    return <span className="flex flex-col items-center">
+    return <span className="flex flex-row md:flex-col items-center gap-2 md:gap-0">
         <span>{location.name}</span>
         <small className="text-[10px] m-0 p-0 opacity-50 italic">Lat: {location.position.lat}</small>
         <small className="text-[10px] m-0 p-0 opacity-50 italic">Lng: {location.position.lng}</small>
