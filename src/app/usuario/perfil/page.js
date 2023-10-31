@@ -187,9 +187,7 @@ export default function PageProfile({ user }) {
               contents={[
                 <Account key="content-1" user={user} />,
                 <PasswordChange key="content-2" />,
-                <div key="content-3" className="flex w-full h-full items-center justify-center italic">
-                  Aqui va el historial
-                </div>,
+                <History key="content-3" user={user} />,
                 <Marketing key="content-4" />
               ].filter( (item, index) => user.type===USER_TYPE.ADMIN || index!==3 )}
             />
