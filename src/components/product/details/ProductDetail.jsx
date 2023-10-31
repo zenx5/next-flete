@@ -31,7 +31,7 @@ export default function ProductDetail({ productId, user }) {
 	useEffect(()=>{
 		if( product && leftTime.length===0 ) {
 			setInterval( () => {
-				const diff = moment(product?.endTime).diff( Date.now() )
+				const diff = moment( Date.parse(product?.endTime) ).diff( Date.now() )
 				setLeftTime( prev => [
 					{
 						label: 'Dias',
