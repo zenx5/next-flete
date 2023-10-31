@@ -5,9 +5,9 @@ import { onSnap } from "@/tools/firebase/actions"
 import ProductRow from "./ProductRow";
 import { SearchIcon } from "@/components/icons";
 import { formatAuction, formatDimension, formatName, formatStatus, formatLocation } from "@/tools/formatFields";
-import { ArrowLeft, ArrowRight } from '../../components/icons'
+import { ArrowLeft, ArrowRight } from '@/components/icons'
 import Tabs from "./Tabs";
-import { TABS } from "../../tools/constants";
+import { TABS } from "@/tools/constants";
 
 
 const fields = [

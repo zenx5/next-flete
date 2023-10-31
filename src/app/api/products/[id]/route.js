@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { products } from '../../../../tools/mockup/products.mockup';
+import { products } from '@/tools/mockup/products.mockup';
 
 
 export async function GET(request, { params }) {

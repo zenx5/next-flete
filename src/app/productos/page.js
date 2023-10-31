@@ -1,7 +1,7 @@
 import TableProduct from './TableProduct';
-import { getUser } from '../../tools/actions';
+import { getUser } from '@/tools/actions';
 import { redirect } from 'next/navigation';
-import { USER_TYPE } from '../../tools/constants';
+import { USER_TYPE } from '@/tools/constants';
 
 export default function Products() {
     const user = getUser()

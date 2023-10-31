@@ -1,9 +1,5 @@
-import TextField from '@/components/TextField'
-import ButtonLocation from '@/components/ButtonLocation'
-import { actionGet, actionSave } from './firebase/actions'
-import { ENTITIES } from './constants'
-import AuctionForm from '../components/modals/AuctionForm'
-import MapAuction from '../components/modals/MapAuction'
+import AuctionForm from '@/components/modals/AuctionForm'
+import MapAuction from '@/components/modals/MapAuction'
 
 
 const modals = [

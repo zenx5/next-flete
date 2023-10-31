@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import TextField from "../TextField"
 import ButtonLocation from "../ButtonLocation"
-import { actionSave, onSnap } from "../../tools/firebase/actions"
-import { ENTITIES } from "../../tools/constants"
+import { actionSave, onSnap } from "@/tools/firebase/actions"
+import { ENTITIES } from "@/tools/constants"
 
 export default function AuctionForm({ auctionId, userId }) {
     const [auction, setAuction] = useState(null)

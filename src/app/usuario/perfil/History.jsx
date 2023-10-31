@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react"
 import { onSnap } from "@/tools/firebase/actions"
-import { formatAuction } from "../../../tools/formatFields";
-import MapAuction from "../../../components/modals/MapAuction";
+import { formatAuction } from "@/tools/formatFields";
+import MapAuction from "@/components/modals/MapAuction";
 import { Marker } from "@react-google-maps/api";
 
 export default function History({ user }) {

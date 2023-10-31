@@ -1,4 +1,4 @@
-import { UserIcon } from '../components/icons'
+import { UserIcon } from '@/components/icons'
 import { ROUTER_ID, ROUTER_PATH } from './constants'
 
 export const mainNavigation = [
