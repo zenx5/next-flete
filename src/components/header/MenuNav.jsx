@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link";
-import { execAction } from "../../tools/actions"
+import { execAction } from "@/tools/actions"
 import { usePathname } from "next/navigation";
 
 

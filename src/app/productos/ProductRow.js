@@ -1,7 +1,7 @@
 import { ROUTER_PATH } from "@/tools/constants"
 import Link from "next/link"
-import { DeleteIcon, EditIcon, OpenIcon, MapPinIcon } from "../../components/icons"
-import { actionDelete } from "../../tools/firebase/actions"
+import { DeleteIcon, EditIcon, OpenIcon, MapPinIcon } from "@/components/icons"
+import { actionDelete } from "@/tools/firebase/actions"
 import { ENTITIES } from "@/tools/constants"
 import RowCardMobile from "./RowCardMobile"
 

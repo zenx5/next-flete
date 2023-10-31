@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import TextField from "../TextField"
 import ButtonLocation from "../ButtonLocation"
-import { actionSave, onSnap } from "../../tools/firebase/actions"
-import { ENTITIES } from "../../tools/constants"
+import { actionSave, onSnap } from "@/tools/firebase/actions"
+import { ENTITIES } from "@/tools/constants"
 
 export default function AuctionForm({ auctionId, userId }) {
     const [auction, setAuction] = useState(null)
@@ -37,7 +37,10 @@ export default function AuctionForm({ auctionId, userId }) {
                     large: 0,
                     unit: ''
                 },
-                weight: ""
+                weight: "",
+                endTime: 0,
+                deliveryTime: 0,
+                pickUpTime: 0
             })
         } else {
             onSnap(ENTITIES.auctions,doc => {
@@ -84,6 +87,8 @@ export default function AuctionForm({ auctionId, userId }) {
             console.log('algo va mal')
         }
     }
+
+    console.log( auction )
 
 
     return auction && <div className="w-full h-full flex items-center justify-center">
@@ -167,6 +172,36 @@ export default function AuctionForm({ auctionId, userId }) {
                                 onChange: event => handlerChangeAuction('dimensions', { ...auction.dimensions, unit:event.target.value })
                             }} />
                     </span>
+                </span>
+                <p className="mt-5 font-semibold">Tiempos</p>
+                <span className="flex flex-col gap-2 px-5 pb-10">
+                    <span className="flex flex-row gap-2 justify-around">
+                        <TextField
+                            label="De cierre"
+                            type="date"
+                            helperText="Fecha para el cierre de la subasta"
+                            input={{
+                                value: auction.endTime ,
+                                onChange: event => handlerChangeAuction('endTime', event.target.value )
+                            }} />
+                        <TextField
+                            label="De recogida"
+                            type="date"
+                            helperText="Fecha limite para pasar buscando la encomienda"
+                            input={{
+                                value: auction.pickUpTime,
+                                onChange: event => handlerChangeAuction('deliveryTime', event.target.value )
+                            }} />
+                        <TextField
+                            label="De Entrega"
+                            type="date"
+                            helperText="Fecha limite para entregar en destino"
+                            input={{
+                                value: auction.deliveryTime,
+                                onChange: event => handlerChangeAuction('pickUpTime', event.target.value )
+                            }} />
+                    </span>
+
                 </span>
             </form>
         </div>

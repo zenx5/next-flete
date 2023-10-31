@@ -1,8 +1,8 @@
 import { setUser } from '@/tools/actions';
 import { ROUTER_PATH } from '@/tools/constants';
 import { NextResponse } from 'next/server';
-import { actionSearch, actionSave } from '../../../tools/firebase/actions';
-import { setError } from '../../../tools/actions';
+import { actionSearch, actionSave } from '@/tools/firebase/actions';
+import { setError } from '@/tools/actions';
 
 export async function POST(request) {
     const form = await request.formData()

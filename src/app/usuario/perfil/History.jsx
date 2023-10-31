@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react"
 import { onSnap } from "@/tools/firebase/actions"
-import { formatAuction } from "../../../tools/formatFields";
-import MapAuction from "../../../components/modals/MapAuction";
+import { formatAuction } from "@/tools/formatFields";
+import MapAuction from "@/components/modals/MapAuction";
 import { Marker } from "@react-google-maps/api";
 
 export default function History({ user }) {
@@ -56,11 +56,11 @@ export default function History({ user }) {
       <span className="flex flex-row justify-between mt-4">
         <span className="flex flex-row gap-5">
           <span className="font-medium">Fecha de Retiro</span>
-          <span className="text-gray-600 italic">12/10/2023</span>
+          <span className="text-gray-600 italic">{ entity.pickUpTime ?? "0000-00-00"}</span>
         </span>
         <span className="flex flex-row gap-5">
           <span className="font-medium">Fecha de Entrega</span>
-          <span className="text-gray-600 italic">12/10/2023</span>
+          <span className="text-gray-600 italic">{ entity.deliveryTime ?? "0000-00-00"}</span>
         </span>
 
       </span>

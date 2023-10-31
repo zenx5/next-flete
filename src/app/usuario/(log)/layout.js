@@ -1,6 +1,5 @@
 import { ROUTER_PATH } from "@/tools/constants"
-import { headers } from "next/headers"
-import { getError } from "../../../tools/actions"
+import { getError } from "@/tools/actions"
 
 export default async function Layout({ children }){
     const error = getError()
