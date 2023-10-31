@@ -78,9 +78,9 @@ export default function Marketing(){
             <div className="w-5/12 px-4 py-10 border-l border-slate-400 gap-10 flex flex-col justify-between">
                 <span className="flex flex-col w-full">
                     <label className="text-xl text-slate-500 mb-2 font-semibold">Duracion:</label>
-                    <span className="flex flex-row gap-2 items-center pl-2 border border-slate-400 rounded justify-between overflow-hidden">
-                        <span className="flex h-full items-center text-slate-500">ms</span>
-                        <input type="number" className="p-3 border-none outline-none text-right " value={slider?.duration} onChange={event => handlerChangeCurrent('duration', event.target.value)}/>
+                    <span className="flex flex-row items-center border border-slate-400 rounded justify-between overflow-hidden">
+                        <span className="flex h-full w-fit px-3 items-center text-slate-500">ms</span>
+                        <input type="number" className="p-3 border-none w-1/2 border-red-500 outline-none text-right " value={slider?.duration} onChange={event => handlerChangeCurrent('duration', event.target.value)}/>
                     </span>
                 </span>
                 <span className="flex flex-col w-full">
@@ -98,7 +98,7 @@ export default function Marketing(){
                     <label className="text-xl text-slate-500 mb-2 font-semibold">Eliminar:</label>
                     <label className="pl-2 my-2 flex flex-row gap-4 cursor-pointer">
                         <input type="checkbox" value="" className="peer sr-only" checked={confirmDelete} onChange={()=>setConfirmDelete(!confirmDelete)}/>
-                        <span className="flex items-center justify-center px-2 py-1 border border-orange-600 w-fit rounded peer-checked:bg-orange-600">
+                        <span className="flex items-center w-6 h-6 justify-center px-2 py-1 border border-orange-600 rounded peer-checked:bg-orange-600">
                             <span className="font-bold text-sm text-white">X</span>
                         </span>
                         <span className="italic text-slate-500">¿Desea eliminar esta imagen?</span>
