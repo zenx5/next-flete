@@ -3,9 +3,9 @@ import {useEffect, useState} from "react";
 import {useSearchParams} from "next/navigation";
 import Image from "next/image";
 import OverlayModal from "@/components/OverlayModal";
-import whatsapp from "@/public/icons/whatsapp.svg";
-import twitter from "@/public/icons/twitter.svg";
-import facebook from "@/public/icons/facebook.svg";
+import whatsapp from "../../../../public/icons/whatsapp.svg";
+import twitter from "../../../../public/icons/twitter.svg";
+import facebook from "../../../../public/icons/facebook.svg";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 
