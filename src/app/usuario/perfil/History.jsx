@@ -1,11 +1,13 @@
 "use client";
 import { useEffect, useState } from "react"
 import { onSnap } from "@/tools/firebase/actions"
-import { formatAuction } from "@/tools/formatFields";
-import MapAuction from "@/components/modals/MapAuction";
-import { Marker } from "@react-google-maps/api";
+import HistoryList from "./HistoryList";
+
+
+
 
 export default function History({ user }) {
+  const [tab, setTab] = useState(0)
   const [entities, setEntities] = useState([])
   const [currentPosition, setCurrentPosition] = useState({lat:null, lng:null})
 
@@ -30,41 +32,21 @@ export default function History({ user }) {
     })
   }, [])
 
-  const selfAuction = (entity) => {
+  const winAuction = (entity) => {
     const auction = entity.auctions?.at( entity.auctions.length - 1 )
-    return auction && auction?.user?.email===user?.email
+    return auction && auction?.user?.email===user?.email// || entity?.createdBy?.email===user?.email
   }
 
+  const selfAuction = (entity) => {
+    return entity?.createdBy?.email===user?.email
+  }
 
-  return <div className='h-screen w-full col-start-5 col-span-7'>
-    { entities.filter(selfAuction).map( entity => <div key={entity.id} className="border border-slate-200 my-5 py-5 px-10 rounded-lg shadow-md">
-      <span className="flex flex-row justify-between border-b pb-4 mb-4">
-        <h2 className="text-xl font-medium">{ entity.name } <small className="italic text-green-500 text-sm ml-5 border border-green-500 px-2 py-1 rounded-full">En camino</small></h2>
-
-        <span>{ formatAuction(entity.auctions) }</span>
-      </span>
-      <span className="italic text-gray-600">{entity.description}</span>
-      <div className="flex flex-col justify-center items-center w-full mt-10">
-        <MapAuction auctionId={entity.id} width="700px" height="200px" className="w-auto mx-auto">
-          <Marker
-            position={{
-                lat: parseFloat( currentPosition.lat ),
-                lng: parseFloat( currentPosition.lng ),
-            }} />
-        </MapAuction>
-      </div>
-      <span className="flex flex-row justify-between mt-4">
-        <span className="flex flex-row gap-5">
-          <span className="font-medium">Fecha de Retiro</span>
-          <span className="text-gray-600 italic">{ entity.pickUpTime ?? "0000-00-00"}</span>
-        </span>
-        <span className="flex flex-row gap-5">
-          <span className="font-medium">Fecha de Entrega</span>
-          <span className="text-gray-600 italic">{ entity.deliveryTime ?? "0000-00-00"}</span>
-        </span>
-
-      </span>
-
-    </div>)}
+  return <div>
+    <ul className="flex flex-row">
+      <li onClick={()=>setTab(0)} className={"cursor-pointer border border-gray-300 py-2 px-4 rounded-tl-md" + (tab===0 ? " font-bold":" bg-gray-100 text-gray-400")}>Subastas Ganadas</li>
+      <li onClick={()=>setTab(1)} className={"cursor-pointer border border-gray-300 py-2 px-4 rounded-tr-md" + (tab===1 ? " font-bold":" bg-gray-100 text-gray-400")}>Subastas Creadas</li>
+    </ul>
+    { tab===0 && <HistoryList entities={entities.filter(winAuction)} currentPosition={currentPosition}/> }
+    { tab===1 && <HistoryList entities={entities.filter(selfAuction)} currentPosition={currentPosition}/> }
   </div>
 }
