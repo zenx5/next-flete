@@ -190,7 +190,7 @@ export default function AuctionForm({ auctionId, userId }) {
                             helperText="Fecha limite para pasar buscando la encomienda"
                             input={{
                                 value: auction.pickUpTime,
-                                onChange: event => handlerChangeAuction('deliveryTime', event.target.value )
+                                onChange: event => handlerChangeAuction('pickUpTime', event.target.value )
                             }} />
                         <TextField
                             label="De Entrega"
@@ -198,7 +198,7 @@ export default function AuctionForm({ auctionId, userId }) {
                             helperText="Fecha limite para entregar en destino"
                             input={{
                                 value: auction.deliveryTime,
-                                onChange: event => handlerChangeAuction('pickUpTime', event.target.value )
+                                onChange: event => handlerChangeAuction('deliveryTime', event.target.value )
                             }} />
                     </span>
 

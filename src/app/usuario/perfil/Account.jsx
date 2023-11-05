@@ -1,15 +1,13 @@
 import RowUpdatable from "@/components/RowUpdatable"
+import Staring from "@/components/Staring"
 import Image from "next/image";
 import { UserIcon } from "@/components/icons"
 
-export default function Account({ user }) {
+export default function Account({ user, isCurrent }) {
 
     return <div className=" divide-y divide-gray-200 col-span-9">
             <div className="space-y-1">
             <h3 className="text-lg font-medium leading-6 text-gray-900">Perfil</h3>
-            {/* <p className="max-w-2xl text-sm text-gray-500">
-                Esta información se mostrará públicamente, así que tenga cuidado con lo que comparte.
-            </p> */}
             </div>
             <div className="mt-6">
         <dl className="divide-y divide-gray-200">
@@ -28,17 +26,16 @@ export default function Account({ user }) {
                     />  : <UserIcon className="h-8 w-8 text-orange-flete"/> }
                 </span>
                 <span className="ml-4 flex flex-shrink-0 items-start space-x-4">
-                {/* <button
-                    type="button"
-                    className="rounded-md bg-white font-medium text-orange-600 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
-                >
-                    Actualizar
-                </button> */}
                 </span>
             </dd>
             </div>
             <RowUpdatable label="Email" value={user.email}/>
             <RowUpdatable label="Tipo de Usuario" value={user.type} />
+            { isCurrent && <span>
+                <Staring />
+
+            </span> }
+
         </dl>
         </div>
         </div>
