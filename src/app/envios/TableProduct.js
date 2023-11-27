@@ -34,21 +34,19 @@ export default function TableProduct({ userId, isAdmin }) {
 
     useEffect(()=>{
         ProductsModel.onChange( data => {
+            console.log( data )
             const aux = []
             for( const item of data ) {
                 const diff = moment( Date.parse(item?.endTime) ).diff( Date.now() )
-                if( diff <= 0 ) {
-                    if( item.status===STATUS.ACTIVE ) {
-                        const temp = {...item, status: item.auctios?.length>0 ? STATUS.ACCEPT : STATUS.CLOSED }
-                        aux.push( temp )
-                        ProductsModel.put(item.id, temp)
-                    }else {
-                        aux.push(item)
-                    }
+                if( diff <= 0 && item.status===STATUS.ACTIVE ) {
+                    const temp = {...item, status: item.auctios?.length>0 ? STATUS.ACCEPT : STATUS.CLOSED }
+                    aux.push( temp )
+                    ProductsModel.put(item.id, temp)
+                }else {
+                    aux.push(item)
                 }
             }
             setEntities( aux )
-
         } )
     },[])
 
