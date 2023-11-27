@@ -10,6 +10,7 @@ import ShareModal from './ShareModal';
 import { ChevronDownIcon, ChevronUpIcon } from "@/components/icons";
 import { USER_TYPE, timeFormats } from '@/tools/constants';
 import MapAuction from '@/components/modals/MapAuction';
+import ProductsModel from "@/tools/models/ProductsModel"
 
 const opacities = [
 	"opacity-80",
@@ -23,9 +24,7 @@ export default function ProductDetail({ productId, user }) {
 	const [leftTime, setLeftTime] = useState([])
 
 	useEffect(()=>{
-		onSnap(process.env.NEXT_PUBLIC_ENTITY_PRODUCT_NAME, (result)=>{
-			setProduct( prev => result )
-		}, productId)
+		ProductsModel.onChange( data => setProduct(data), productId)
 	},[productId])
 
 	useEffect(()=>{
