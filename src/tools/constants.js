@@ -1,7 +1,7 @@
 export const ROUTER_PATH = {
     HOME: '/',
-    PRODUCTS: '/productos',
-    PRODUCTS_BY_CATEGORY: (category)=>`/${category}/productos`,
+    PRODUCTS: '/envios',
+    PRODUCTS_BY_CATEGORY: (category)=>`/${category}/envios`,
     CHECKOUT: '/confirmar-compra',
     CHECKOUT_SHARED: '/confirmar-compra/${id}/pagar',
     SUCCESS: '/detalles-orden',
@@ -255,4 +255,10 @@ export const TABS = {
     AVAILABLE: 0,
     FAVORITE: 1,
     SELF: 2
+}
+
+export const STATUS = {
+    ACTIVE: 'active',
+    ACCEPT: 'accept',
+    CLOSED: 'closed'
 }

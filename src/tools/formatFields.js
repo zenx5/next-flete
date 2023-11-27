@@ -1,6 +1,7 @@
 import Link from "next/link"
-import { ENTITIES, ROUTER_PATH } from "./constants"
+import { ENTITIES, ROUTER_PATH, STATUS } from "./constants"
 import { actionGet, actionSave } from "./firebase/actions"
+import StaringResume from "../components/StaringResume"
 
 const handlerChangeField = (field, value, row) => event => {
     if( event.target.value !== value ) {
@@ -70,10 +71,11 @@ export const formatStatus = (status, row, isAdmin) => {
                     break;
             }
         }
-        return <select className="rounded-full px-3 py-2" value={status} onChange={validateChange}>
-            <option className="p-2 font-medium" value="active">ACTIVE</option>
-            <option className="p-2 font-medium" value="closed">CLOSED</option>
-            <option className="p-2 font-medium" value="accept">ACCEPT</option>
+
+        const arrayStatus = Object.values(STATUS)
+
+        return <select className="rounded-full px-3 py-2 uppercase" value={status} onChange={validateChange}>
+            { arrayStatus.map( item => <option key={item} className="p-2 font-medium uppercase" value={item}>{item}</option>) }
         </select>
     }
     const className = status==='active' ?
@@ -86,8 +88,11 @@ export const formatName = (name, row, isAdmin) => {
     if( isAdmin ) {
         return <span className="flex flex-col">
             <span>{name}</span>
-            <small className="text-blue-500 underline opacity-70 hover:opacity-100">
-                <Link href={`${ROUTER_PATH.PROFILE}/${row.createdBy?.id}`}>{row.createdBy?.name}</Link>
+            <small className="text-blue-500 opacity-70 hover:opacity-100 flex flex-row gap-2">
+                <Link className="underline" href={`${ROUTER_PATH.PROFILE}/${row.createdBy?.id}`}>{row.createdBy?.name}</Link>
+                <span className="!no-underline flex flex-row">
+                    (<StaringResume value={row?.createdBy?.staring ?? 0} />)
+                </span>
             </small>
         </span>
     }
