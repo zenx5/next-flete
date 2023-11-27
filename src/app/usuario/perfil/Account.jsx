@@ -2,8 +2,23 @@ import RowUpdatable from "@/components/RowUpdatable"
 import Staring from "@/components/Staring"
 import Image from "next/image";
 import { UserIcon } from "@/components/icons"
+import Comments from "../../../components/Comments";
+import { useEffect, useState } from "react";
+import CommentsModel from "@/tools/models/CommentsModel";
 
 export default function Account({ user, isCurrent }) {
+    const [comments, setComments] = useState(null)
+
+    useEffect(()=>{
+        if(user.id) {
+            (async ()=>{
+                const data = await CommentsModel.search("userId", user.id)
+                console.log( data )
+                setComments( data )
+            })()
+        }
+    },[user.id])
+
 
     return <div className=" divide-y divide-gray-200 col-span-9">
             <div className="space-y-1">
@@ -31,8 +46,13 @@ export default function Account({ user, isCurrent }) {
             </div>
             <RowUpdatable label="Email" value={user.email}/>
             <RowUpdatable label="Tipo de Usuario" value={user.type} />
-            { isCurrent && <span>
-                <Staring />
+            { !isCurrent && <span className="">
+                {comments && <Staring
+                    average={comments.map( comment => comment.rating ).reduce( (a,e)=>a+e )/comments.length}
+                    totalCount={comments.length}
+                />}
+                { comments && <Comments items={comments}/>}
+
 
             </span> }
 
