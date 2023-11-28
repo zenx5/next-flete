@@ -1,14 +1,15 @@
 "use client";
 import { useState, useEffect, useCallback } from "react"
 import Link from "next/link";
-import { onSnap } from "@/tools/firebase/actions"
 import ProductRow from "./ProductRow";
 import { SearchIcon } from "@/components/icons";
 import { formatAuction, formatDimension, formatName, formatStatus, formatLocation } from "@/tools/formatFields";
 import { ArrowLeft, ArrowRight } from '@/components/icons'
 import Tabs from "./Tabs";
 import { TABS } from "@/tools/constants";
-
+import ProductsModel from '@/tools/models/ProductsModel'
+import moment from "moment";
+import { STATUS } from "../../tools/constants";
 
 const fields = [
     { id:"name", label: "Name", format: formatName},
@@ -32,15 +33,22 @@ export default function TableProduct({ userId, isAdmin }) {
     const [total, setTotal] = useState(0)
 
     useEffect(()=>{
-        onSnap( process.env.NEXT_PUBLIC_ENTITY_PRODUCT_NAME , data => {
-            setEntities( prev => {
-                const aux = []
-                for( const item of data ) {
+        ProductsModel.onChange( data => {
+            console.log('onChange')
+            console.log( data )
+            const aux = []
+            for( const item of data ) {
+                const diff = moment( Date.parse(item?.endTime) ).diff( Date.now() )
+                if( diff <= 0 && item.status===STATUS.ACTIVE ) {
+                    const temp = {...item, status: item.auctios?.length>0 ? STATUS.ACCEPT : STATUS.CLOSED }
+                    aux.push( temp )
+                    ProductsModel.put(item.id, temp)
+                }else {
                     aux.push(item)
                 }
-                return aux
-            } )
-        }, null)
+            }
+            setEntities( aux )
+        } )
     },[])
 
     const filterSearch = useCallback( (entity) => {

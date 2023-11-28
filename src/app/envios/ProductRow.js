@@ -1,9 +1,8 @@
 import { ROUTER_PATH } from "@/tools/constants"
 import Link from "next/link"
-import { DeleteIcon, EditIcon, OpenIcon, MapPinIcon } from "@/components/icons"
-import { actionDelete } from "@/tools/firebase/actions"
-import { ENTITIES } from "@/tools/constants"
+import { DeleteIcon, EditIcon, OpenIcon } from "@/components/icons"
 import RowCardMobile from "./RowCardMobile"
+import ProductsModel from "@/tools/models/ProductsModel"
 
 export default function ProductRow({ item, fields, isAdmin, isOwner }) {
 
@@ -15,11 +14,16 @@ export default function ProductRow({ item, fields, isAdmin, isOwner }) {
     }
 
     const handlerDelete = async () => {
-        await actionDelete(ENTITIES.auctions, item.id)
+        await ProductsModel.delete(item?.id)
+    }
+
+    const bgcolor = {
+        closed: 'bg-red-200',
+        accept: 'bg-green-200'
     }
 
     return <>
-        <tr className="text-inherit hidden md:table-row align-middle outline-none hover:bg-slate-200">
+        <tr className={"text-inherit hidden md:table-row align-middle outline-none bg-opacity-50 hover:bg-opacity-100 " + (bgcolor[item.status] ?? "bg-slate-200") }>
             { fields.map(
                 field => <td
                     key={'field-item-'+field.id}
@@ -27,7 +31,7 @@ export default function ProductRow({ item, fields, isAdmin, isOwner }) {
                 >{ formater(item[field.id], field?.format) }</td>
             ) }
             <td className="leading-6 text-sm font-normal text-center text-[#212B36] border-b-0">
-                <span className="flex flex-row gap-1">
+                <span className="flex flex-row gap-1 px-2">
                     { (isAdmin || isOwner) && <button onClick={handlerDelete} className="py-1 px-1 rounded-md border-2 border-red-600 hover:bg-red-600 text-red-600 bg-transparent hover:text-white uppercase text-sm" >
                         <DeleteIcon />
                     </button>}
