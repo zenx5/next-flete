@@ -1,7 +1,8 @@
 import Link from "next/link"
 import { ENTITIES, ROUTER_PATH, STATUS } from "./constants"
-import { actionGet, actionSave } from "./firebase/actions"
+import { actionSave } from "./firebase/actions"
 import StaringResume from "../components/StaringResume"
+import ProductsModel from "./models/ProductsModel"
 
 const handlerChangeField = (field, value, row) => event => {
     if( event.target.value !== value ) {
@@ -41,35 +42,7 @@ export const formatAuction = (auctions, row, isAdmin) => {
 export const formatStatus = (status, row, isAdmin) => {
     if( isAdmin ) {
         const validateChange = async (event) => {
-            if( status==="accept" ) return;
-            switch( event.target.value ) {
-                case "active":
-                case "closed":
-                    handlerChangeField("status", status, row)(event)
-                    break;
-                case "accept":
-                    if( row.auctions.length > 0 ) {
-                        handlerChangeField("status", status, row)(event)
-                        const auction = row.auctions[ row.auctions.length - 1 ]
-                        const user = await actionGet(ENTITIES.users, auction.user.id )
-                        const oldauctions = user?.auctions ?? []
-                        const newauction = {
-                            ...row,
-                            price: auction.mount,
-                            date: auction.date,
-                        }
-                        delete newauction.auctions
-                        delete newauction.status
-                        actionSave(ENTITIES.users, {
-                            ...user,
-                            auctions: [
-                                ...oldauctions,
-                                newauction
-                            ]
-                        }, user.id)
-                    }
-                    break;
-            }
+            await ProductsModel.chagneStatus(row.id, event.target.value)
         }
 
         const arrayStatus = Object.values(STATUS)
@@ -91,7 +64,7 @@ export const formatName = (name, row, isAdmin) => {
             <small className="text-blue-500 opacity-70 hover:opacity-100 flex flex-row gap-2">
                 <Link className="underline" href={`${ROUTER_PATH.PROFILE}/${row.createdBy?.id}`}>{row.createdBy?.name}</Link>
                 <span className="!no-underline flex flex-row">
-                    (<StaringResume value={row?.createdBy?.staring ?? 0} />)
+                    <StaringResume value={row?.createdBy?.staring ?? 0} />
                 </span>
             </small>
         </span>
