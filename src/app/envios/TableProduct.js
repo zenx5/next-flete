@@ -34,6 +34,7 @@ export default function TableProduct({ userId, isAdmin }) {
 
     useEffect(()=>{
         ProductsModel.onChange( data => {
+            console.log('onChange')
             console.log( data )
             const aux = []
             for( const item of data ) {
