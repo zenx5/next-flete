@@ -4,7 +4,7 @@ import { mainNavigation, secondaryNavigation } from '@/tools/navigation';
 import MovilMenu from './MovilMenu';
 import { getUser, isAuthenticated } from '@/tools/actions';
 import { ROUTER_ID } from '@/tools/constants';
-import { UserIcon } from '../icons';
+import logo from '../../../public/images/logo.jpeg'
 
 export default async function CustomHeader() {
 
@@ -30,14 +30,13 @@ export default async function CustomHeader() {
     return <header className="">
         <div className="flex flex-row items-center gap-10 w-10/12 mx-auto justify-between">
             <div>
-                <Image src="/images/logo.jpeg" alt="" width={250} height={200} />
+                <Image src={logo} alt="" width={250} height={200} />
             </div>
             <div className="hidden h-full lg:flex justify-center space-x-8 items-center">
                 <MenuNav navigation={mainNav} />
             </div>
             <div className="hidden h-full lg:flex justify-center space-x-4 items-center">
                 <MenuNav navigation={accessNav} />
-                {/* <UserIcon className="w-6 h-6 text-black cursor-pointer hover:text-orange-flete m-0"/> */}
             </div>
             <div className="flex lg:hidden">
                 <MovilMenu navigation={[...mainNav, ...accessNav.map( item => ({ ...item, className:undefined }))]}/>
