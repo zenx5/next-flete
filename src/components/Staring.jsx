@@ -1,7 +1,8 @@
+"use client"
 import { StarIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react'
 
-export default function Staring({ average, totalCount, onClick }) {
+export default function Staring({ average, totalCount, reviews, onClick }) {
     const [hoverIndex, setHoverIndex] = useState(0)
 
     function classNames(...classes) {
@@ -12,15 +13,14 @@ export default function Staring({ average, totalCount, onClick }) {
         setHoverIndex( rating )
     }
 
-    return <div className="mt-6">
-        <h3 className="sr-only">Reviews</h3>
+    return <div className="">
         <div className="flex flex-col items-center gap-2">
             <div className="flex items-center" onMouseLeave={()=>setHoverIndex(0)}>
             {[0, 1, 2, 3, 4].map((index) => (
                 <span key={index} className="h-10" onMouseEnter={()=>handlerSetHover(index + 1)} onClick={()=>onClick(index + 1) }>
                     <StarIcon
                         className={classNames(
-                            average > index ? 'text-orange-flete' : 'text-gray-200',
+                            average > index ? 'text-orange-flete' : 'text-gray-400',
                             'h-10 w-10 flex-shrink-0 relative top-0 z-10 opacity-80'
                         )}
                         aria-hidden="true"
@@ -33,8 +33,7 @@ export default function Staring({ average, totalCount, onClick }) {
                 </span>
             ))}
             </div>
-            <p className="sr-only">{average} out of 5 stars</p>
-            <span className="ml-3 text-sm font-medium text-black hover:text-black">{totalCount} reviews</span>
+            {reviews && <span className="ml-3 text-sm font-medium text-black hover:text-black">{totalCount} reviews</span>}
         </div>
     </div>
 }

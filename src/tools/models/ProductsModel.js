@@ -10,11 +10,12 @@ export default class ProductsModel extends BaseModel {
             if( data.status!==STATUS.ACTIVE ) return false
             const index = data?.assignAt ? data?.assignAt?.index+1 : 0
             if( data?.auctions?.length > 0 ) {
+                const auctionsOrdered = data.auctions.sort(()=>-1)
                 return await this.put( id, {
                     ...data,
                     status,
                     assignAt: {
-                        ...data.auctions[index]?.sort(()=>-1)[index],
+                        ...auctionsOrdered[index],
                         index
                     }
                 } )
