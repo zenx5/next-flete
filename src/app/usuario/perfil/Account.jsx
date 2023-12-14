@@ -48,7 +48,7 @@ export default function Account({ user, isCurrent }) {
             <RowUpdatable label="Tipo de Usuario" value={user.type} />
             { !isCurrent && <span className="">
                 {comments && <Staring
-                    average={comments.map( comment => comment.rating ).reduce( (a,e)=>a+e )/comments.length}
+                    average={comments?.map( comment => comment.rating )?.reduce( (a,e)=>a+e, 0 )/comments.length}
                     totalCount={comments.length}
                 />}
                 { comments && <Comments items={comments}/>}
