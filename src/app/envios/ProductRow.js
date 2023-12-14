@@ -30,7 +30,7 @@ export default function ProductRow({ item, fields, isAdmin, isOwner }) {
                     className="leading-6 text-sm font-normal table-cell text-left text-[#212B36] px-4 py-6 border-b-0"
                 >{ formater(item[field.id], field?.format) }</td>
             ) }
-            <td className="leading-6 text-sm font-normal text-center text-[#212B36] border-b-0">
+            <td className="leading-6 text-sm font-normal text-center text-[#212B36] border-b-0 gap-1">
                 <span className="flex flex-row gap-1 px-2">
                     { (isAdmin || isOwner) && <button onClick={handlerDelete} className="py-1 px-1 rounded-md border-2 border-red-600 hover:bg-red-600 text-red-600 bg-transparent hover:text-white uppercase text-sm" >
                         <DeleteIcon />
@@ -42,6 +42,9 @@ export default function ProductRow({ item, fields, isAdmin, isOwner }) {
                         <OpenIcon />
                     </Link>
                 </span>
+                { (isAdmin || isOwner) && <span className="block pt-1">
+                    <Link href={`${ROUTER_PATH.PRODUCTS}/${item.id}/details`} className="block border border-gray-400 py-1 px-4 text-gray-600 hover:bg-gray-300 hover:text-gray-800 rounded-md">Details</Link>
+                </span>}
             </td>
         </tr>
         <tr>

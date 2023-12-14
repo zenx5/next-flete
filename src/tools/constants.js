@@ -254,7 +254,8 @@ export const ENTITIES = {
 export const TABS = {
     AVAILABLE: 0,
     FAVORITE: 1,
-    SELF: 2
+    SELF: 2,
+    ALL:3
 }
 
 export const STATUS = {

@@ -34,8 +34,6 @@ export default function TableProduct({ userId, isAdmin }) {
 
     useEffect(()=>{
         ProductsModel.onChange( data => {
-            console.log('onChange')
-            console.log( data )
             const aux = []
             for( const item of data ) {
                 const diff = moment( Date.parse(item?.endTime) ).diff( Date.now() )
@@ -62,11 +60,12 @@ export default function TableProduct({ userId, isAdmin }) {
 
     const filterGroup = useCallback( (entity) => {
         if( !entity?.createdBy ) return false
-        if(currentTab===TABS.AVAILABLE) return entity.createdBy.id!==userId && entity.status==='active'
+        if(currentTab===TABS.AVAILABLE) return entity.createdBy.id!==userId && entity.status===STATUS.ACTIVE
         if(currentTab===TABS.FAVORITE) return entity.auctions.map( auction => auction.user.id ).includes( userId ) && entity.status!=='closed'
         if(currentTab===TABS.SELF) return entity.createdBy.id===userId
+        if(currentTab===TABS.ALL && isAdmin) return true
         return false
-    }, [currentTab, userId])
+    }, [currentTab, userId, isAdmin])
 
 
     useEffect(()=>{
@@ -76,18 +75,28 @@ export default function TableProduct({ userId, isAdmin }) {
         setMax( perPage*page>_total ? _total : perPage*page )
     },[entities, filterGroup, filterSearch, page, perPage])
 
+    useEffect(()=>{
+        setPage( prev => 1 )
+    },[perPage])
+
     const labelTabs = [
         'Envios disponibles',
         'Favoritos',
         'Mis Envios',
+        'Todas'
     ]
 
     const filterByTab = targetTab => (entity) => {
         if( !entity?.createdBy ) return false
-        if(targetTab===TABS.AVAILABLE) return entity.createdBy.id!==userId && entity.status==='active'
+        if(targetTab===TABS.AVAILABLE) return entity.createdBy.id!==userId && entity.status===STATUS.ACTIVE
         if(targetTab===TABS.FAVORITE) return entity.auctions.map( auction => auction.user.id ).includes( userId ) && entity.status!=='closed'
         if(targetTab===TABS.SELF) return entity.createdBy.id===userId
+        if(targetTab===TABS.ALL && isAdmin) return true
         return false
+    }
+
+    const filterPagination = (entity, index) => {
+        return min <= index + 1 && max >= index + 1
     }
 
 
@@ -114,7 +123,7 @@ export default function TableProduct({ userId, isAdmin }) {
                 </tr>
             </thead>
             <tbody className="table-row-group">
-                { entities.filter( filterGroup ).filter( filterSearch ).map( entity => <ProductRow key={'row' + entity.id} item={entity} fields={fields} isAdmin={isAdmin} isOwner={entity?.createdBy?.id===userId}/> ) }
+                { entities.filter( filterGroup ).filter( filterPagination ).filter( filterSearch ).map( entity => <ProductRow key={'row' + entity.id} item={entity} fields={fields} isAdmin={isAdmin} isOwner={entity?.createdBy?.id===userId}/> ) }
             </tbody>
             { entities.filter( filterGroup ).filter( filterSearch ).length===0 && <tbody className="italic text-gray-500 text-center w-full">
                 <tr>
@@ -136,11 +145,11 @@ export default function TableProduct({ userId, isAdmin }) {
                 {min} - {max} of { total }
             </div>
             <div className="flex flex-row md:p-4 p-0 items-center">
-                <button onClick={() => setPage( prev - 1 )} disabled={page===1} className="disabled:text-gray-500"><ArrowLeft /></button>
-                <select className="font-semibold px-4 py-1 mx-2 border border-gray-400 rounded" value={page} onChange={ev => setPage( ev.target.value )}>
+                <button onClick={() => setPage( prev => prev - 1 )} disabled={page===1 || perPage==total} className="disabled:text-gray-500"><ArrowLeft /></button>
+                <select className="font-semibold px-4 py-1 mx-2 border border-gray-400 rounded" value={page} disabled={perPage==total} onChange={ev => setPage( parseInt(ev.target.value) )}>
                     { Array(Math.round( total/perPage + 0.5 )).fill(1).map( (f, index) => <option key={`page-index-${index+1}`} value={index + 1}>{index + 1}</option> )}
                 </select>
-                <button onClick={() => setPage( prev + 1 )} disabled={page===Math.round( total/perPage + 0.5 )  } className="disabled:text-gray-500"><ArrowRight /></button>
+                <button onClick={() => setPage( prev => prev + 1 )} disabled={ page==Math.round( total/perPage + 0.5 ) || perPage==total } className="disabled:text-gray-500"><ArrowRight /></button>
             </div>
         </div>
     </div>
