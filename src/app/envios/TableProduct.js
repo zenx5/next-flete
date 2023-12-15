@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from "react"
 import Link from "next/link";
 import ProductRow from "./ProductRow";
 import { SearchIcon } from "@/components/icons";
-import { formatAuction, formatDimension, formatName, formatStatus, formatLocation } from "@/tools/formatFields";
+import { formatAuction, formatDimension, FormatName, formatStatus, formatLocation } from "@/tools/formatFields";
 import { ArrowLeft, ArrowRight } from '@/components/icons'
 import Tabs from "./Tabs";
 import { TABS } from "@/tools/constants";
@@ -12,7 +12,7 @@ import moment from "moment";
 import { STATUS } from "../../tools/constants";
 
 const fields = [
-    { id:"name", label: "Name", format: formatName},
+    { id:"name", label: "Name", format: FormatName},
     { id:"from", label: "From", format: formatLocation },
     { id:"to", label: "To", format: formatLocation },
     { id:"weight", label: "Weight" },
@@ -77,7 +77,7 @@ export default function TableProduct({ userId, isAdmin }) {
 
     useEffect(()=>{
         setPage( prev => 1 )
-    },[perPage])
+    },[perPage, currentTab])
 
     const labelTabs = [
         'Envios disponibles',

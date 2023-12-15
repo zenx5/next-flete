@@ -4,16 +4,22 @@ import { getUser } from "@/tools/actions/user";
 import CommentsModel from "@/tools/models/CommentsModel"
 import Staring from "@/components/Staring"
 import { UserIcon } from "@heroicons/react/20/solid";
+import { ROUTER_PATH, USER_TYPE } from "@/tools/constants";
+import { redirect } from "next/navigation";
 
 export default async function Page({params}) {
     const { id } = params;
     const user = await getUser()
 
     const product = await ProductsModel.get(id)
-    const comments = await CommentsModel.search("userId", user.id)
-
-
-    console.log( product )
+    if(
+        product?.createdBy?.id!==user.id && //Creador
+        product?.assignAt?.id!==user.id && //Asignado
+        user.type!==USER_TYPE.ADMIN // Administrador
+    ) {
+        redirect(ROUTER_PATH.PRODUCTS)
+    }
+    const comments = product?.assignAt?.id ? await CommentsModel.search("userId", product?.assignAt?.id) : []
 
     return <div className="mx-20 mt-10 h-screen" data-id={id}>
         <div className="w-full border-b border-gray-400 py-4 mb-5">
@@ -62,7 +68,6 @@ export default async function Page({params}) {
                     <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
-
                 </div>
             </div>
             <div className="w-1/2">

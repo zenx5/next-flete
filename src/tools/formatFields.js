@@ -3,6 +3,8 @@ import { ENTITIES, ROUTER_PATH, STATUS } from "./constants"
 import { actionSave } from "./firebase/actions"
 import StaringResume from "../components/StaringResume"
 import ProductsModel from "./models/ProductsModel"
+import CommentsModel from "./models/CommentsModel"
+import { useEffect, useState } from "react"
 
 const handlerChangeField = (field, value, row) => event => {
     if( event.target.value !== value ) {
@@ -57,14 +59,23 @@ export const formatStatus = (status, row, isAdmin) => {
     return <span className={ "px-3 py-2 rounded-full uppercase font-medium " + className }>{status}</span>
 }
 
-export const formatName = (name, row, isAdmin) => {
+export const FormatName = (name, row, isAdmin) => {
+    const [staring, setStaring] = useState(0)
+    useEffect(()=>{
+        (async()=>{
+            const data = await CommentsModel.search("userId", row.createdBy?.id)
+            if( data.length>0 ) {
+                setStaring( data?.map( item => item.rating ).filter( item => parseFloat(item) )?.reduce( (acc, rating)=> acc+rating,0 )/data.length )
+            }
+        })()
+    },[row.createdBy?.id])
     if( isAdmin ) {
         return <span className="flex flex-col">
             <span>{name}</span>
             <small className="text-blue-500 opacity-70 hover:opacity-100 flex flex-row gap-2">
                 <Link className="underline" href={`${ROUTER_PATH.PROFILE}/${row.createdBy?.id}`}>{row.createdBy?.name}</Link>
                 <span className="!no-underline flex flex-row">
-                    <StaringResume value={row?.createdBy?.staring ?? 0} />
+                    <StaringResume value={staring} />
                 </span>
             </small>
         </span>
