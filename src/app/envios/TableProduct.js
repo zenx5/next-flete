@@ -115,7 +115,7 @@ export default function TableProduct({ userId, isAdmin }) {
             </Link>
         </div>
         <Tabs onChange={tab=>setCurrentTab(tab)} labels={ labelTabs.map( (label, index) => `${label} (${entities.filter( filterByTab(index) ).length})` ) }/>
-        <table className="table w-full border-spacing-0 border-collapse px-2 mt-5">
+        <table className="table w-full border-spacing-0 border-collapse px-2 mt-5 md:mb-5 mb-20">
             <thead>
                 <tr className="hidden md:table-row align-middle outline-0">
                     { fields.map( (field,index) => <th key={index} className="table-cell leading-6 text-sm font-semibold text-left text-[#637381] bg-[#F4F6F8] p-4  border-b-0">{ field.label }</th> )}
