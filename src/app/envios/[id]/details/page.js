@@ -4,6 +4,8 @@ import { getUser } from "@/tools/actions/user";
 import CommentsModel from "@/tools/models/CommentsModel"
 import Staring from "@/components/Staring"
 import { UserIcon } from "@heroicons/react/20/solid";
+import { Reclaim } from "./Reclaim";
+import { ChatBox } from "./ChatBox";
 
 export default async function Page({params}) {
     const { id } = params;
@@ -82,16 +84,17 @@ export default async function Page({params}) {
                     <div className="pl-2 border-b border-slate-300 py-3">
                         <span className="flex flex-row justify-between items-center">
                             <h3 className="text-xl">Acciones</h3>
+                            <span>
+                                <Reclaim />
+                            </span>
                             <span></span>
                         </span>
                         <span>
                         </span>
                     </div>
-                    <div>{user.email}</div>
-                    <div>{product?.createdBy?.email}</div>
-                    <div>{product?.assignAt?.user.email}</div>
-                    { product?.createdBy?.id===user.id && <div>Creador</div> }
-                    { product?.assignAt?.id===user.id && <div>Asignado</div> }
+                    <div>
+                        <ChatBox />
+                    </div>
                 </div>
             </div>
         </div>
