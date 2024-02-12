@@ -1,6 +1,6 @@
 
 
-export const ChatBox = () => {
+export default function ChatBox(){
 
     return (
         <section className="w-full m-1 p-2 border border-slate-300 rounded-md h-[400px] relative">

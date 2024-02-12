@@ -1,11 +1,11 @@
-import ProductsModel from "@/tools/models/ProductsModel";
-import MapAuction from '@/components/modals/MapAuction';
-import { getUser } from "@/tools/actions/user";
+import ProductsModel from "@/tools/models/ProductsModel"
+import MapAuction from '@/components/modals/MapAuction'
+import { getUser } from "@/tools/actions/user"
 import CommentsModel from "@/tools/models/CommentsModel"
 import Staring from "@/components/Staring"
-import { UserIcon } from "@heroicons/react/20/solid";
-import { Reclaim } from "./Reclaim";
-import { ChatBox } from "./ChatBox";
+import { UserIcon } from "@heroicons/react/20/solid"
+import Reclaim from "@/components/Reclaim"
+import ChatBox from "@/components/ChatBox"
 
 export default async function Page({params}) {
     const { id } = params;

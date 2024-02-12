@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-export const Reclaim = () => {
+export default function Reclaim(){
     const [reclaimed, setReclaimed] = useState(false);
 
 
