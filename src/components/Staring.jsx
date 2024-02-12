@@ -13,11 +13,15 @@ export default function Staring({ average, totalCount, reviews, onClick }) {
         setHoverIndex( rating )
     }
 
+    const handlerClick = ()=>{
+        if( onClick ) onClick(index + 1)
+    }
+
     return <div className="">
         <div className="flex flex-col items-center gap-2">
             <div className="flex items-center" onMouseLeave={()=>setHoverIndex(0)}>
             {[0, 1, 2, 3, 4].map((index) => (
-                <span key={index} className="h-10" onMouseEnter={()=>handlerSetHover(index + 1)} onClick={()=>onClick(index + 1) }>
+                <span key={index} className="h-10" onMouseEnter={()=>handlerSetHover(index + 1)} onClick={handlerClick}>
                     <StarIcon
                         className={classNames(
                             average > index ? 'text-orange-flete' : 'text-gray-400',

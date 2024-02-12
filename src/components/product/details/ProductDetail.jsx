@@ -159,7 +159,7 @@ export default function ProductDetail({ productId, user }) {
 					</form>
 				</div>
 			</div>
-			<MapAuction auctionId={product.id} />
+			<MapAuction auctionId={product.id} className="w-full h-1/2 mx-auto mt-5" />
 		</div>
 		<ShareModal url={"https://heroicons.com/"+product.id} />
 	</>

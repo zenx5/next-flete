@@ -91,14 +91,21 @@ export default function AuctionForm({ auctionId, userId }) {
     console.log( auction )
 
 
-    return auction && <div className="w-full h-full flex items-center justify-center">
-        <div className="p-4 bg-white text-black w-1/2 rounded-lg">
-            <div className="flex flex-row justify-between">
-                <h2 className="font-semibold">Edit auction {auction.id}</h2>
-                { auctionId=="0" && <Link href="?" onClick={handlerCreate} className="bg-green-500 hover:bg-green-700 text-white rounded p-2 w-2/12 text-center">Crear</Link>}
+    return auction && <div className="w-full h-full flex justify-center md:items-center items-start">
+        <div className="md:p-4 p-1 pt-4  bg-white text-black md:w-1/2 w-full mx-1 rounded-lg">
+            <div className="flex flex-row md:justify-between justify-start items-center">
+                <h2 className="font-semibold md:mr-0 mr-10">Edit auction {auction.id}</h2>
+                { auctionId=="0" && <Link href="?" onClick={handlerCreate} className="md:relative fixed md:bottom-0 md:right-0 bottom-5 right-10 rounded-full bg-green-500 hover:bg-green-700 text-white md:rounded p-2 md:w-2/12 w-fit text-center">
+                    <span className="hidden md:inline">Crear</span>
+                    <span className="md:hidden inline">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                    </span>
+                </Link>}
             </div>
             <form >
-                <span className="flex flex-row gap-1 justify-between">
+                <span className="flex md:flex-row flex-col gap-1 justify-between">
                     <TextField
                         label="Name"
                         type="text"
@@ -121,8 +128,8 @@ export default function AuctionForm({ auctionId, userId }) {
                         value:auction.description ?? "",
                         onChange: event => handlerChangeAuction('description', event.target.value)
                     }}/>
-                <p className="mt-5 font-semibold mb-2">Ubicación</p>
-                <span className="flex flex-row gap-5 justify-around">
+                <p className="md:mt-5 mt-2 md:ml-0 ml-4 font-semibold mb-2">Ubicación</p>
+                <span className="flex md:flex-row flex-col gap-5 items-center justify-around">
                     <ButtonLocation
                         title="From"
                         name={auction.from.name}
@@ -138,9 +145,9 @@ export default function AuctionForm({ auctionId, userId }) {
                         onChange={ (name, position) => handlerChangeAuction('to', { name, position })}
                     />
                 </span>
-                <p className="mt-5 font-semibold">Medidas</p>
+                <p className="md:mt-5 mt-2 md:ml-0 ml-4 font-semibold">Medidas</p>
                 <span className="flex flex-col gap-2 px-5">
-                    <span className="flex flex-row gap-2 justify-around">
+                    <span className="flex md:flex-row flex-col md:gap-2 gap-0 justify-around">
                         <TextField
                             label="Width"
                             type="number"
@@ -156,7 +163,7 @@ export default function AuctionForm({ auctionId, userId }) {
                                 onChange: event => handlerChangeAuction('dimensions', { ...auction.dimensions, height:event.target.value })
                             }} />
                     </span>
-                    <span className="flex flex-row gap-2 justify-around">
+                    <span className="flex md:flex-row flex-col md:gap-2 gap-0 justify-around">
                         <TextField
                             label="Large"
                             type="number"
@@ -173,9 +180,9 @@ export default function AuctionForm({ auctionId, userId }) {
                             }} />
                     </span>
                 </span>
-                <p className="mt-5 font-semibold">Tiempos</p>
+                <p className="md:mt-5 mt-2 md:ml-0 ml-4 font-semibold">Tiempos</p>
                 <span className="flex flex-col gap-2 px-5 pb-10">
-                    <span className="flex flex-row gap-2 justify-around">
+                    <span className="flex md:flex-row flex-col md:gap-2 gap-0 justify-around">
                         <TextField
                             label="De cierre"
                             type="date"
