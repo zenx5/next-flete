@@ -13,7 +13,19 @@ export default function MapAuction({ auctionId, defaultZoom=7, width='auto', hei
         origin: '',
         destination: '',
         travelMode: null,
-      })
+    })
+    const [driverPosition, setDriverPosition] = useState({ lat: 0, lng: 0 })
+
+    useEffect( ()=>{
+        if( navigator.geolocation ) {
+            navigator.geolocation.getCurrentPosition( (position) => {
+                setDriverPosition({
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                })
+            })
+        }
+    }, [])
 
     useEffect(()=>{
         onSnap(ENTITIES.auctions, doc => {
@@ -67,6 +79,9 @@ export default function MapAuction({ auctionId, defaultZoom=7, width='auto', hei
                 lat: parseFloat( auction.from.position.lat ),
                 lng: parseFloat( auction.from.position.lng ),
             }} />
+            <Marker 
+                position={driverPosition}
+            />
             {   (directionsValue.destination !== '' && directionsValue.origin !== '') && <DirectionsService
                     options={directionsValue}
                     callback={(result, status) => {
