@@ -31,7 +31,7 @@ export default function ProductRow({ item, fields, isAdmin, isOwner }) {
                 >{ formater(item[field.id], field?.format) }</td>
             ) }
             <td className="leading-6 text-sm font-normal text-center text-[#212B36] border-b-0 gap-1">
-                <span className="flex flex-row gap-1 px-2">
+                <span className="flex flex-row gap-1 px-2 justify-between">
                     { (isAdmin || isOwner) && <button onClick={handlerDelete} className="py-1 px-1 rounded-md border-2 border-red-600 hover:bg-red-600 text-red-600 bg-transparent hover:text-white uppercase text-sm" >
                         <DeleteIcon />
                     </button>}

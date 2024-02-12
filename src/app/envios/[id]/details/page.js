@@ -6,6 +6,7 @@ import Staring from "@/components/Staring"
 import { UserIcon } from "@heroicons/react/20/solid";
 import { ROUTER_PATH, USER_TYPE } from "@/tools/constants";
 import { redirect } from "next/navigation";
+import ActionDetails from "./ActionDetails";
 
 export default async function Page({params}) {
     const { id } = params;
@@ -87,14 +88,14 @@ export default async function Page({params}) {
                     <div className="pl-2 border-b border-slate-300 py-3">
                         <span className="flex flex-row justify-between items-center">
                             <h3 className="text-xl">Acciones</h3>
-                            <span></span>
+                            <ActionDetails product={product} user={user}/>
                         </span>
                         <span>
                         </span>
                     </div>
-                    <div>{user.email}</div>
-                    <div>{product?.createdBy?.email}</div>
-                    <div>{product?.assignAt?.user.email}</div>
+                    <div>Usuario: {user.email}</div>
+                    <div>Creador: {product?.createdBy?.email}</div>
+                    <div>Asignado: {product?.assignAt?.user.email}</div>
                     { product?.createdBy?.id===user.id && <div>Creador</div> }
                     { product?.assignAt?.id===user.id && <div>Asignado</div> }
                 </div>
