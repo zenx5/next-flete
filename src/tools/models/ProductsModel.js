@@ -4,6 +4,10 @@ import { BaseModel } from "./BaseModel";
 export default class ProductsModel extends BaseModel {
     static  tableName = 'products'
 
+    static async put() {
+        
+    }
+
     static async chagneStatus(id, status) {
         if( status===STATUS.ACCEPT ) {
             const data = await this.get(id)
