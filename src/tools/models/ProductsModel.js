@@ -1,11 +1,13 @@
 import { STATUS } from "../constants";
+import { actionSave } from "../firebase/actions";
 import { BaseModel } from "./BaseModel";
 
 export default class ProductsModel extends BaseModel {
     static  tableName = 'products'
 
-    static async put() {
-        
+    static async put(id, data ) {
+        const { status, ...rest } = data
+        return await actionSave(this.tableName, rest, id)
     }
 
     static async chagneStatus(id, status) {
