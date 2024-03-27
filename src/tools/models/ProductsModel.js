@@ -27,7 +27,7 @@ export default class ProductsModel extends BaseModel {
         return listFromTo[statusFrom].includes( statusTo )
     }
 
-    static async chagneStatus(id, status) {
+    static async changeStatus(id, status) {
         const data = await this.get(id);
         console.log(data)
         if( !this.canChangeStatus( data.status, status ) ) return false;
@@ -37,7 +37,6 @@ export default class ProductsModel extends BaseModel {
             const auctionsOrdered = data.auctions.sort(() => -1);
             const newAssignAt = { ...auctionsOrdered[index], index };
             return await actionSave( this.tableName, { ...data, status, assignAt: newAssignAt }, id );
-            
         } else if( status === STATUS.CLOSED) {
             return await actionSave( this.tableName, { ...data, status }, id ) ;
         } else if( status === STATUS.ACTIVE ) {
