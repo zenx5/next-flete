@@ -44,7 +44,7 @@ export const formatAuction = (auctions, row, isAdmin) => {
 export const formatStatus = (status, row, isAdmin) => {
     if( isAdmin ) {
         const validateChange = async (event) => {
-            await ProductsModel.chagneStatus(row.id, event.target.value)
+            await ProductsModel.changeStatus(row.id, event.target.value)
         }
 
         const arrayStatus = Object.values(STATUS)

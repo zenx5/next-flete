@@ -40,7 +40,8 @@ export default function TableProduct({ userId, isAdmin }) {
                 if( diff <= 0 && item.status===STATUS.ACTIVE ) {
                     const temp = {...item, status: item.auctios?.length>0 ? STATUS.ACCEPT : STATUS.CLOSED }
                     aux.push( temp )
-                    ProductsModel.put(item.id, temp)
+                    ProductsModel.changeStatus( item.id, item.auctios?.length>0 ? STATUS.ACCEPT : STATUS.CLOSED )
+                    //.put(item.id, temp)
                 }else {
                     aux.push(item)
                 }
