@@ -13,9 +13,15 @@ export default class ProductsModel extends BaseModel {
     static canChangeStatus( statusFrom, statusTo ) {
         // console.log( statusFrom, statusTo )
         const listFromTo = {
-            [STATUS.ACCEPT]: [ STATUS.ACTIVE ],
-            [STATUS.ACTIVE]: [ STATUS.CLOSED ],
-            [STATUS.CLOSED]: [ STATUS.ACTIVE ]
+            [STATUS.ACCEPT]: [ STATUS.IN_ROAD, STATUS.UNPICKED_UP, STATUS.BLOCK ],
+            [STATUS.ACTIVE]: [ STATUS.CLOSED, STATUS.ACCEPT, STATUS.HIDDEN, STATUS.BLOCK ],
+            [STATUS.CLOSED]: [ STATUS.ACTIVE, STATUS.HIDDEN, STATUS.BLOCK ],
+            [STATUS.HIDDEN]: [ STATUS.ACTIVE, STATUS.CLOSED, STATUS.BLOCK ],
+            [STATUS.IN_ROAD]: [ STATUS.DELIVERED, STATUS.DELAYED, STATUS.BLOCK ],
+            [STATUS.DELIVERED]: [ STATUS.BLOCK ],
+            [STATUS.DELAYED]: [ STATUS.IN_ROAD, STATUS.DELIVERED, STATUS.BLOCK ],
+            [STATUS.UNPICKED_UP]: [ STATUS.ACTIVE, STATUS.ACCEPT, STATUS.CLOSED, STATUS.HIDDEN, STATUS.IN_ROAD, STATUS.BLOCK ],
+            [STATUS.BLOCK]: [ STATUS.ACTIVE, STATUS.ACCEPT, STATUS.CLOSED, STATUS.HIDDEN, STATUS.DELIVERED, STATUS.DELAYED, STATUS.UNPICKED_UP, STATUS.IN_ROAD, STATUS.BLOCK ]
         }
         // return false
         return listFromTo[statusFrom].includes( statusTo )
