@@ -49,8 +49,6 @@ export default class ProductsModel extends BaseModel {
             return await actionSave( this.tableName, { ...data, status }, id );
         } else if( status === STATUS.UNPICKED_UP ) {
             return await actionSave( this.tableName, { ...data, status }, id );
-        } else if( status === STATUS.BLOCK ) {
-            return await actionSave( this.tableName, { ...data, status }, id );
         }
         return false
     }
