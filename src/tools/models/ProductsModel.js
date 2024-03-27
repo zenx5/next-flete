@@ -11,7 +11,6 @@ export default class ProductsModel extends BaseModel {
     }
 
     static canChangeStatus( statusFrom, statusTo ) {
-        // console.log( statusFrom, statusTo )
         const listFromTo = {
             [STATUS.ACCEPT]: [ STATUS.IN_ROAD, STATUS.UNPICKED_UP, STATUS.BLOCK ],
             [STATUS.ACTIVE]: [ STATUS.CLOSED, STATUS.ACCEPT, STATUS.HIDDEN, STATUS.BLOCK ],
@@ -23,7 +22,6 @@ export default class ProductsModel extends BaseModel {
             [STATUS.UNPICKED_UP]: [ STATUS.ACTIVE, STATUS.ACCEPT, STATUS.CLOSED, STATUS.HIDDEN, STATUS.IN_ROAD, STATUS.BLOCK ],
             [STATUS.BLOCK]: [ STATUS.ACTIVE, STATUS.ACCEPT, STATUS.CLOSED, STATUS.HIDDEN, STATUS.DELIVERED, STATUS.DELAYED, STATUS.UNPICKED_UP, STATUS.IN_ROAD, STATUS.BLOCK ]
         }
-        // return false
         return listFromTo[statusFrom].includes( statusTo )
     }
 
@@ -40,7 +38,19 @@ export default class ProductsModel extends BaseModel {
         } else if( status === STATUS.CLOSED) {
             return await actionSave( this.tableName, { ...data, status }, id ) ;
         } else if( status === STATUS.ACTIVE ) {
-            return await actionSave( this.tableName, { ...data, status: status }, id );
+            return await actionSave( this.tableName, { ...data, status }, id );
+        } else if( status === STATUS.HIDDEN ) {
+            return await actionSave( this.tableName, { ...data, status }, id );
+        } else if( status === STATUS.IN_ROAD ) {
+            return await actionSave( this.tableName, { ...data, status }, id );
+        } else if( status === STATUS.DELIVERED ) {
+            return await actionSave( this.tableName, { ...data, status }, id );
+        } else if( status === STATUS.DELAYED ) {
+            return await actionSave( this.tableName, { ...data, status }, id );
+        } else if( status === STATUS.UNPICKED_UP ) {
+            return await actionSave( this.tableName, { ...data, status }, id );
+        } else if( status === STATUS.BLOCK ) {
+            return await actionSave( this.tableName, { ...data, status }, id );
         }
         return false
     }
