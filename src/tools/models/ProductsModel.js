@@ -26,9 +26,9 @@ export default class ProductsModel extends BaseModel {
     }
 
     static async changeStatus(id, status) {
-        if( !this.canChangeStatus( data.status, status ) ) return false;
         const data = await this.getDataByChangeStatus(id, status)
-        return await actionSave( this.tableName, { ...data, status }, id );
+        if( data===false ) return
+        return await actionSave( this.tableName, data, id );
     }
 
     static async getDataByChangeStatus(id, status) {
@@ -39,6 +39,7 @@ export default class ProductsModel extends BaseModel {
     static async changeToAccept(id) {
         const status = STATUS.ACCEPT
         const data = await this.get(id)
+        if( !this.canChangeStatus( data.status, status ) ) return false;
         if( data?.auctions?.length <= 0 ) return false
         const index = data?.assignAt ? data?.assignAt?.index + 1 : 0;
         const auctionsOrdered = data.auctions.sort(() => -1);
