@@ -26,30 +26,23 @@ export default class ProductsModel extends BaseModel {
     }
 
     static async changeStatus(id, status) {
-        const data = await this.get(id);
-        console.log(data)
         if( !this.canChangeStatus( data.status, status ) ) return false;
-        if( status === STATUS.ACCEPT ) {
-            if( data?.auctions?.length <= 0 ) return false
-            const index = data?.assignAt ? data?.assignAt?.index + 1 : 0;
-            const auctionsOrdered = data.auctions.sort(() => -1);
-            const newAssignAt = { ...auctionsOrdered[index], index };
-            return await actionSave( this.tableName, { ...data, status, assignAt: newAssignAt }, id );
-        } else if( status === STATUS.CLOSED) {
-            return await actionSave( this.tableName, { ...data, status }, id ) ;
-        } else if( status === STATUS.ACTIVE ) {
-            return await actionSave( this.tableName, { ...data, status }, id );
-        } else if( status === STATUS.HIDDEN ) {
-            return await actionSave( this.tableName, { ...data, status }, id );
-        } else if( status === STATUS.IN_ROAD ) {
-            return await actionSave( this.tableName, { ...data, status }, id );
-        } else if( status === STATUS.DELIVERED ) {
-            return await actionSave( this.tableName, { ...data, status }, id );
-        } else if( status === STATUS.DELAYED ) {
-            return await actionSave( this.tableName, { ...data, status }, id );
-        } else if( status === STATUS.UNPICKED_UP ) {
-            return await actionSave( this.tableName, { ...data, status }, id );
-        }
-        return false
+        const data = await this.getDataByChangeStatus(id, status)
+        return await actionSave( this.tableName, { ...data, status }, id );
+    }
+
+    static async getDataByChangeStatus(id, status) {
+        if( status === STATUS.ACCEPT ) return await this.changeToAccept(id)
+        else return await this.get(id)
+    }
+
+    static async changeToAccept(id) {
+        const status = STATUS.ACCEPT
+        const data = await this.get(id)
+        if( data?.auctions?.length <= 0 ) return false
+        const index = data?.assignAt ? data?.assignAt?.index + 1 : 0;
+        const auctionsOrdered = data.auctions.sort(() => -1);
+        const newAssignAt = { ...auctionsOrdered[index], index };
+        return await actionSave( this.tableName, { ...data, status, assignAt: newAssignAt }, id );
     }
 }
