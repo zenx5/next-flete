@@ -121,7 +121,8 @@ export default function ProductDetail({ productId, user }) {
 											<span>{ item.value }</span>
 											<span>{ item.label }</span>
 										</span>)}
-										{ isClosed() && <span className="py-2 px-4 flex flex-col gap-1 items-center">Cerrado</span>}
+										{/* muestra el contenido de cerrado que no tenga cursiva */}
+										{ isClosed() && <span className="py-2 px-4 flex flex-col gap-1 items-center text-red-500 font-bold not-italic">CERRADO</span>}
 									</span>
 								</span>
 							</span>
