@@ -6,7 +6,7 @@ export default async function Layout({ children }){
 
     return <main className="w-screen h-auto flex justify-center items-center py-10 bg-gray-50">
         <form
-            className="px-4 py-8 border-2 border-[#d97706] rounded-md shadow-md shadow-gray-200 bg-white"
+            className="px-4 py-8 border-2 border-[#d97706] rounded-md shadow-md shadow-gray-200 bg-white px-8"
             method="post"
             action={ROUTER_PATH.API.USER}
         >
