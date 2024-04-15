@@ -72,6 +72,10 @@ export default function ProductDetail({ productId, user }) {
 			.join("@")
 	}
 
+	const isClosed = () => {
+		return leftTime.find( element => element.value < 0 )
+	}
+
 	const orderAutions = (auction1, auction2) => auction1.date<auction2.date ? 1 : -1
 
 	const getLeft = ( currentDate, index = 0 ) => {
@@ -113,10 +117,11 @@ export default function ProductDetail({ productId, user }) {
 								<span className="font-semibold">Cierra en:</span>
 								<span className="italic ml-3 opacity-40">
 									<span className="flex flex-row gap-2 px-2">
-										{leftTime.map( item => <span key={item.label}  className="py-2 px-4 flex flex-col gap-1 items-center">
+										{ !isClosed() && leftTime.map( item => <span key={item.label}  className="py-2 px-4 flex flex-col gap-1 items-center">
 											<span>{ item.value }</span>
 											<span>{ item.label }</span>
 										</span>)}
+										{ isClosed() && <span className="py-2 px-4 flex flex-col gap-1 items-center">Cerrado</span>}
 									</span>
 								</span>
 							</span>
