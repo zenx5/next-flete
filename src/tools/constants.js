@@ -261,11 +261,5 @@ export const TABS = {
 export const STATUS = {
     ACTIVE: 'active',
     ACCEPT: 'accept',
-    CLOSED: 'closed',
-    HIDDEN: 'hidden',
-    IN_ROAD: 'in_road',
-    DELIVERED: 'delivered',
-    DELAYED: 'delayed',
-    UNPICKED_UP: 'unpicked_up',
-    BLOCK: 'block'
+    CLOSED: 'closed'
 }

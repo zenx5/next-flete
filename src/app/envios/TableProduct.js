@@ -54,8 +54,8 @@ export default function TableProduct({ userId, isAdmin }) {
         if( target.trim()==="" ) return true
         return (
             entity.name.trim().toLowerCase().includes( target.trim().toLowerCase() ) ||
-            entity.from.name?.trim().toLowerCase().includes( target.trim().toLowerCase() ) ||
-            entity.to.name?.trim().toLowerCase().includes( target.trim().toLowerCase() )
+            entity.from.trim().toLowerCase().includes( target.trim().toLowerCase() ) ||
+            entity.to.trim().toLowerCase().includes( target.trim().toLowerCase() )
         )
     },[target])
 
