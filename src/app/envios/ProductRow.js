@@ -23,7 +23,7 @@ export default function ProductRow({ item, fields, isAdmin, isOwner }) {
     }
 
     return <>
-        <tr className={"text-inherit hidden md:table-row align-middle outline-none bg-opacity-50 hover:bg-opacity-100 " + (bgcolor[item.status] ?? "bg-slate-200") }>
+        <tr className={"text-inherit hidden xl:table-row align-middle outline-none bg-opacity-50 hover:bg-opacity-100 " + (bgcolor[item.status] ?? "bg-slate-200") }>
             { fields.map(
                 field => <td
                     key={'field-item-'+field.id}
