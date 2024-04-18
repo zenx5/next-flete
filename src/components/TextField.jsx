@@ -11,14 +11,14 @@ export default function TextField( props ) {
     } = props
     const [visible, toggleVisible] = useState(false)
     const className = {
-        label : "left-4 top-3 relative w-fit "  + (props?.className?.label ? props?.className?.label : "bg-white px-2 text-blue-500"),
+        label : "left-4 top-3 relative w-fit "  + (props?.className?.label ? props?.className?.label : "bg-white px-2 text-[#d97706]"),
         content : ((isPassword)=>{
-            return (isPassword ? "flex flex-row justify-between " : "") + (props?.className?.content ? props?.className?.content : "border border-blue-500 rounded")
+            return (isPassword ? "flex flex-row justify-between " : "") + (props?.className?.content ? props?.className?.content : "border border-[#d97706] rounded")
 
         })(type.toLowerCase()==='password'),
         input: (type.toLowerCase()==='password' ? "w-full " : "w-fit ") + ( props?.className?.input ? props?.className?.input : "outline-none p-3 rounded w-full"),
         helperText: props?.className?.helperText ? props?.className?.helperText : "text-xs px-2 pt-1 text-gray-500",
-        icon: props?.className?.icon ? props?.className?.icon : "w-6 h-6 text-blue-500"
+        icon: props?.className?.icon ? props?.className?.icon : "w-6 h-6 text-[#d97706]"
     }
 
     return <div className="flex flex-col">
