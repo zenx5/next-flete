@@ -92,7 +92,7 @@ export default function AuctionForm({ auctionId, userId }) {
 
 
     return auction && <div className="w-full h-full flex justify-center md:items-center items-start">
-        <div className="md:p-4 p-1 pt-4  bg-white text-black md:w-1/2 w-full mx-1 rounded-lg">
+        <div className="md:p-4 p-1 pt-4  bg-white text-black md:w-1/2 md:min-w-[600px] w-full mx-1 rounded-lg">
             <div className="flex flex-row md:justify-between justify-start items-center">
                 <h2 className="font-semibold md:mr-0 mr-10">Edit auction {auction.id}</h2>
                 { auctionId=="0" && <Link href="?" onClick={handlerCreate} className="md:relative fixed md:bottom-0 md:right-0 bottom-5 right-10 rounded-full bg-green-500 hover:bg-green-700 text-white md:rounded p-2 md:w-2/12 w-fit text-center">
