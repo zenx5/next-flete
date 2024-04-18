@@ -7,7 +7,7 @@ function classNames(...classes) {
 export default function About() {
 
 	return (
-		<div className=" h-auto mt-20 pt-8 pb-20 mb-20 rounded-md bg-gradient-to-b from-slate-100 border-4 border-blue-600">
+		<div className=" h-auto mt-20 pt-8 pb-20 mb-20 rounded-md bg-gradient-to-b from-slate-100">
 			<h1 className="text-4xl font-bold mb-4 px-4 lg:px-48 mt-14">Sobre Nosotros</h1>
 			<div className="flex flex-col px-6 lg:flex-row lg:justify-between gap-4 lg:gap-2 lg:px-48 mt-14">
 				<div>
