@@ -25,9 +25,15 @@ export default function ChatBox(){
     return (
         <section className="w-full m-1 p-2 border border-slate-300 rounded-md h-[300px] relative">
             <ul className="overflow-y-auto h-full w-full m-1 p-1">
-                {
-                    messages.map((message, index) => <li key={index} className="text-slate-800">{message}</li>)
-                }
+                <li className="text-center">
+                    Chat
+                </li>
+                { messages.map( (message,index) => <li className={"mb-1 flex flex-row " + ( index%2 ? "justify-end" : "justify-start")} key={index}>
+                    <span className="flex flex-col w-fit bg-blue-100 rounded-full px-5">
+                        <span className="font-bold after:content-[':'] first-letter:uppercase lowercase">{'username'}</span>
+                        <span className="">{message}</span>
+                    </span>
+                </li>)}
             </ul>
             <form onSubmit={handlerSend} className="absolute bottom-0 left-0 right-0 p-4 flex height-10">
                 <input value={inputValue} onChange={event=>setInputValue(event.target.value)} placeholder="write a message" className="rounded-full border border-slate-300 px-3 py-1 m-2 flex-1" />

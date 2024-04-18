@@ -102,7 +102,7 @@ export default function TableProduct({ userId, isAdmin }) {
 
 
 
-    return <div className="w-full md:w-10/12 px-5 mx-auto mt-5">
+    return <div className="w-full lg:w-10/12 px-5 mx-auto mt-5">
         <div className="flex md:flex-row flex-col items-center gap-1 md:gap-4 justify-between w-full">
             <div className="flex flex-row items-center border border-gray-200 hover:border-gray-900 rounded-lg py-2 px-4 my-5 gap-5 bg-white w-full md:w-10/12">
                 <SearchIcon />
@@ -118,7 +118,7 @@ export default function TableProduct({ userId, isAdmin }) {
         <Tabs onChange={tab=>setCurrentTab(tab)} labels={ labelTabs.map( (label, index) => `${label} (${entities.filter( filterByTab(index) ).length})` ) }/>
         <table className="table w-full border-spacing-0 border-collapse px-2 mt-5 md:mb-5 mb-20">
             <thead>
-                <tr className="hidden md:table-row align-middle outline-0">
+                <tr className="hidden xl:table-row align-middle outline-0">
                     { fields.map( (field,index) => <th key={index} className="table-cell leading-6 text-sm font-semibold text-left text-[#637381] bg-[#F4F6F8] p-4  border-b-0">{ field.label }</th> )}
                     <th className="leading-6 text-sm font-semibold table-cell text-left text-[#637381] bg-[#F4F6F8] p-4  border-b-0">Actions</th>
                 </tr>
