@@ -8,7 +8,7 @@ import SliderMain from './SliderMain'
 
 export default function FrontPage() {
 
-	return <div className="mx-5">
+	return <div className=" border-4 border-red-500">
 		<SliderMain />
 		<SectionOne/>
 		<SectionTwo/>
