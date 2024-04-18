@@ -1,6 +1,6 @@
 export default function SectionFive() {
 
-	return <section><div className="grid grid-cols-1 md:grid-cols-2 bg-zinc-600 h-[46rem] md:max-h-[30rem] text-white">
+	return <section><div className="grid grid-cols-1 md:grid-cols-2 bg-zinc-600 h-[46rem] md:h-[30rem] text-white">
       <div className="">
         <img
           src="/images/imagenes-para-paginas-web.png"
