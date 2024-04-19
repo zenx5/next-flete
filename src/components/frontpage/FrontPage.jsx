@@ -4,6 +4,7 @@ import SectionThree from './SectionThree'
 import SectionFour from './SectionFour'
 import SectionFive from './SectionFive'
 import SliderMain from './SliderMain'
+import Footer from '../Footer'
 
 
 export default function FrontPage() {
@@ -15,5 +16,6 @@ export default function FrontPage() {
 		<SectionThree/>
 		<SectionFour/>
 		<SectionFive/>
+		<Footer/>
 	</div>
 }
