@@ -1,4 +1,3 @@
-'use client'
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ')
@@ -28,8 +27,8 @@ export default function About() {
 				<div>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nihil temporibus delectus a, sapiente omnis, earum unde ducimus optio explicabo molestias ipsum blanditiis! Rerum expedita eligendi illo, quaerat eius molestiae.</p>
 				</div>
-				<div className="flex gap-4 flex-col lg:flex-row rounded overflow-hidden shadow-lg bg-white">
-					<div>
+				<div className="flex gap-4 flex-col lg:flex-row rounded bg-white">
+					<div className="shadow-lg">
 						<img className="w-full" src="https://via.placeholder.com/600x300" alt="Imagen de muestra" />
 						<div className="px-6 py-4">
 							<p className="text-gray-700 text-base">
@@ -38,7 +37,7 @@ export default function About() {
 						</div>
 
 					</div>
-					<div>
+					<div className="shadow-lg">
 						<img className="w-full" src="https://via.placeholder.com/600x300" alt="Imagen de muestra" />
 						<div className="px-6 py-4">
 							<p className="text-gray-700 text-base">
@@ -47,7 +46,7 @@ export default function About() {
 						</div>
 
 					</div>
-					<div>
+					<div className="shadow-lg">
 						<img className="w-full" src="https://via.placeholder.com/600x300" alt="Imagen de muestra" />
 						<div className="px-6 py-4">
 							<p className="text-gray-700 text-base">
