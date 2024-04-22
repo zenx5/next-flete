@@ -1,4 +1,3 @@
-'use client'
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ')
@@ -7,7 +6,7 @@ function classNames(...classes) {
 export default function About() {
 
 	return (
-		<div className=" h-auto mt-20 mx-4 md:mx-10 pt-8 pb-20 mb-20 rounded-md bg-gradient-to-b from-slate-100">
+		<div className=" h-auto mt-20 pt-8 pb-20 mb-20 rounded-md bg-gradient-to-b from-slate-100">
 			<h1 className="text-4xl font-bold mb-4 px-4 lg:px-48 mt-14">Sobre Nosotros</h1>
 			<div className="flex flex-col px-6 lg:flex-row lg:justify-between gap-4 lg:gap-2 lg:px-48 mt-14">
 				<div>
@@ -28,8 +27,8 @@ export default function About() {
 				<div>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nihil temporibus delectus a, sapiente omnis, earum unde ducimus optio explicabo molestias ipsum blanditiis! Rerum expedita eligendi illo, quaerat eius molestiae.</p>
 				</div>
-				<div className="flex gap-4 flex-col lg:flex-row rounded overflow-hidden shadow-lg bg-white">
-					<div>
+				<div className="flex gap-4 flex-col lg:flex-row rounded bg-white">
+					<div className="shadow-lg">
 						<img className="w-full" src="https://via.placeholder.com/600x300" alt="Imagen de muestra" />
 						<div className="px-6 py-4">
 							<p className="text-gray-700 text-base">
@@ -38,7 +37,7 @@ export default function About() {
 						</div>
 
 					</div>
-					<div>
+					<div className="shadow-lg">
 						<img className="w-full" src="https://via.placeholder.com/600x300" alt="Imagen de muestra" />
 						<div className="px-6 py-4">
 							<p className="text-gray-700 text-base">
@@ -47,7 +46,7 @@ export default function About() {
 						</div>
 
 					</div>
-					<div>
+					<div className="shadow-lg">
 						<img className="w-full" src="https://via.placeholder.com/600x300" alt="Imagen de muestra" />
 						<div className="px-6 py-4">
 							<p className="text-gray-700 text-base">
