@@ -103,12 +103,13 @@ export default function TableProduct({ userId, isAdmin }) {
 
 
     return <div className="w-full lg:w-10/12 px-5 mx-auto mt-5">
+        <div className="bg-white fixed md:hidden bottom-0 left-0 w-full h-16"></div>
         <div className="flex md:flex-row flex-col items-center gap-1 md:gap-4 justify-between w-full">
             <div className="flex flex-row items-center border border-gray-200 hover:border-gray-900 rounded-lg py-2 px-4 my-5 gap-5 bg-white w-full md:w-10/12">
                 <SearchIcon />
                 <input type="text" value={target} onChange={event=>setTarget(event.target.value)} className="outline-none p-2 w-full" placeholder="Buscar..."/>
             </div>
-            <Link href={`?modal=edit-auction&params=id,userid&id=0&userid=${userId}`} className="md:relative fixed md:right-auto md:bottom-auto right-5 bottom-5 bg-orange-500 hover:bg-orange-700 text-white md:rounded rounded-full p-2 md:w-2/12 w-fit text-center">
+            <Link href={`?modal=edit-auction&params=id,userid&id=0&userid=${userId}`} className="md:relative fixed md:right-auto md:bottom-auto right-5 bottom-4 bg-orange-500 hover:bg-orange-700 text-white md:rounded rounded-full p-2 md:w-2/12 w-fit text-center">
                 <span className="md:block hidden ">Crear Envio</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="block md:hidden w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
