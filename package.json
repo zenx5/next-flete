@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
+    "dev": "nodemon server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "next lint"
@@ -29,6 +29,7 @@
     "@types/react": "^18.2.79",
     "autoprefixer": "^10.4.19",
     "eslint-config-next": "^13.5.2",
+    "nodemon": "^3.1.0",
     "postcss": "^8.4.38"
   }
 }
