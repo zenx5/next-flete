@@ -14,6 +14,7 @@ export default async function Page({params}) {
     const user = await getUser()
 
     const product = await ProductsModel.get(id)
+    const ticket = product?.tickets?.find( ticket => ticket.open )
     if(
         product?.createdBy?.id!==user.id && //Creador
         product?.assignAt?.id!==user.id && //Asignado
@@ -102,7 +103,12 @@ export default async function Page({params}) {
                     { product?.createdBy?.id===user.id && <div>Creador</div> }
                     { product?.assignAt?.id===user.id && <div>Asignado</div> }
                     <div>
-                        <ChatBox />
+                        <ChatBox
+                            productId={id}
+                            user={user}
+                            isOwner={product?.createdBy?.id===user.id}
+                            isAssign={product?.assignAt?.user?.id===user.id}
+                        />
                     </div>
                 </div>
             </div>

@@ -10,6 +10,32 @@ export default class ProductsModel extends BaseModel {
         return await actionSave(this.tableName, rest, id)
     }
 
+    static async openTicket(id, userId) {
+        const data = await this.get(id);
+        const ticket = {
+            open: true,
+            userId,
+            createdAt: Date.now(),
+            messages: []
+        }
+        return await actionSave( this.tableName, { ...data, tickets: [ ...data.tickets, ticket ] }, id )
+    }
+
+    static async closeTicket(id, userId, ticketId) {
+        const data = await this.get(id);
+        const ticket = data.tickets.find( ticket => ticket.id === ticketId )
+        if( !ticket ) return false
+        if( ticket.userId !== userId ) return false
+        return await actionSave( this.tableName, { ...data, tickets: data.tickets.map( t => t.id === ticketId ? { ...t, open: false } : t ) }, id )
+    }
+
+    static async putMessage(id, userId, ticketId, message) {
+        const data = await this.get(id);
+        const ticket = data.tickets.find( ticket => ticket.id === ticketId )
+        if( !ticket ) return false
+        return await actionSave( this.tableName, { ...data, tickets: data.tickets.map( t => t.id === ticketId ? { ...t, messages: [ ...t.messages, message ] } : t ) }, id )
+    }
+
     static canChangeStatus( statusFrom, statusTo ) {
         // console.log( statusFrom, statusTo )
         const listFromTo = {
