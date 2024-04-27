@@ -3,6 +3,8 @@ import Link from "next/link"
 import { DeleteIcon, EditIcon, OpenIcon } from "@/components/icons"
 import RowCardMobile from "./RowCardMobile"
 import ProductsModel from "@/tools/models/ProductsModel"
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function ProductRow({ item, fields, isAdmin, isOwner }) {
 
@@ -14,7 +16,10 @@ export default function ProductRow({ item, fields, isAdmin, isOwner }) {
     }
 
     const handlerDelete = async () => {
+        toast("tarea borrada")
         await ProductsModel.delete(item?.id)
+        toast.success("Flete eliminado")
+        
     }
 
     const bgcolor = {
@@ -60,5 +65,6 @@ export default function ProductRow({ item, fields, isAdmin, isOwner }) {
                 onDelete={handlerDelete}
             />
         </tr>
+        <ToastContainer />
     </>
 }

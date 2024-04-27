@@ -4,6 +4,8 @@ import TextField from "../TextField"
 import ButtonLocation from "../ButtonLocation"
 import { actionSave, onSnap } from "@/tools/firebase/actions"
 import { ENTITIES } from "@/tools/constants"
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function AuctionForm({ auctionId, userId }) {
     const [auction, setAuction] = useState(null)
@@ -86,6 +88,7 @@ export default function AuctionForm({ auctionId, userId }) {
         } ) ) {
             console.log('algo va mal')
         }
+        toast.success("Flete creado")
     }
 
     console.log( auction )
@@ -212,5 +215,6 @@ export default function AuctionForm({ auctionId, userId }) {
                 </span>
             </form>
         </div>
+        <ToastContainer />
     </div>
 }
