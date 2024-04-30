@@ -24,13 +24,8 @@ export default function ProductRow({ item, fields, isAdmin, isOwner }) {
         }
     }
 
-    const bgcolor = {
-        closed: 'bg-red-200',
-        accept: 'bg-green-200'
-    }
-
     return <>
-        <tr className={"text-inherit hidden xl:table-row align-middle outline-none bg-opacity-50 hover:bg-opacity-100 " + (bgcolor[item.status] ?? "bg-slate-200") }>
+        <tr className="text-inherit hidden xl:table-row align-middle outline-none bg-opacity-50 hover:bg-opacity-100 bg-slate-200 ">
             { fields.map(
                 field => <td
                     key={'field-item-'+field.id}
