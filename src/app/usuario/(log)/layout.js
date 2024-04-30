@@ -6,13 +6,13 @@ export default async function Layout({ children }){
 
     return <main className="w-screen h-auto min-h-[650px] flex justify-center items-center py-10 bg-gray-50">
         <form
-            className="px-4 py-8 border-2 border-[#d97706] rounded-md shadow-md shadow-gray-200 bg-white px-8"
+            className="py-8 border-2 border-orange-flete rounded-md shadow-md shadow-gray-200 bg-white px-8"
             method="post"
             action={ROUTER_PATH.API.USER}
         >
             {children}
             <input type="hidden" name="redirect" value={ROUTER_PATH.HOME} />
-            <button type="submit" className="w-full text-white bg-[#d97706] font-bold border border-[#d97706] p-3 my-4 rounded hover:bg-blue-600">Enviar</button>
+            <button type="submit" className="w-full text-white bg-orange-flete font-bold border border-orange-flete p-3 my-4 rounded hover:bg-orange-flete-2">Enviar</button>
             <p className="text-center text-red-600 italic">{error.message}</p>
         </form>
     </main>
