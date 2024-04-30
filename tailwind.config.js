@@ -9,7 +9,8 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        'orange-flete':'#D36E2D',
+        'orange-flete':'#d97706',
+        'orange-flete-2':'#D36E2D',
         'azul-flete':'#002361'
       },
       backgroundImage: {
