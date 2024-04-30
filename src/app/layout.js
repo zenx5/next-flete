@@ -5,7 +5,7 @@ import CustomHeader from '@/components/header/Index'
 import { Inter } from 'next/font/google'
 import Footer from '@/components/Footer'
 import ModalContainer from '@/components/ModalContainer';
-
+import { ToastProvider } from '../components/ToastProvider';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,6 +21,8 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
         <ModalContainer />
+        {/** Aqui deberia ir el ToastProvider */}
+        <ToastProvider  />
       </body>
     </html>
   )
