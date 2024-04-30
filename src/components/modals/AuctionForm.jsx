@@ -4,6 +4,7 @@ import TextField from "../TextField"
 import ButtonLocation from "../ButtonLocation"
 import { actionSave, onSnap } from "@/tools/firebase/actions"
 import { ENTITIES } from "@/tools/constants"
+import { setToast } from "../ToastProvider"
 
 export default function AuctionForm({ auctionId, userId }) {
     const [auction, setAuction] = useState(null)
@@ -84,8 +85,10 @@ export default function AuctionForm({ auctionId, userId }) {
                 email: user.email
             }
         } ) ) {
-            console.log('algo va mal')
+            setToast("No se creo el flete", "error")
+            return;
         }
+        setToast("Flete creado", "success")
     }
 
     console.log( auction )

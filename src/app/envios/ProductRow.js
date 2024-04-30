@@ -3,6 +3,7 @@ import Link from "next/link"
 import { DeleteIcon, EditIcon, OpenIcon } from "@/components/icons"
 import RowCardMobile from "./RowCardMobile"
 import ProductsModel from "@/tools/models/ProductsModel"
+import { setToast } from "../../components/ToastProvider"
 
 export default function ProductRow({ item, fields, isAdmin, isOwner }) {
 
@@ -14,16 +15,17 @@ export default function ProductRow({ item, fields, isAdmin, isOwner }) {
     }
 
     const handlerDelete = async () => {
-        await ProductsModel.delete(item?.id)
-    }
-
-    const bgcolor = {
-        closed: 'bg-red-200',
-        accept: 'bg-green-200'
+        try{
+            await ProductsModel.delete(item?.id)
+            setToast("Flete eliminado", "success")
+        } catch(error){
+            console.error(error.message)
+            setToast(error.message, "error")
+        }
     }
 
     return <>
-        <tr className={"text-inherit hidden xl:table-row align-middle outline-none bg-opacity-50 hover:bg-opacity-100 " + (bgcolor[item.status] ?? "bg-slate-200") }>
+        <tr className="text-inherit hidden xl:table-row align-middle outline-none bg-opacity-50 hover:bg-opacity-100 bg-slate-200 ">
             { fields.map(
                 field => <td
                     key={'field-item-'+field.id}
