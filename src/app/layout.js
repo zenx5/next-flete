@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <head>
         <title>Hay Flete</title>
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} flex flex-col justify-between min-h-screen`}>
         <CustomHeader/>
         {children}
         <Footer />
