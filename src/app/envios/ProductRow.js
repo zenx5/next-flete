@@ -3,6 +3,7 @@ import Link from "next/link"
 import { DeleteIcon, EditIcon, OpenIcon } from "@/components/icons"
 import RowCardMobile from "./RowCardMobile"
 import ProductsModel from "@/tools/models/ProductsModel"
+import { setToast } from "../../components/ToastProvider"
 
 export default function ProductRow({ item, fields, isAdmin, isOwner }) {
 
@@ -14,7 +15,13 @@ export default function ProductRow({ item, fields, isAdmin, isOwner }) {
     }
 
     const handlerDelete = async () => {
-        await ProductsModel.delete(item?.id)
+        try{
+            await ProductsModel.delete(item?.id)
+            setToast("Flete eliminado", "success")
+        } catch(error){
+            console.error(error.message)
+            setToast(error.message, "error")
+        }
     }
 
     const bgcolor = {
