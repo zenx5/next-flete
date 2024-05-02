@@ -26,10 +26,10 @@ export default function ProductRow({ item, fields, isAdmin, isOwner }) {
     }
 
     const solutions = [
-        { name: 'Details', href: `${ROUTER_PATH.PRODUCTS}/${item.id}/details`, icon: SquaresPlusIcon },
-        { name: 'Open', href: `${ROUTER_PATH.PRODUCTS}/${item.id}`, icon: OpenIcon },
-        { name: 'Edit', href: `?modal=edit-auction&params=id&id=${item.id}`, icon: EditIcon },
-        { name: 'Delete', href: '#', onClick:handlerDelete, icon: DeleteIcon }
+        { name: 'Details', href: `${ROUTER_PATH.PRODUCTS}/${item.id}/details`, icon: SquaresPlusIcon, enable:isAdmin || isOwner },
+        { name: 'Open', href: `${ROUTER_PATH.PRODUCTS}/${item.id}`, icon: OpenIcon, enable: true },
+        { name: 'Edit', href: `?modal=edit-auction&params=id&id=${item.id}`, icon: EditIcon, enable:isAdmin || isOwner },
+        { name: 'Delete', href: '#', onClick:handlerDelete, icon: DeleteIcon, enable:isAdmin || isOwner}
     ]
 
     return <>
@@ -41,7 +41,7 @@ export default function ProductRow({ item, fields, isAdmin, isOwner }) {
                 >{ formater(item[field.id], field?.format) }</td>
             ) }
             <td className="leading-6 text-sm font-normal text-center text-[#212B36] border-b-0 gap-1">
-                <MenuItem items={solutions} />
+                <MenuItem items={solutions.filter( item => item.enable )} />
             </td>
         </tr>
         <tr>
