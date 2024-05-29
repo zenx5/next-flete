@@ -109,7 +109,7 @@ export default function TableProduct({ userId, isAdmin }) {
                 <SearchIcon />
                 <input type="text" value={target} onChange={event=>setTarget(event.target.value)} className="outline-none p-2 w-full" placeholder="Buscar..."/>
             </div>
-            <Link href={`?modal=edit-auction&params=id,userid&id=0&userid=${userId}`} className="md:relative fixed md:right-auto md:bottom-auto right-5 bottom-4 bg-orange-500 hover:bg-orange-700 text-white md:rounded rounded-full p-2 md:w-2/12 w-fit text-center z-20">
+            <Link href={`?modal=edit-auction&params=id,userid&id=0&userid=${userId}`} className="md:relative fixed md:right-auto md:bottom-auto right-5 bottom-4 bg-orange-500 hover:bg-orange-700 text-white md:rounded rounded-full p-2 md:w-2/12 w-fit text-center md:z-0 z-10">
                 <span className="md:block hidden ">Crear Envio</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="block md:hidden w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -133,7 +133,7 @@ export default function TableProduct({ userId, isAdmin }) {
                 </tr>
             </tbody> }
         </table>
-        <div className="flex flex-row items-center justify-end gap-10 md:relative fixed bottom-5 left-5 z-20">
+        <div className="flex flex-row items-center justify-end gap-10 md:relative fixed bottom-5 left-5 md:z-0 z-10">
             <div className="md:p-4 p-0 flex flex-row gap-2">
                 <span className="md:block hidden">Rows per page</span>
                 <select className="outline-none" onChange={event=> setPerPage(event.target.value)} value={perPage}>
