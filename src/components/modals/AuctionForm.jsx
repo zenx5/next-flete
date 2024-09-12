@@ -110,14 +110,14 @@ export default function AuctionForm({ auctionId, userId }) {
             <form >
                 <span className="flex md:flex-row flex-col gap-1 justify-between">
                     <TextField
-                        label="Name"
+                        label="Nombre"
                         type="text"
                         input={{
                             value:auction.name ?? "",
                             onChange: event => handlerChangeAuction('name', event.target.value)
                         }}/>
                     <TextField
-                        label="Price"
+                        label="Precio"
                         type="number"
                         input={{
                             value:auction.price ?? "",
@@ -125,7 +125,7 @@ export default function AuctionForm({ auctionId, userId }) {
                         }}/>
                 </span>
                 <TextField
-                    label="Description"
+                    label="Descripcion"
                     type="text"
                     input={{
                         value:auction.description ?? "",
@@ -134,14 +134,14 @@ export default function AuctionForm({ auctionId, userId }) {
                 <p className="md:mt-5 mt-2 md:ml-0 ml-4 font-semibold mb-2">Ubicación</p>
                 <span className="flex md:flex-row flex-col gap-5 items-center justify-around">
                     <ButtonLocation
-                        title="From"
+                        title="Desde"
                         name={auction.from.name}
                         position={auction.from.position}
                         geolocate={auctionId==="0"}
                         onChange={ (name, position) => handlerChangeAuction('from', { name, position })}
                     />
                     <ButtonLocation
-                        title="To"
+                        title="Hasta"
                         name={auction.to.name}
                         position={auction.to.position}
                         geolocate={auctionId==="0"}
@@ -152,14 +152,14 @@ export default function AuctionForm({ auctionId, userId }) {
                 <span className="flex flex-col gap-2 px-5">
                     <span className="flex md:flex-row flex-col md:gap-2 gap-0 justify-around">
                         <TextField
-                            label="Width"
+                            label="Ancho"
                             type="number"
                             input={{
                                 value:auction.dimensions.width ?? "",
                                 onChange: event => handlerChangeAuction('dimensions', { ...auction.dimensions, width:event.target.value })
                             }} />
                         <TextField
-                            label="Height"
+                            label="Alto"
                             type="number"
                             input={{
                                 value:auction.dimensions.height ?? "",
@@ -168,14 +168,14 @@ export default function AuctionForm({ auctionId, userId }) {
                     </span>
                     <span className="flex md:flex-row flex-col md:gap-2 gap-0 justify-around">
                         <TextField
-                            label="Large"
+                            label="Largo"
                             type="number"
                             input={{
                                 value:auction.dimensions.large ?? "",
                                 onChange: event => handlerChangeAuction('dimensions', { ...auction.dimensions, large:event.target.value })
                             }} />
                         <TextField
-                            label="Units"
+                            label="Unidades"
                             type="text"
                             input={{
                                 value:auction.dimensions.unit   ?? "",

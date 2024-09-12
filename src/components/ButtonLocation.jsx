@@ -11,6 +11,10 @@ export default function ButtonLocation({ title, name, position, geolocate, onCha
         lat: parseFloat( position.lat ),
         lng: parseFloat( position.lng )
     } )
+    const [center, setCenter] = useState( {
+        lat: parseFloat( position.lat ),
+        lng: parseFloat( position.lng )
+    } )
     const libraries = [ "places" ]
 
     const handlerLocate = () => {
@@ -23,10 +27,10 @@ export default function ButtonLocation({ title, name, position, geolocate, onCha
         libraries: libraries
     });
 
-    const center = {
-        lat: parseFloat( position.lat ),
-        lng: parseFloat( position.lng )
-    }
+    // const center = {
+    //     lat: parseFloat( position.lat ),
+    //     lng: parseFloat( position.lng )
+    // }
 
     const options = {
         disableDefaultUI: false,
@@ -45,6 +49,10 @@ export default function ButtonLocation({ title, name, position, geolocate, onCha
         if( geolocate ) {
             navigator?.geolocation?.getCurrentPosition( position => {
                 setPos({
+                    lat : position.coords.latitude,
+                    lng : position.coords.longitude
+                })
+                setCenter({
                     lat : position.coords.latitude,
                     lng : position.coords.longitude
                 })
@@ -87,7 +95,7 @@ export default function ButtonLocation({ title, name, position, geolocate, onCha
                     <GoogleMap
                         options={options}
                         zoom={9}
-                        center={pos}
+                        center={center}
                         mapTypeId={google.maps.MapTypeId.ROADMAP}
                         mapContainerStyle={{ width: 'auto', height: '800px' }}
                         onLoad={() => console.log('Map Component Loaded...')}

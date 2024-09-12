@@ -12,13 +12,13 @@ import moment from "moment";
 import { STATUS } from "../../tools/constants";
 
 const fields = [
-    { id:"name", label: "Name", format: FormatName},
-    { id:"from", label: "From", format: formatLocation },
-    { id:"to", label: "To", format: formatLocation },
-    { id:"weight", label: "Weight" },
-    { id:"dimensions", label: "Dimensions", format: formatDimension },
-    { id:"auctions", label: "Last Auction", format: formatAuction },
-    { id:"status", label: "Status", format: formatStatus },
+    { id:"name", label: "Nombre", format: FormatName},
+    { id:"from", label: "Desde", format: formatLocation },
+    { id:"to", label: "Hasta", format: formatLocation },
+    { id:"weight", label: "Peso" },
+    { id:"dimensions", label: "Dimensiones", format: formatDimension },
+    { id:"auctions", label: "Última puja", format: formatAuction },
+    { id:"status", label: "Estatus", format: formatStatus },
 ]
 
 
@@ -135,7 +135,7 @@ export default function TableProduct({ userId, isAdmin }) {
         </table>
         <div className="flex flex-row items-center justify-end gap-10 md:relative fixed bottom-5 left-5 md:z-0 z-10">
             <div className="md:p-4 p-0 flex flex-row gap-2">
-                <span className="md:block hidden">Rows per page</span>
+                <span className="md:block hidden">Filas por Pagina</span>
                 <select className="outline-none" onChange={event=> setPerPage(event.target.value)} value={perPage}>
                     <option value={5}>5</option>
                     <option value={10}>10</option>
