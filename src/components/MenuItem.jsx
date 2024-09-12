@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default function MenuItem({ items = [] }) {
 
-    return <Popover className="relative z-30">
+    return <Popover className="relative md:z-1 z-20">
         <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
             <EllipsisVerticalIcon className="h-5 w-5" aria-hidden="true" />
         </Popover.Button>

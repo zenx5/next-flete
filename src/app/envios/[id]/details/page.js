@@ -95,13 +95,6 @@ export default async function Page({params}) {
                         <span>
                         </span>
                     </div>
-                    <div className="flex flex-row">
-                        <div>Usuario: {user.email}</div>
-                        <div>Creador: {product?.createdBy?.email}</div>
-                        <div>Asignado: {product?.assignAt?.user.email}</div>
-                    </div>
-                    { product?.createdBy?.id===user.id && <div>Creador</div> }
-                    { product?.assignAt?.id===user.id && <div>Asignado</div> }
                     <div>
                         <ChatBox
                             productId={id}
