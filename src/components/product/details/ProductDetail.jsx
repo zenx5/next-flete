@@ -28,31 +28,30 @@ export default function ProductDetail({ productId, user }) {
 	},[productId])
 
 	useEffect(()=>{
-		if( product && leftTime.length===0 ) {
-			setInterval( () => {
-				const diff = moment( Date.parse(product?.endTime) ).diff( Date.now() )
-				setLeftTime( prev => [
-					{
-						label: 'Dias',
-						value: Math.floor(diff / (1000 * 60 * 60 * 24))
-					},
-					{
-						label: 'Horas',
-						value: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-					},
-					{
-						label: 'Minutos',
-						value: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
-					},
-					{
-						label: 'Segundos',
-						value: Math.floor((diff % (1000 * 60)) / 1000)
-					}
-				])
-			},1000)
-		}
-
-	},[leftTime, product])
+		const idInterval = setInterval(()=>{
+			if( !product?.endTime ) return;
+			const diff = moment( Date.parse(product?.endTime) ).diff( Date.now() )
+			setLeftTime( prev => [
+				{
+					label: 'Dias',
+					value: Math.floor(diff / (1000 * 60 * 60 * 24))
+				},
+				{
+					label: 'Horas',
+					value: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+				},
+				{
+					label: 'Minutos',
+					value: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+				},
+				{
+					label: 'Segundos',
+					value: Math.floor((diff % (1000 * 60)) / 1000)
+				}
+			])
+		},1000)
+		return () => clearInterval(idInterval)
+	},[product?.endTime])
 
 	const hideEmail = (email) => {
 		if( !email ) return ""
