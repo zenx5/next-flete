@@ -9,9 +9,7 @@ import MenuItem from "@/components/MenuItem"
 export default function ProductRow({ item, fields, isAdmin, isOwner, isAssigned }) {
 
     const formater = (value, formatAction) => {
-        if( formatAction ) {
-            return formatAction(value, item, (isAdmin || isOwner))
-        }
+        if( formatAction ) return formatAction(value, item, (isAdmin || isOwner))
         return value
     }
 
@@ -46,6 +44,7 @@ export default function ProductRow({ item, fields, isAdmin, isOwner, isAssigned 
         </tr>
         <tr>
             <RowCardMobile
+                id={item.id}
                 name={ formater(item['name'], fields.find( field=> field.id==='name')?.format) }
                 from={ formater(item['from'], fields.find( field=> field.id==='from')?.format) }
                 to={ formater(item['to'], fields.find( field=> field.id==='to')?.format) }
