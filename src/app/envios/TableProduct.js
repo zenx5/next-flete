@@ -125,7 +125,7 @@ export default function TableProduct({ userId, isAdmin }) {
                 </tr>
             </thead>
             <tbody className="table-row-group">
-                { entities.filter( filterGroup ).filter( filterPagination ).filter( filterSearch ).map( entity => <ProductRow key={'row' + entity.id} item={entity} fields={fields} isAdmin={isAdmin} isOwner={entity?.createdBy?.id===userId}/> ) }
+                { entities.filter( filterGroup ).filter( filterPagination ).filter( filterSearch ).map( entity => <ProductRow key={'row' + entity.id} item={entity} fields={fields} isAdmin={isAdmin} isOwner={entity?.createdBy?.id===userId} isAssigned={entity?.assignAt?.user?.id===userId}/> ) }
             </tbody>
             { entities.filter( filterGroup ).filter( filterSearch ).length===0 && <tbody className="italic text-gray-500 text-center w-full">
                 <tr>

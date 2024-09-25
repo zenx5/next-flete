@@ -9,6 +9,6 @@ export default async function Products({ params }) {
     if( !user ) return redirect("/")
 
     return <main className="flex min-h-screen flex-col pt-10">
-            <ProductDetail productId={id} user={user} />
-        </main>
+        <ProductDetail productId={id} user={user} />
+    </main>
 }

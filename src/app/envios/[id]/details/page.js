@@ -12,12 +12,11 @@ import ChatBox from "@/components/ChatBox"
 export default async function Page({params}) {
     const { id } = params;
     const user = await getUser()
-
     const product = await ProductsModel.get(id)
-    const ticket = product?.tickets?.find( ticket => ticket.open )
+
     if(
         product?.createdBy?.id!==user.id && //Creador
-        product?.assignAt?.id!==user.id && //Asignado
+        product?.assignAt?.user?.id!==user.id && //Asignado
         user.type!==USER_TYPE.ADMIN // Administrador
     ) {
         redirect(ROUTER_PATH.PRODUCTS)
@@ -58,7 +57,7 @@ export default async function Page({params}) {
                         </div>
                     </div>
                 </div>
-                <div className="w-full flex flex-row gap-2 justify-between items-center border-t border-gray-400 pt-4">
+                <div className="w-full flex flex-row gap-2 justify-between items-center border-t border-gray-400 pt-4 overflow-x-scroll" style={{ scrollbarWidth:'thin' }}>
                     <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                     </svg>
@@ -85,14 +84,6 @@ export default async function Page({params}) {
                             <h3 className="text-xl">Status</h3>
                             <span className="uppercase rounded-full border border-green-400 px-2 bg-green-300 text-green-700 shadow-md shadow-green-400">{ product.status }</span>
                             <span></span>
-                        </span>
-                    </div>
-                    <div className="pl-2 border-b border-slate-300 py-3">
-                        <span className="flex flex-row justify-between items-center">
-                            <h3 className="text-xl">Acciones</h3>
-                            <ActionDetails product={product} user={user}/>
-                        </span>
-                        <span>
                         </span>
                     </div>
                     <div>

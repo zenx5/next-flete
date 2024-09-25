@@ -37,19 +37,16 @@ export default class ProductsModel extends BaseModel {
     }
 
     static canChangeStatus( statusFrom, statusTo ) {
-        // console.log( statusFrom, statusTo )
         const listFromTo = {
             [STATUS.ACCEPT]: [ STATUS.ACTIVE ],
-            [STATUS.ACTIVE]: [ STATUS.CLOSED ],
+            [STATUS.ACTIVE]: [ STATUS.CLOSED, STATUS.ACCEPT ],
             [STATUS.CLOSED]: [ STATUS.ACTIVE ]
         }
-        // return false
         return listFromTo[statusFrom].includes( statusTo )
     }
 
     static async changeStatus(id, status) {
         const data = await this.get(id);
-        console.log(data)
         if( !this.canChangeStatus( data.status, status ) ) return false;
         if( status === STATUS.ACCEPT ) {
             if( data?.auctions?.length <= 0 ) return false

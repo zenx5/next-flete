@@ -16,7 +16,7 @@ export default function AuctionUp({ id, auctions, step, initialValue, user, disa
             setValue( prev => parseFloat( initialValue ) )
             setLimit( prev => parseFloat( initialValue ) )
         }
-    },[initialValue, auctions, value, step])
+    },[initialValue, auctions, step])
 
     const handlerClickBuyNow = (event) => {
         event.preventDefault()
@@ -50,9 +50,9 @@ export default function AuctionUp({ id, auctions, step, initialValue, user, disa
                 type="number"
                 className="w-2/4 px-2 py-3 text-right outline-none disabled:text-gray-500"
                 placeholder="0.00"
-                value={value}
+                value={ value }
                 disabled={ disabled || value===0 }
-                max={ limit + step }
+                max={ limit - step }
                 min={0}
                 onChange={ event => setValue( event.target.value ) }
             />
@@ -63,7 +63,7 @@ export default function AuctionUp({ id, auctions, step, initialValue, user, disa
         </span>
         <button
             className="border-l-2 border-orange-flete p-3 hover:bg-orange-100 hover:text-orange-flete disabled:bg-white disabled:text-gray-600 rounded-r-md"
-            disabled={ disabled || value===0 }
+            disabled={ disabled || value===0 || value>=limit }
             onClick={handlerClickBuyNow}
         >Ofertar</button>
     </div>

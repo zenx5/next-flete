@@ -6,7 +6,7 @@ import { setToast } from "../../components/ToastProvider"
 import { SquaresPlusIcon } from '@heroicons/react/24/outline'
 import MenuItem from "@/components/MenuItem"
 
-export default function ProductRow({ item, fields, isAdmin, isOwner }) {
+export default function ProductRow({ item, fields, isAdmin, isOwner, isAssigned }) {
 
     const formater = (value, formatAction) => {
         if( formatAction ) {
@@ -26,7 +26,7 @@ export default function ProductRow({ item, fields, isAdmin, isOwner }) {
     }
 
     const solutions = [
-        { name: 'Details', href: `${ROUTER_PATH.PRODUCTS}/${item.id}/details`, icon: SquaresPlusIcon, enable:isAdmin || isOwner },
+        { name: 'Details', href: `${ROUTER_PATH.PRODUCTS}/${item.id}/details`, icon: SquaresPlusIcon, enable:isAdmin || isOwner || isAssigned },
         { name: 'Open', href: `${ROUTER_PATH.PRODUCTS}/${item.id}`, icon: OpenIcon, enable: true },
         { name: 'Edit', href: `?modal=edit-auction&params=id&id=${item.id}`, icon: EditIcon, enable:isAdmin || isOwner },
         { name: 'Delete', href: '#', onClick:handlerDelete, icon: DeleteIcon, enable:isAdmin || isOwner}

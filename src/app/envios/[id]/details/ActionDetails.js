@@ -17,7 +17,6 @@ export default function ActionDetails({ product, user }){
     const handlerTicket = async () => {
         if( openTicket ) await ProductsModel.closeTicket(product.id, user.id, ticketId)
         else await ProductsModel.openTicket(product.id, user.id)
-    
     }
 
     const handlerConfirm = () => {
