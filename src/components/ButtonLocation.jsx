@@ -1,8 +1,9 @@
 "use client";
-import { GoogleMap, Marker, useLoadScript, get } from "@react-google-maps/api";
+import { GoogleMap, Marker, useLoadScript, Autocomplete, LoadScript } from "@react-google-maps/api";
 import TextField from "./TextField";
 import { MapPinIcon } from "./icons"
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import AutocompleteLocation from "./AutocompleLocation";
 
 export default function ButtonLocation({ title, name, position, geolocate, onChange }) {
     const [open, setOpen] = useState(false)
@@ -15,7 +16,7 @@ export default function ButtonLocation({ title, name, position, geolocate, onCha
         lat: parseFloat( position.lat ),
         lng: parseFloat( position.lng )
     } )
-    const libraries = [ "places" ]
+    const libraries = [ "places", "geometry", "drawing", "visualization" ]
 
     const handlerLocate = () => {
         onChange(namePlace, pos)
@@ -27,22 +28,34 @@ export default function ButtonLocation({ title, name, position, geolocate, onCha
         libraries: libraries
     });
 
-    // const center = {
-    //     lat: parseFloat( position.lat ),
-    //     lng: parseFloat( position.lng )
-    // }
-
     const options = {
         disableDefaultUI: false,
         clickableIcons: true,
         scrollwheel: true
     }
 
-    const handlerChangePosition = (event) => {
+    const handlerChangePosition = async (event) => {
         setPos({
             lat : event.latLng.lat(),
             lng : event.latLng.lng()
         })
+
+        try{
+            const service = new google.maps.places.PlacesService(document.querySelector("[role='region']"));
+            service.nearbySearch({
+                location: event.latLng,
+                radius: 1000,
+
+            }, (data, status) => {
+                if( status === google.maps.places.PlacesServiceStatus.OK ) {
+                    setNamePlace(data[0].name)
+                } else {
+                    setNamePlace(`(${event.latLng.lat().toFixed(2)}, ${event.latLng.lng().toFixed(2)})`)
+                }
+            });
+        } catch(e) {
+            console.log(e.message)
+        }
     }
 
     useEffect(()=>{
@@ -79,14 +92,32 @@ export default function ButtonLocation({ title, name, position, geolocate, onCha
                 <h3 className="font-semibold">Seleccion Ubicación</h3>
                 <span className="flex flex-row gap-2 items-center">
                     <span className="w-8/12">
-                        <TextField label="Name"
-                            input={{
-                                value: namePlace,
-                                onChange: (event) => setNamePlace( event.target.value )
+                        <AutocompleteLocation
+                            className="border border-black w-full h-full py-2"
+                            value={namePlace}
+                            fields={["address_components", "geometry"]}
+                            onChangeName={setNamePlace}
+                            onPlaceChanged={ place => {
+                                const types = ['locality','administrative_area_level_1', 'country']
+                                setNamePlace(
+                                    place.address_components
+                                    .filter( item => item.types.map( type => types.includes(type) ).filter( is => is ).length>0 )
+                                    .map( item => item.long_name ).join(", ")
+                                )
+                                const geometry = place.geometry
+                                setPos({
+                                    lat: geometry.location.lat(),
+                                    lng: geometry.location.lng()
+                                })
+                                setCenter({
+                                    lat: geometry.location.lat(),
+                                    lng: geometry.location.lng()
+                                })
+
                             }}
                         />
                     </span>
-                    <span className="flex flex-row gap-1 w-4/12 pt-5">
+                    <span className="flex flex-row gap-1 w-4/12">
                         <button type="button" onClick={()=>setOpen( false )} className="w-full bg-red-500 hover:bg-red-700 text-white rounded p-2">Cancelar</button>
                         <button type="button" onClick={handlerLocate} className="w-full bg-blue-500 hover:bg-blue-700 text-white rounded p-2">Actualizar</button>
                     </span>
