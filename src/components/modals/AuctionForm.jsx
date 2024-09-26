@@ -36,7 +36,7 @@ export default function AuctionForm({ auctionId, userId }) {
                     width: 0,
                     height: 0,
                     large: 0,
-                    unit: 'Kg'
+                    unit: 'mts'
                 },
                 weight: 0,
                 endTime: 0,
