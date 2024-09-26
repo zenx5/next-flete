@@ -36,9 +36,9 @@ export default function AuctionForm({ auctionId, userId }) {
                     width: 0,
                     height: 0,
                     large: 0,
-                    unit: ''
+                    unit: 'Kg'
                 },
-                weight: "",
+                weight: 0,
                 endTime: 0,
                 deliveryTime: 0,
                 pickUpTime: 0
@@ -90,8 +90,6 @@ export default function AuctionForm({ auctionId, userId }) {
         }
         setToast("Flete creado", "success")
     }
-
-    console.log( auction )
 
 
     return auction && <div className="w-full h-full flex justify-center md:items-center items-start">
@@ -148,21 +146,23 @@ export default function AuctionForm({ auctionId, userId }) {
                         onChange={ (name, position) => handlerChangeAuction('to', { name, position })}
                     />
                 </span>
-                <p className="md:mt-5 mt-2 md:ml-0 ml-4 font-semibold">Medidas</p>
+                <p className="md:mt-5 mt-2 md:ml-0 ml-4 font-semibold">Características</p>
                 <span className="flex flex-col gap-2 px-5">
                     <span className="flex md:flex-row flex-col md:gap-2 gap-0 justify-around">
                         <TextField
                             label="Ancho"
                             type="number"
+                            helperText="En metros"
                             input={{
-                                value:auction.dimensions.width ?? "",
+                                value:auction.dimensions.width ?? 0,
                                 onChange: event => handlerChangeAuction('dimensions', { ...auction.dimensions, width:event.target.value })
                             }} />
                         <TextField
                             label="Alto"
                             type="number"
+                            helperText="En metros"
                             input={{
-                                value:auction.dimensions.height ?? "",
+                                value:auction.dimensions.height ?? 0,
                                 onChange: event => handlerChangeAuction('dimensions', { ...auction.dimensions, height:event.target.value })
                             }} />
                     </span>
@@ -170,16 +170,18 @@ export default function AuctionForm({ auctionId, userId }) {
                         <TextField
                             label="Largo"
                             type="number"
+                            helperText="En metros"
                             input={{
-                                value:auction.dimensions.large ?? "",
+                                value:auction.dimensions.large ?? 0,
                                 onChange: event => handlerChangeAuction('dimensions', { ...auction.dimensions, large:event.target.value })
                             }} />
                         <TextField
-                            label="Unidades"
-                            type="text"
+                            label="Peso"
+                            type="number"
+                            helperText="En kilogramos"
                             input={{
-                                value:auction.dimensions.unit   ?? "",
-                                onChange: event => handlerChangeAuction('dimensions', { ...auction.dimensions, unit:event.target.value })
+                                value:auction.weight ?? 0,
+                                onChange: event => handlerChangeAuction('weight', event.target.value )
                             }} />
                     </span>
                 </span>
