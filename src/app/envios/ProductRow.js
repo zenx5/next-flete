@@ -4,7 +4,7 @@ import RowCardMobile from "./RowCardMobile"
 import ProductsModel from "@/tools/models/ProductsModel"
 import { setToast } from "../../components/ToastProvider"
 import { SquaresPlusIcon } from '@heroicons/react/24/outline'
-import MenuItem from "@/components/MenuItem"
+import MenuItem from "@/components/MenuItem/MenuItem"
 
 export default function ProductRow({ item, fields, isAdmin, isOwner, isAssigned }) {
 
@@ -24,10 +24,10 @@ export default function ProductRow({ item, fields, isAdmin, isOwner, isAssigned 
     }
 
     const solutions = [
-        { name: 'Details', href: `${ROUTER_PATH.PRODUCTS}/${item.id}/details`, icon: SquaresPlusIcon, enable:isAdmin || isOwner || isAssigned },
-        { name: 'Open', href: `${ROUTER_PATH.PRODUCTS}/${item.id}`, icon: OpenIcon, enable: true },
-        { name: 'Edit', href: `?modal=edit-auction&params=id&id=${item.id}`, icon: EditIcon, enable:isAdmin || isOwner },
-        { name: 'Delete', href: '#', onClick:handlerDelete, icon: DeleteIcon, enable:isAdmin || isOwner}
+        { name: 'Seguimiento', href: `${ROUTER_PATH.PRODUCTS}/${item.id}/details`, icon: SquaresPlusIcon, enable:isAdmin || isOwner || isAssigned },
+        { name: 'Abrir', href: `${ROUTER_PATH.PRODUCTS}/${item.id}`, icon: OpenIcon, enable: true },
+        { name: 'Editar', href: `?modal=edit-auction&params=id&id=${item.id}`, icon: EditIcon, enable:isAdmin || isOwner },
+        { name: 'Eliminar', href: '#', onClick:handlerDelete, icon: DeleteIcon, enable:isAdmin || isOwner}
     ]
 
     return <>
