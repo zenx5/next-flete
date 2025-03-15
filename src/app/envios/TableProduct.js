@@ -15,7 +15,7 @@ const fields = [
     { id:"name", label: "Nombre", format: FormatName},
     { id:"from", label: "Desde", format: formatLocation },
     { id:"to", label: "Hasta", format: formatLocation },
-    { id:"weight", label: "Peso" },
+    { id:"weight", label: "Peso (Kg)" },
     { id:"dimensions", label: "Dimensiones", format: formatDimension },
     { id:"auctions", label: "Última puja", format: formatAuction },
     { id:"status", label: "Estatus", format: formatStatus },
@@ -71,13 +71,13 @@ export default function TableProduct({ userId, isAdmin }) {
 
     useEffect(()=>{
         const _total = entities.filter( filterGroup ).filter( filterSearch ).length
-        setTotal( prev => _total )
+        setTotal( _total )
         setMin( perPage*(page - 1) + 1 )
         setMax( perPage*page>_total ? _total : perPage*page )
     },[entities, filterGroup, filterSearch, page, perPage])
 
     useEffect(()=>{
-        setPage( prev => 1 )
+        setPage( 1 )
     },[perPage, currentTab])
 
     const labelTabs = [
