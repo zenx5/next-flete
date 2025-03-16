@@ -41,9 +41,9 @@ export function ToastProvider() {
   }, []);
 
   return (
-    <span style={{ position:'absolute' }}>
-      <input ref={refMessage} type="text" name="toast-message" />
-      <input ref={refType} type="text" name="toast-type" />
+    <span className="absolute">
+      <input ref={refMessage} type="text" name="toast-message" className="hidden"/>
+      <input ref={refType} type="text" name="toast-type" className="hidden"/>
       <ToastContainer />
     </span>
   );
