@@ -7,8 +7,10 @@ export default function MenuItem({ items = [] }) {
     const [open, setOpen] = useState(false)
 
     useEffect(()=>{
-        const listenerCloser = () => setOpen( false )
-        if( open ) document.addEventListener('click', listenerCloser)
+        const listenerCloser = () => {
+            if( open ) setOpen( false )
+        }
+        document.addEventListener('click', listenerCloser)
         return () => document.removeEventListener('click', listenerCloser)
     },[open])
 
