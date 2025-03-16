@@ -16,7 +16,7 @@ export default function TextField( props ) {
             return (isPassword ? "flex flex-row justify-between " : "") + (props?.className?.content ? props?.className?.content : "border border-[#d97706] rounded")
 
         })(type.toLowerCase()==='password'),
-        input: (type.toLowerCase()==='password' ? "w-full " : "w-fit ") + ( props?.className?.input ? props?.className?.input : "outline-none p-3 rounded w-full"),
+        input: (type.toLowerCase()==='password' ? "w-full " : "w-fit ") + ( props?.className?.input ? props?.className?.input : "outline-none p-3 rounded w-full h-full"),
         helperText: props?.className?.helperText ? props?.className?.helperText : "text-xs px-2 pt-1 text-gray-500",
         icon: props?.className?.icon ? props?.className?.icon : "w-6 h-6 text-[#d97706]"
     }
@@ -37,7 +37,8 @@ export default function TextField( props ) {
             </button>
         </span>}
         { type.toLowerCase()!=='password' && <span className={className.content}>
-            <input type={type} className={className.input} {...props.input}/>
+            { type=='textarea' && <textarea className={className.input} {...props.input}/> }
+            { type!='textarea' && <input type={type} className={className.input} {...props.input}/> }
         </span>}
         <span className={className.helperText}>{helperText}</span>
     </div>

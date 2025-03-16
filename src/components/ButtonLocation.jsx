@@ -49,8 +49,6 @@ export default function ButtonLocation({ title, name, position, geolocate, onCha
             }, (data, status) => {
                 if( status === google.maps.places.PlacesServiceStatus.OK ) {
                     setNamePlace(data[0].name)
-                } else {
-                    setNamePlace(`(${event.latLng.lat().toFixed(2)}, ${event.latLng.lng().toFixed(2)})`)
                 }
             });
         } catch(e) {
@@ -81,8 +79,6 @@ export default function ButtonLocation({ title, name, position, geolocate, onCha
                 <MapPinIcon className="w-10 h-10 group-hover:text-blue-500" />
                 <span className="flex flex-col">
                     <p>{ namePlace }</p>
-                    <small className="text-[10px] m-0 p-0 opacity-50 italic">Lat { position.lat }</small>
-                    <small className="text-[10px] m-0 p-0 opacity-50 italic">Lng { position.lng }</small>
                 </span>
             </span>
         </button>
@@ -118,8 +114,8 @@ export default function ButtonLocation({ title, name, position, geolocate, onCha
                         />
                     </span>
                     <span className="flex flex-row gap-1 w-4/12">
-                        <button type="button" onClick={()=>setOpen( false )} className="w-full bg-red-500 hover:bg-red-700 text-white rounded p-2">Cancelar</button>
-                        <button type="button" onClick={handlerLocate} className="w-full bg-blue-500 hover:bg-blue-700 text-white rounded p-2">Actualizar</button>
+                        <button type="button" disabled={namePlace.trim().length===0} onClick={()=>setOpen( false )} className="w-full bg-red-500 disabled:bg-slate-300 disabled:text-red-400 hover:bg-red-700 text-white rounded p-2">Cancelar</button>
+                        <button type="button" disabled={namePlace.trim().length===0} onClick={handlerLocate} className="w-full bg-blue-500 disabled:bg-slate-300 disabled:text-blue-400 hover:bg-blue-700 text-white rounded p-2">Actualizar</button>
                     </span>
                 </span>
                 <div className="mt-2 rounded-lg overflow-hidden">

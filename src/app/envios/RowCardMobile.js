@@ -24,7 +24,7 @@ export default function RowCardMobile({ id, name, from, to, dimensions, weight, 
             <span className="w-9/12 text-left pl-2 italic" >{ dimensions }</span>
         </span>}
         { !showLocation && <span className="flex flex-row xl:hidden text-inherit align-middle outline-none hover:bg-slate-200 py-1 px-2 w-full items-center">
-            <span className="w-3/12 font-semibold text-slate-600 text-left pr-2">Weight</span>
+            <span className="w-3/12 font-semibold text-slate-600 text-left pr-2">Weight <small className="text-xs">(Kg)</small></span>
             <span className="w-9/12 text-left pl-2">{ weight }</span>
         </span>}
         <span className="flex flex-row xl:hidden text-inherit align-middle outline-none hover:bg-slate-200 py-1 px-2 w-full items-center justify-between gap-5">

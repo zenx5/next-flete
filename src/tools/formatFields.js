@@ -29,7 +29,16 @@ const handlerChangeDimension = (field, value, row) => event => {
 
 export const formatDimension = (dimensions, row, isAdmin) => {
     const { width, height, large, unit } = dimensions;
-    return `${width}${unit} x ${height}${unit} x ${large}${unit}`
+    return <span className="flex flex-row gap-1 items-center">
+        <span>{Number(width).toFixed(1)}</span>
+        <span className="text-xs self-end mb-[3px]">{unit}</span>
+        <span className="opacity-30">x</span>
+        <span>{Number(height).toFixed(1)}</span>
+        <span className="text-xs self-end mb-[3px]">{unit}</span>
+        <span className="opacity-30">x</span>
+        <span>{Number(large).toFixed(1)}</span>
+        <span className="text-xs self-end mb-[3px]">{unit}</span>
+    </span>
 }
 
 export const formatAuction = (auctions, row, isAdmin) => {
@@ -86,7 +95,5 @@ export const FormatName = (name, row, isAdmin) => {
 export const formatLocation = (location, row, isAdmin) => {
     return <span className="flex flex-row md:flex-col items-center gap-2 md:gap-0">
         <span>{location.name}</span>
-        <small className="text-[10px] m-0 p-0 opacity-50 italic">Lat: {location.position.lat}</small>
-        <small className="text-[10px] m-0 p-0 opacity-50 italic">Lng: {location.position.lng}</small>
     </span>
 }

@@ -23,12 +23,12 @@ export default async function Page({params}) {
     }
     const comments = product?.assignAt?.id ? await CommentsModel.search("userId", product?.assignAt?.id) : []
 
-    return <div className="mx-20 mt-10 h-screen" data-id={id}>
+    return <div className="md:mx-20 mx-6 mt-10 h-screen" data-id={id}>
         <div className="w-full border-b border-gray-400 py-4 mb-5">
             <h1 className="text-3xl uppercase font-bold">{product.name}</h1>
         </div>
-        <div className="flex flex-row gap-4 justify-between">
-            <div className="w-1/2 flex flex-col gap-1">
+        <div className="flex md:flex-row flex-col gap-4 justify-between">
+            <div className="w-full md:w-1/2 flex flex-col gap-1">
                 <MapAuction auctionId={id} className="w-full p-2"/>
                 <div className="w-full h-52 flex flex-row gap-2 p-2">
                     <div className="w-40 h-full">
@@ -72,7 +72,7 @@ export default async function Page({params}) {
                     </svg>
                 </div>
             </div>
-            <div className="w-1/2">
+            <div className="w-full md:w-1/2">
                 <div className="w-full p-2">
                     <h2 className="text-2xl font-semibold">Detalles de la Encomienda</h2>
                     <div className="pl-2 border-b border-slate-300 pb-3">
