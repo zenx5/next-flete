@@ -6,7 +6,6 @@ import Staring from "@/components/Staring"
 import { UserIcon } from "@heroicons/react/20/solid";
 import { ROUTER_PATH, USER_TYPE } from "@/tools/constants";
 import { redirect } from "next/navigation";
-import ActionDetails from "./ActionDetails";
 import ChatBox from "@/components/ChatBox"
 
 export default async function Page({params}) {

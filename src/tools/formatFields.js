@@ -46,7 +46,7 @@ export const formatAuction = (auctions, row, isAdmin) => {
     const lastAuction = auctions.reduce( (auction, acc) => auction.date>acc.date ? auction : acc , { mount : 0, date : 0 })
     return <span className="flex flex-col gap-0 items-center justify-center">
         <span>{lastAuction.mount} $USD</span>
-        <small className="text-gray-400 italic">{lastAuction?.user?.email ?? '-'}</small>
+        <Link href={`/usuario/perfil/${lastAuction?.user?.id}`} target="_blank" className="text-blue-400 hover:underline text-xs italic">{lastAuction?.user?.email ?? '-'}</Link>
     </span>
 }
 
@@ -58,9 +58,11 @@ export const formatStatus = (status, row, isAdmin) => {
 
         const arrayStatus = Object.values(STATUS)
 
-        return <select className="rounded-full px-3 py-2 uppercase" value={status} onChange={validateChange}>
-            { arrayStatus.map( item => <option key={item} className="p-2 font-medium uppercase" value={item}>{item}</option>) }
-        </select>
+        return <span className="px-2 bg-white rounded-full block w-fit">
+            <select className="outline-none rounded-full bg-white px-1 py-2 uppercase" value={status} onChange={validateChange}>
+                { arrayStatus.map( item => <option key={item} className="py-2 px-6 font-medium uppercase" value={item}>{item}</option>) }
+            </select>
+        </span>
     }
     const className = status==='active' ?
         "bg-green-300 text-green-800" :
