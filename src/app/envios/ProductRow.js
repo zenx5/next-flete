@@ -5,6 +5,7 @@ import ProductsModel from "@/tools/models/ProductsModel"
 import { setToast } from "../../components/ToastProvider"
 import { SquaresPlusIcon } from '@heroicons/react/24/outline'
 import MenuItem from "@/components/MenuItem/MenuItem"
+import { formatAuction } from "../../tools/formatFields"
 
 export default function ProductRow({ item, fields, isAdmin, isOwner, isAssigned }) {
 
@@ -51,6 +52,7 @@ export default function ProductRow({ item, fields, isAdmin, isOwner, isAssigned 
                 dimensions={ formater(item['dimensions'], fields.find( field=> field.id==='dimensions')?.format) }
                 weight={ formater(item['weight'], fields.find( field=> field.id==='weight')?.format) }
                 status={ formater(item['status'], fields.find( field=> field.id==='status')?.format) }
+                lastAuction={item.auctions.length>0 ? formatAuction(item.auctions) : null }
                 isAdmin={isAdmin}
                 isOwner={isOwner}
                 onDelete={handlerDelete}

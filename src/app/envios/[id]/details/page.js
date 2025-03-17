@@ -2,12 +2,14 @@ import ProductsModel from "@/tools/models/ProductsModel"
 import MapAuction from '@/components/modals/MapAuction'
 import { getUser } from "@/tools/actions/user"
 import CommentsModel from "@/tools/models/CommentsModel"
-import Staring from "@/components/Staring"
 import { UserIcon } from "@heroicons/react/20/solid";
 import { ROUTER_PATH, USER_TYPE } from "@/tools/constants";
 import { redirect } from "next/navigation";
-import ActionDetails from "./ActionDetails";
 import ChatBox from "@/components/ChatBox"
+import Dimensions from "./(sections)/Dimensions"
+import CardCoor from "./(sections)/CardCoor"
+import CurrentStatus from "./(sections)/CurrentStatus"
+import CarrierDetails from "./(sections)/Carrier";
 
 export default async function Page({params}) {
     const { id } = params;
@@ -35,26 +37,7 @@ export default async function Page({params}) {
                         <UserIcon className="text-slate-800 border border-slate-800 rounded-full p-0"/>
                     </div>
                     <div className="w-full flex flex-col gap-1">
-                        <div className="w-full h-2/3 divide-y">
-                            <p className="flex flex-row justify-between px-4 py-1">
-                                <span className="font-bold">Trasportista:</span>
-                                <span className="italic text-slate-600">{product?.assignAt?.user.name ?? '-'}</span>
-                            </p>
-                            <p className="flex flex-row justify-between px-4 py-1">
-                                <span className="font-bold">Email:</span>
-                                <span className="italic text-slate-600">{product?.assignAt?.user.email ?? '-'}</span>
-                            </p>
-                            <p className="flex flex-row justify-between px-4 py-1">
-                                <span className="font-bold">Telefono:</span>
-                                <span className="italic text-slate-600">{product?.assignAt?.user.phone ?? '-'}</span>
-                            </p>
-                        </div>
-                        <div className="w-full h-1/3">
-                            <Staring
-                                average={comments.map( comment => comment.rating ).reduce( (a,e)=>a+e, 0 )/comments.length}
-                                totalCount={comments.length}
-                            />
-                        </div>
+                        <CarrierDetails carrier={product?.assignAt} comments={comments}/>
                     </div>
                 </div>
                 <div className="w-full flex flex-row gap-2 justify-between items-center border-t border-gray-400 pt-4 overflow-x-scroll" style={{ scrollbarWidth:'thin' }}>
@@ -75,16 +58,16 @@ export default async function Page({params}) {
             <div className="w-full md:w-1/2">
                 <div className="w-full p-2">
                     <h2 className="text-2xl font-semibold">Detalles de la Encomienda</h2>
-                    <div className="pl-2 border-b border-slate-300 pb-3">
-                        <h3 className="text-xl">Descripcion</h3>
-                        <span>{ product.description }</span>
+                    <div className="pl-2 border-b border-slate-300 pb-3 ">
+                    <span className="p-2">{ product.description }</span>
                     </div>
-                    <div className="pl-2 border-b border-slate-300 py-3">
-                        <span className="flex flex-row justify-between items-center">
-                            <h3 className="text-xl">Status</h3>
-                            <span className="uppercase rounded-full border border-green-400 px-2 bg-green-300 text-green-700 shadow-md shadow-green-400">{ product.status }</span>
-                            <span></span>
-                        </span>
+                    <div className="pl-2 border-b border-slate-300 py-3 grid grid-cols-2 divide-x">
+                        <CardCoor location={product.from} />
+                        <CardCoor location={product.to} />
+                    </div>
+                    <div className="pl-2 border-b border-slate-300 py-3 grid grid-cols-2 divide-x">
+                        <CurrentStatus value={product.status} />
+                        <Dimensions {...product} />
                     </div>
                     <div>
                         <ChatBox
